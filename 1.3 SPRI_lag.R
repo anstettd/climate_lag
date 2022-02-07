@@ -128,6 +128,7 @@ write.table(delta_AIC, file = "Data/delta_AIC.csv", sep = ",", row.names = T)
 ##########################################################################################################  
 #Test models that where delta AIC < 2
 
+############ SLA ############
 #SLA lag 0
 sla_lag0a <- lmer(SLA ~ Drought+lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
 lrtest(sla_lag0,sla_lag0a) #lag0 significnatly more likely
@@ -147,7 +148,7 @@ visreg(sla_lag012, xvar="lag012", by="Drought",gg=TRUE)
 
 
 
-
+############ Flowering Time ############
 #Fl lag 1
 fl_lag1a <- lmer(Experiment_Date ~ Drought+lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
 lrtest(fl_lag1,fl_lag1a) #no difference, keep simpler model
@@ -185,6 +186,92 @@ visreg(fl_lag1b, xvar="Drought",gg=TRUE) #same for all models
 
 
 
+############ Water Content ############
+#wc lag 2
+wc_lag2a <- lmer(Water_Content ~ Drought+lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(wc_lag2,wc_lag2a) #interaction significantly less likely
+wc_lag2b <- lmer(Water_Content ~ Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(wc_lag2a,wc_lag2b) # Drought only selected
+wc_lag2c <- lmer(Water_Content ~ (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(wc_lag2b,wc_lag2c) # Drought only selected
+
+#wc lag 0,1,2
+wc_lag012a <- lmer(Water_Content ~ Drought+lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(wc_lag012,wc_lag012a) #interaction significantly less likely
+wc_lag012b <- lmer(Water_Content ~ Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(wc_lag012a,wc_lag012b) #Drought only selected, see above for significance test
+
+#Graphs
+visreg(wc_lag2b, xvar="Drought",gg=TRUE) #same for all models
+
+############ Assimilation ############
+
+
+#Assimilation lag 0
+a_lag0a <- lmer(Assimilation ~ Drought+lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(a_lag0,a_lag0a) #no difference, keep simpler model
+a_lag0b <- lmer(Assimilation ~ Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(a_lag0a,a_lag0b) #no difference, keep simpler model
+a_lag0c <- lmer(Assimilation ~ (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(a_lag0b,a_lag0c) #no difference with model without fixed effects
+
+#Assimilation lag 1
+a_lag1a <- lmer(Assimilation ~ Drought+lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(a_lag1,a_lag1a) #no difference, keep simpler model
+a_lag1b <- lmer(Assimilation ~ Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(a_lag1a,a_lag1b) #no difference, keep simpler model. See lag0 test
+
+#Assimilation lag 2
+a_lag2a <- lmer(Assimilation ~ Drought+lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(a_lag2,a_lag2a) #no difference, keep simpler model
+a_lag2b <- lmer(Assimilation ~ Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(a_lag2a,a_lag2b) #no difference, keep simpler model. See lag0 test
+
+#Assimilation lag 01
+a_lag01a <- lmer(Assimilation ~ Drought+lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(a_lag01,a_lag01a) #no difference, keep simpler model
+a_lag01b <- lmer(Assimilation ~ Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(a_lag01a,a_lag01b) #no difference, keep simpler model. See lag0 test
+
+#Assimilation lag 012
+a_lag012a <- lmer(Assimilation ~ Drought+lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(a_lag012,a_lag012a) #no difference, keep simpler model
+a_lag012b <- lmer(Assimilation ~ Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(a_lag012a,a_lag012b) #no difference, keep simpler model. See lag0 test
+
+
+############ Stomatal Conductance ############
+#gz lag 0
+gz_lag0a <- lmer(Stomatal_Conductance ~ Drought+lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(gz_lag0,gz_lag0a) #interaction significantly less likely
+gz_lag0b <- lmer(Stomatal_Conductance ~ Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(gz_lag0a,gz_lag0b) # Drought only selected
+gz_lag0c <- lmer(Stomatal_Conductance ~ (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(gz_lag0b,gz_lag0c) # Drought only marginally significant
+
+#gz lag 1
+gz_lag1a <- lmer(Stomatal_Conductance ~ Drought+lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(gz_lag1,gz_lag1a) #interaction significantly less likely
+gz_lag1b <- lmer(Stomatal_Conductance ~ Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(gz_lag1a,gz_lag1b) # Drought only selected, see above
+
+#gz lag 2
+gz_lag2a <- lmer(Stomatal_Conductance ~ Drought+lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(gz_lag2,gz_lag2a) #interaction significantly less likely
+gz_lag2b <- lmer(Stomatal_Conductance ~ Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(gz_lag2a,gz_lag2b) # Drought only selected, see above
+
+#gz lag 01
+gz_lag01a <- lmer(Stomatal_Conductance ~ Drought+lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(gz_lag01,gz_lag01a) #interaction significantly less likely
+gz_lag01b <- lmer(Stomatal_Conductance ~ Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(gz_lag01a,gz_lag01b) # Drought only selected, see above
+
+#gz lag 012
+gz_lag012a <- lmer(Stomatal_Conductance ~ Drought+lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(gz_lag012,gz_lag012a) #interaction significantly less likely
+gz_lag012b <- lmer(Stomatal_Conductance ~ Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+lrtest(gz_lag012a,gz_lag012b) # Drought only selected, see above
 
 
 
