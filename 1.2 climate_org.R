@@ -17,7 +17,10 @@ library(tidyverse)
 spei_pop <- read.csv("Data/spei_pop.csv", header=T)
 
 y3 <- read.csv("Data/y3.csv", header=T) #Import trait data
-y3$Site_Amy <- y3$Site
+y3$Site_Amy <- y3$Site #Duplicate site ID variable
+#Define regions
+y3<-y3 %>% mutate(Region = ifelse(Latitude >= 40, "North", 
+                                  ifelse((Latitude >35) & (Latitude <40), "Center","South")))
 
 ##########################################################################################################
 

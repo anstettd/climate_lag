@@ -113,7 +113,8 @@ lag_AIC[1,1] <- AIC(sla_lag0)
   
 colnames(lag_AIC) <- c("SLA","Date of Flowering","Water Content","Assimilation","Stomatal Conductance")
 rownames(lag_AIC) <- c("lag 0", "lag 1", "lag 2", "lag 0,1","lag 0,1,2")
-write.table(lag_AIC, file = "Data/lag_AIC.csv", sep = ",", row.names = T)
+write.table(lag_AIC, file = "
+            ", sep = ",", row.names = T)
 #Make delta AIC table
 delta_AIC <- lag_AIC
 delta_AIC[,1] <- lag_AIC[,1]-min(lag_AIC[,1])
