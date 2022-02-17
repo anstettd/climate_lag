@@ -59,24 +59,6 @@ fl_lag2 <- lmer(Experiment_Date ~ Drought*lag2 + (1|Family) + (1|Block) + (1|Yea
 fl_lag01 <- lmer(Experiment_Date ~ Drought*lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
 fl_lag012 <- lmer(Experiment_Date ~ Drought*lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
 
-wc_lag0 <- lmer(Water_Content ~ Drought*lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-wc_lag1 <- lmer(Water_Content ~ Drought*lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-wc_lag2 <- lmer(Water_Content ~ Drought*lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-wc_lag01 <- lmer(Water_Content ~ Drought*lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-wc_lag012 <- lmer(Water_Content ~ Drought*lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-
-a_lag0 <- lmer(Assimilation ~ Drought*lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-a_lag1 <- lmer(Assimilation ~ Drought*lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-a_lag2 <- lmer(Assimilation ~ Drought*lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-a_lag01 <- lmer(Assimilation ~ Drought*lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-a_lag012 <- lmer(Assimilation ~ Drought*lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-
-gz_lag0 <- lmer(Stomatal_Conductance ~ Drought*lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat),
-                control=lmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=100000)),data=y9)
-gz_lag1 <- lmer(Stomatal_Conductance ~ Drought*lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-gz_lag2 <- lmer(Stomatal_Conductance ~ Drought*lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-gz_lag01 <- lmer(Stomatal_Conductance ~ Drought*lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-gz_lag012 <- lmer(Stomatal_Conductance ~ Drought*lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
 
 #################### AIC ###################################
 lag_AIC <- data.frame()
@@ -92,37 +74,15 @@ lag_AIC[1,1] <- AIC(sla_lag0)
   lag_AIC[3,2] <- AIC(fl_lag2)
   lag_AIC[4,2] <- AIC(fl_lag01)
   lag_AIC[5,2] <- AIC(fl_lag012)
-  
-  lag_AIC[1,3] <- AIC(wc_lag0)
-  lag_AIC[2,3] <- AIC(wc_lag1)
-  lag_AIC[3,3] <- AIC(wc_lag2)
-  lag_AIC[4,3] <- AIC(wc_lag01)
-  lag_AIC[5,3] <- AIC(wc_lag012)
-  
-  lag_AIC[1,4] <- AIC(a_lag0)
-  lag_AIC[2,4] <- AIC(a_lag1)
-  lag_AIC[3,4] <- AIC(a_lag2)
-  lag_AIC[4,4] <- AIC(a_lag01)
-  lag_AIC[5,4] <- AIC(a_lag012)
-  
-  lag_AIC[1,5] <- AIC(gz_lag0)
-  lag_AIC[2,5] <- AIC(gz_lag1)
-  lag_AIC[3,5] <- AIC(gz_lag2)
-  lag_AIC[4,5] <- AIC(gz_lag01)
-  lag_AIC[5,5] <- AIC(gz_lag012)
-  
-colnames(lag_AIC) <- c("SLA","Date of Flowering","Water Content","Assimilation","Stomatal Conductance")
+
+colnames(lag_AIC) <- c("SLA","Date of Flowering")
 rownames(lag_AIC) <- c("lag 0", "lag 1", "lag 2", "lag 0,1","lag 0,1,2")
-write.table(lag_AIC, file = "
-            ", sep = ",", row.names = T)
+#write.table(lag_AIC, file = "Data/lag_AIC.csv", sep = ",", row.names = T)
 #Make delta AIC table
 delta_AIC <- lag_AIC
 delta_AIC[,1] <- lag_AIC[,1]-min(lag_AIC[,1])
 delta_AIC[,2] <- lag_AIC[,2]-min(lag_AIC[,2])
-delta_AIC[,3] <- lag_AIC[,3]-min(lag_AIC[,3])
-delta_AIC[,4] <- lag_AIC[,4]-min(lag_AIC[,4])
-delta_AIC[,5] <- lag_AIC[,5]-min(lag_AIC[,5])
-write.table(delta_AIC, file = "Data/delta_AIC.csv", sep = ",", row.names = T)
+#write.table(delta_AIC, file = "Data/delta_AIC.csv", sep = ",", row.names = T)
 
 ########################################################################################################## 
 
