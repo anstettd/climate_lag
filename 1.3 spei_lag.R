@@ -1,6 +1,6 @@
 ##########################################################################################################
-## Use climwin to analyse climate data
-## Find window that influences SPRI
+## Test for SPEI associations with SLA & Date of FLowering
+## Test importance of lags and agrigate measures
 ## Author Daniel Anstett
 ## 
 ##
@@ -47,17 +47,18 @@ y9 <- read.csv("Data/y9.csv", header=T) #Import trait & lag data
 #Random Effects = + (1|Family) + (1|Block) + (1|Year) + (1|Site)
 
 #lag models
-sla_lag0 <- lmer(SLA ~ Region*Drought*lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-sla_lag1 <- lmer(SLA ~ Region*Drought*lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-sla_lag2 <- lmer(SLA ~ Region*Drought*lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-sla_lag01 <- lmer(SLA ~ Region*Drought*lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-sla_lag012 <- lmer(SLA ~ Region*Drought*lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+sla_lag0 <- lmer(SLA ~ Region*Drought*lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat),
+                 control=lmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=100000)), data=y9)
+sla_lag1 <- lmer(SLA ~ Region*Drought*lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+sla_lag2 <- lmer(SLA ~ Region*Drought*lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+sla_lag01 <- lmer(SLA ~ Region*Drought*lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+sla_lag012 <- lmer(SLA ~ Region*Drought*lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
 
-fl_lag0 <- lmer(Experiment_Date ~ Region*Drought*lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-fl_lag1 <- lmer(Experiment_Date ~ Region*Drought*lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-fl_lag2 <- lmer(Experiment_Date ~ Region*Drought*lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-fl_lag01 <- lmer(Experiment_Date ~ Region*Drought*lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
-fl_lag012 <- lmer(Experiment_Date ~ Region*Drought*lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+fl_lag0 <- lmer(Experiment_Date ~ Region*Drought*lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+fl_lag1 <- lmer(Experiment_Date ~ Region*Drought*lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+fl_lag2 <- lmer(Experiment_Date ~ Region*Drought*lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+fl_lag01 <- lmer(Experiment_Date ~ Region*Drought*lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+fl_lag012 <- lmer(Experiment_Date ~ Region*Drought*lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
 
 #################### AIC ###################################
 lag_AIC <- data.frame()
@@ -76,12 +77,12 @@ lag_AIC[1,1] <- AIC(sla_lag0)
 
 colnames(lag_AIC) <- c("SLA","Date of Flowering")
 rownames(lag_AIC) <- c("lag 0", "lag 1", "lag 2", "lag 0,1","lag 0,1,2")
-write.table(lag_AIC, file = "Data/region_AIC.csv", sep = ",", row.names = T)
+#write.table(lag_AIC, file = "Data/region_AIC.csv", sep = ",", row.names = T)
 #Make delta AIC table
 delta_AIC <- lag_AIC
 delta_AIC[,1] <- lag_AIC[,1]-min(lag_AIC[,1])
 delta_AIC[,2] <- lag_AIC[,2]-min(lag_AIC[,2])
-write.table(delta_AIC, file = "Data/delta_region_AIC.csv", sep = ",", row.names = T)
+#write.table(delta_AIC, file = "Data/delta_region_AIC.csv", sep = ",", row.names = T)
 
 ########################################################################################################## 
 
@@ -90,26 +91,26 @@ write.table(delta_AIC, file = "Data/delta_region_AIC.csv", sep = ",", row.names 
 
 ############ SLA ############
 #SLA lag 0
-sla_lag0a <- lmer(SLA ~ Region*Drought+lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+sla_lag0a <- lmer(SLA ~ Region*Drought+lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
 lrtest(sla_lag0,sla_lag0a) #3-way interaction significant
   
 #SLA lag 0,1,2
-sla_lag012a <- lmer(SLA ~ Region*Drought+lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+sla_lag012a <- lmer(SLA ~ Region*Drought+lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
 lrtest(sla_lag012,sla_lag012a) #3-way interaction significant
   
 
 ############ Flowering Time ############
 
 #fl lag 1
-fl_lag1a <- lmer(Experiment_Date ~ Region*Drought+lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+fl_lag1a <- lmer(Experiment_Date ~ Region*Drought+lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
 lrtest(fl_lag1,fl_lag1a) #3-way interaction significant
 
 #fl lag 01
-fl_lag01a <- lmer(Experiment_Date ~ Region*Drought+lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+fl_lag01a <- lmer(Experiment_Date ~ Region*Drought+lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
 lrtest(fl_lag01,fl_lag01a) #3-way interaction marginally significant
 
 #fl lag 0,1,2
-fl_lag012a <- lmer(Experiment_Date ~ Region*Drought+lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site.Lat), data=y9)
+fl_lag012a <- lmer(Experiment_Date ~ Region*Drought+lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
 lrtest(fl_lag012,fl_lag012a) #3-way interaction significant
 
 
@@ -148,7 +149,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/SPEI_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figures/SPEI_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 # SLA 3-year average (lag012)
 vis_sla_D<-visreg(sla_lag012, xvar="lag012", by="Region", cond=list(Drought="D")) #set up visreg for Drought
@@ -181,7 +182,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/SPEI_lag0-12_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figures/SPEI_lag0-12_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 ############ Date of Flowering Graphs ############
