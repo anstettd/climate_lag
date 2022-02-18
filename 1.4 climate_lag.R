@@ -163,31 +163,60 @@ write.table(delta_AIC, file = "Data/delta_AIC.csv", sep = ",", row.names = T)
 ########################################################################################################## 
 #Test models that where delta AIC < 2
 
-##SPEI
-
-############ SLA ############
+############ SPEI ############
 #SLA lag 0
 sla_lag0a <- lmer(SLA ~ Region*Drought+lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(sla_lag0,sla_lag0a) #3-way interaction significant
-
-#SLA lag 0,1,2
-sla_lag012a <- lmer(SLA ~ Region*Drought+lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(sla_lag012,sla_lag012a) #3-way interaction significant
-
-
-############ Flowering Time ############
+lrtest(sla_lag0,sla_lag0a) #3-way interaction very strong evidence
 
 #fl lag 1
 fl_lag1a <- lmer(Experiment_Date ~ Region*Drought+lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(fl_lag1,fl_lag1a) #3-way interaction significant
+lrtest(fl_lag1,fl_lag1a) #3-way interaction moderate evidence
 
-#fl lag 01
-fl_lag01a <- lmer(Experiment_Date ~ Region*Drought+lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(fl_lag01,fl_lag01a) #3-way interaction marginally significant
 
-#fl lag 0,1,2
-fl_lag012a <- lmer(Experiment_Date ~ Region*Drought+lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(fl_lag012,fl_lag012a) #3-way interaction significant
+############ MATA ############
+#SLA lag 0
+MATA_sla_lag0a <- lmer(SLA ~ Region*Drought+MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MATA_sla_lag0,MATA_sla_lag0a) #3-way interaction very strong evidence
+
+#SLA lag0,1
+MATA_sla_lag01a <- lmer(SLA ~ Region*Drought+MATA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MATA_sla_lag01,MATA_sla_lag01a) #3-way interaction very strong evidence
+
+#SLA lag0,1,2
+MATA_sla_lag012a <- lmer(SLA ~ Region*Drought+MATA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MATA_sla_lag012,MATA_sla_lag012a) #3-way interaction very strong evidence
+
+#fl lag 2
+MATA_fl_lag2a <- lmer(Experiment_Date ~ Region*Drought+MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MATA_fl_lag2,MATA_fl_lag2a) #3-way interaction moderate evidence
+
+
+############ MAPA ############
+#SLA lag0,1,2
+MAPA_sla_lag012a <- lmer(SLA ~ Region*Drought+MAPA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MAPA_sla_lag012,MAPA_sla_lag012a) #3-way interaction very strong evidence
+
+#fl lag0,1,2
+MAPA_fl_lag012a <- lmer(Experiment_Date ~ Region*Drought+MAPA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MAPA_fl_lag012,MAPA_fl_lag012a) #3-way interaction very strong evidence
+
+
+############ CMDA ############
+#SLA lag2
+CMDA_sla_lag2a <- lmer(SLA ~ Region*Drought+CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_sla_lag2,CMDA_sla_lag2a) #no evidence of difference, select simpler model
+CMDA_sla_lag2b <- lmer(SLA ~ Region+Drought+CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_sla_lag2a,CMDA_sla_lag2b) #strong evidence in favor of Region*Drougth+CMDA_lag2
+
+#fl lag1
+CMDA_fl_lag1a <- lmer(Experiment_Date ~ Region*Drought+CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_fl_lag1,CMDA_fl_lag1a) #strong evidence in favor of simpler model
+CMDA_fl_lag1b <- lmer(Experiment_Date ~ Region+Drought+CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_fl_lag1a,CMDA_fl_lag1b) #strong evidence in favor of Region*Drougth+CMDA_lag1
+
+
+
+
 
 
 
