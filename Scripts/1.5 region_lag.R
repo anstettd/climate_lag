@@ -35,7 +35,7 @@ y9 <- read.csv("Data/y9.csv", header=T) #Import trait & lag data
 #filter by region
 north <- filter(y9,Region=="North")
 centre <- filter(y9, Region=="Center")
-centre <- filter(y9, Region=="centre")
+south <- filter(y9, Region=="South")
 
 ##########################################################################################################
 #################### lag models ###################################
