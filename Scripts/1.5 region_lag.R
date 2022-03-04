@@ -673,6 +673,7 @@ write.table(s_delta_AIC, file = "Data/south_deltaAIC.csv", sep = ",", row.names 
 #SLA lag 0
 s_sla_lag0a <- lmer(SLA ~  Drought+lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
 lrtest(s_sla_lag0,s_sla_lag0a) #2-way interaction evidence
+anova(s_sla_lag0)
 
 #SLA lag 0,1,2
 s_sla_lag012a <- lmer(SLA ~  Drought+lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
