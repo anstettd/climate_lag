@@ -352,6 +352,11 @@ N12 <-N12 +
 N12
 ggsave("Figures/N.CMDA_lag1_ft.pdf", width = 6, height = 6, units = "in")
 
+#Cowplot
+plot_grid(N1,N2,N3,N4,N5,N6,N7,N8,N9,N10,N11,N12,ncol = 4)
+
+
+
 ###############################################################################
 ###############################################################################
 ### Centre####
@@ -883,6 +888,10 @@ C18 <-C18  +
 C18
 ggsave("Figures/c.CMDA_lag1_sla.pdf", width = 6, height = 6, units = "in")
 
+#Cowplot
+plot_grid(C1,C2,C3,C4,C5,C6,C7,C8,C9,C10,C11,C12,ncol = 4)
+plot_grid(C13,C14,C15,C16,C17,C18,ncol = 3)
+
 
 ##############################################################################
 ############ South ##  
@@ -1084,3 +1093,5 @@ S7 <-S7  +
 S7
 ggsave("Figures/s.MAPA_lag012_ft.pdf", width = 6, height = 6, units = "in")
 
+#Cowplot
+plot_grid(S1,S2,S3,S4,S5,S6,S7,ncol = 3)
