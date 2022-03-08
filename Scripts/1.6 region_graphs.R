@@ -600,6 +600,36 @@ ggsave("Figures/C.MATA_lag012_SLA.pdf", width = 6, height = 6, units = "in")
 
 ############ MAPA ############
 
+# MAPA SLA lag0
+c_MAPA_vis_sla_lag0<-visreg(c_MAPA_sla_lag0, xvar="MAPA_lag0", by="Drought") #set up visreg for Drought
+c_MAPA_Res_sla_lag0<-c_MAPA_vis_sla_lag0$res # Extract residuals
+
+#Reorder Treatments
+c_MAPA_Res_sla_lag0$Drought <- as.factor(c_MAPA_Res_sla_lag0$Drought)
+c_MAPA_Res_sla_lag0$Drought <- factor(c_MAPA_Res_sla_lag0$Drought, levels=c("W", "D"))
+
+#Use ggplot to generate plot with all required formating
+C8.5<-ggplot(c_MAPA_Res_sla_lag0, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Drought))+
+  geom_jitter(aes(colour=Drought), size=0.2)+
+  geom_smooth(method="lm")+
+  xlab("MAPA (lag0)") +
+  #scale_x_continuous(limits=c(-0.1,0.4))+
+  scale_y_continuous(name="SLA", limits=c(100,400))+
+  scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  theme_classic()
+C8.5 <-C8.5 + theme(
+  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=15,face="bold"),
+  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+C8.5 <-C8.5 +
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
+C8.5
+ggsave("Figures/C.MAPA_lag0_SLA.pdf", width = 6, height = 6, units = "in")
+
+
 # MAPA SLA lag1
 c_MAPA_vis_sla_lag1<-visreg(c_MAPA_sla_lag1, xvar="MAPA_lag1", by="Drought") #set up visreg for Drought
 c_MAPA_Res_sla_lag1<-c_MAPA_vis_sla_lag1$res # Extract residuals
