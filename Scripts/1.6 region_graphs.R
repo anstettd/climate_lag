@@ -16,7 +16,7 @@ n_Res_sla$Drought <- factor(n_Res_sla$Drought, levels=c("W", "D"))
 N1<-ggplot(n_Res_sla, aes(lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("SPEI (lag 0)") +
+  xlab("SPEI Lag 0") +
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -45,7 +45,7 @@ n_Res_ft$Drought <- factor(n_Res_ft$Drought, levels=c("W", "D"))
 N2<-ggplot(n_Res_ft, aes(lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("SPEI (lag 1)") +
+  xlab("SPEI Lag 1") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -76,7 +76,7 @@ n_Res_sla_lag1$Drought <- factor(n_Res_sla_lag1$Drought, levels=c("W", "D"))
 N3<-ggplot(n_Res_sla_lag1, aes(MATA_lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MATA (lag 1)") +
+  xlab("MATA Lag 1") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -106,7 +106,7 @@ n_Res_sla_lag2$Drought <- factor(n_Res_sla_lag2$Drought, levels=c("W", "D"))
 N4<-ggplot(n_Res_sla_lag2, aes(MATA_lag2, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MATA lag 2") +
+  xlab("MATA Lag 2") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -137,7 +137,7 @@ n_Res_ft_lag1$Drought <- factor(n_Res_ft_lag1$Drought, levels=c("W", "D"))
 N5<-ggplot(n_Res_ft_lag1, aes(MATA_lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MATA (lag 1)") +
+  xlab("MATA Lag 1") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -168,7 +168,7 @@ n_Res_sla_lag2$Drought <- factor(n_Res_sla_lag2$Drought, levels=c("W", "D"))
 N6<-ggplot(n_Res_sla_lag2, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("log(MAPA (lag2))") +
+  xlab("log(MAPA Lag 2)") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -198,7 +198,7 @@ n_Res_sla_lag012$Drought <- factor(n_Res_sla_lag012$Drought, levels=c("W", "D"))
 N7<-ggplot(n_Res_sla_lag012, aes(MAPA_lag012, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("log(MAPA 3-Year Average)") +
+  xlab("Average 3-Year log(MAPA)") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -227,7 +227,7 @@ n_Res_ft_lag1$Drought <- factor(n_Res_ft_lag1$Drought, levels=c("W", "D"))
 N8<-ggplot(n_Res_ft_lag1, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("log(MAPA lag1)") +
+  xlab("log(MAPA) Lag 1") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -255,7 +255,7 @@ n_Res_ft_lag2$Drought <- factor(n_Res_ft_lag2$Drought, levels=c("W", "D"))
 N9<-ggplot(n_Res_ft_lag2, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MAPA (lag2)") +
+  xlab("log(MAPA) Lag 2") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -283,7 +283,7 @@ n_Res_ft_lag01$Drought <- factor(n_Res_ft_lag01$Drought, levels=c("W", "D"))
 N10<-ggplot(n_Res_ft_lag01, aes(MAPA_lag01, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MAPA (lag01)") +
+  xlab("Average 2-Year log(MAPA)") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -311,7 +311,7 @@ n_Res_ft_lag012$Drought <- factor(n_Res_ft_lag012$Drought, levels=c("W", "D"))
 N11<-ggplot(n_Res_ft_lag012, aes(MAPA_lag012, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MAPA (lag012)") +
+  xlab("Average 3-Year log(MAPA)") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -338,7 +338,7 @@ n_cmda_Res_ft_lag1<-n_cmda_vis_ft_lag1$res # Extract residuals
 N12<-ggplot(n_cmda_Res_ft_lag1, aes(CMDA_lag1, y=visregRes))+
   geom_jitter( size=0.2)+
   geom_smooth(method="lm")+
-  xlab("CMDA (lag 1)") +
+  xlab("CMDA Lag 1") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   theme_classic()
 N12 <-N12 + theme(
@@ -374,7 +374,7 @@ c_Res_sla$Drought <- factor(c_Res_sla$Drought, levels=c("W", "D"))
 C1<-ggplot(c_Res_sla, aes(lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("SPEI (lag 0)") +
+  xlab("SPEI Lag 0") +
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -403,8 +403,8 @@ c_Res_sla$Drought <- factor(c_Res_sla$Drought, levels=c("W", "D"))
 C2<-ggplot(c_Res_sla, aes(lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("SPEI (lag 1)") +
-  scale_y_continuous(name="Specific Leaf Area", limits=c(100,400))+
+  xlab("SPEI Lag 1") +
+  scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -431,8 +431,8 @@ c_Res_lag2_sla$Drought <- factor(c_Res_lag2_sla$Drought, levels=c("W", "D"))
 C3<-ggplot(c_Res_lag2_sla, aes(lag2, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("SPEI (lag 2)") +
-  scale_y_continuous(name="Specific Leaf Area", limits=c(100,400))+
+  xlab("SPEI Lag 2") +
+  scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -460,7 +460,7 @@ c_Res_MATA_lag0$Drought <- factor(c_Res_MATA_lag0$Drought, levels=c("W", "D"))
 C4<-ggplot(c_Res_MATA_lag0, aes(MATA_lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MATA (lag 0)") +
+  xlab("MATA Lag 0") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -489,7 +489,7 @@ c_Res_MATA_sla_lag1$Drought <- factor(c_Res_MATA_sla_lag1$Drought, levels=c("W",
 C5<-ggplot(c_Res_MATA_sla_lag1, aes(MATA_lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MATA lag 1") +
+  xlab("MATA Lag 1") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -520,7 +520,7 @@ c_Res_MATA_sla_lag2$Drought <- factor(c_Res_MATA_sla_lag2$Drought, levels=c("W",
 C6<-ggplot(c_Res_MATA_sla_lag2, aes(MATA_lag2, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MATA lag 2") +
+  xlab("MATA Lag 2") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -549,7 +549,7 @@ c_Res_MATA_sla_lag01$Drought <- factor(c_Res_MATA_sla_lag01$Drought, levels=c("W
 C7<-ggplot(c_Res_MATA_sla_lag01, aes(MATA_lag01, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MATA lag 01") +
+  xlab("Average 2-Year MATA") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -580,7 +580,7 @@ c_Res_MATA_sla_lag012$Drought <- factor(c_Res_MATA_sla_lag012$Drought, levels=c(
 C8<-ggplot(c_Res_MATA_sla_lag012, aes(MATA_lag012, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MATA lag 01") +
+  xlab("Average 3-Year MATA") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -612,7 +612,7 @@ c_MAPA_Res_sla_lag0$Drought <- factor(c_MAPA_Res_sla_lag0$Drought, levels=c("W",
 C8.5<-ggplot(c_MAPA_Res_sla_lag0, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MAPA (lag0)") +
+  xlab("log(MAPA) Lag 0") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -642,7 +642,7 @@ c_MAPA_Res_sla_lag1$Drought <- factor(c_MAPA_Res_sla_lag1$Drought, levels=c("W",
 C9<-ggplot(c_MAPA_Res_sla_lag1, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MAPA (lag1)") +
+  xlab("log(MAPA) Lag 1") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -672,7 +672,7 @@ c_MAPA_Res_sla_lag2$Drought <- factor(c_MAPA_Res_sla_lag2$Drought, levels=c("W",
 C10<-ggplot(c_MAPA_Res_sla_lag2, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MAPA (lag2)") +
+  xlab("log(MAPA) Lag 2") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -702,7 +702,7 @@ c_MAPA_Res_sla_lag012$Drought <- factor(c_MAPA_Res_sla_lag012$Drought, levels=c(
 C11<-ggplot(c_MAPA_Res_sla_lag012, aes(MAPA_lag012, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("log(MAPA 3-Year Average)") +
+  xlab("Average 3-Year log(MAPA)") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -731,7 +731,7 @@ c_MAPA_Res_ft_lag0$Drought <- factor(c_MAPA_Res_ft_lag0$Drought, levels=c("W", "
 C12<-ggplot(c_MAPA_Res_ft_lag0, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("log(MAPA lag0)") +
+  xlab("log(MAPA) Lag 0") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -760,7 +760,7 @@ c_MAPA_Res_ft_lag1$Drought <- factor(c_MAPA_Res_ft_lag1$Drought, levels=c("W", "
 C13<-ggplot(c_MAPA_Res_ft_lag1, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("log(MAPA lag1)") +
+  xlab("log(MAPA) Lag 1") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -788,7 +788,7 @@ C_MAPA_Res_ft_lag2$Drought <- factor(C_MAPA_Res_ft_lag2$Drought, levels=c("W", "
 C14<-ggplot(C_MAPA_Res_ft_lag2, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MAPA (lag2)") +
+  xlab("log(MAPA) Lag 2") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -816,7 +816,7 @@ C_MAPA_Res_ft_lag01$Drought <- factor(C_MAPA_Res_ft_lag01$Drought, levels=c("W",
 C15<-ggplot(C_MAPA_Res_ft_lag01, aes(MAPA_lag01, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MAPA (2-year average)") +
+  xlab("Average 2-Year log(MAPA)") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -844,7 +844,7 @@ C_MAPA_Res_ft_lag012$Drought <- factor(C_MAPA_Res_ft_lag012$Drought, levels=c("W
 C16<-ggplot(C_MAPA_Res_ft_lag012, aes(MAPA_lag012, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MAPA (3-yr average)") +
+  xlab("Average 3-Year log(MAPA)") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -873,8 +873,8 @@ C_cmda_Res_sla_lag0$Drought <- factor(C_cmda_Res_sla_lag0$Drought, levels=c("W",
 C17<-ggplot(C_cmda_Res_sla_lag0, aes(CMDA_lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("CMDA (lag0)") +
-  scale_y_continuous(name="Specific Leaf Area", limits=c(100,400))+
+  xlab("CMDA Lag 0") +
+  scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -902,8 +902,8 @@ C_cmda_Res_sla_lag1$Drought <- factor(C_cmda_Res_sla_lag1$Drought, levels=c("W",
 C18<-ggplot(C_cmda_Res_sla_lag1, aes(CMDA_lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("CMDA (lag1)") +
-  scale_y_continuous(name="Specific Leaf Area", limits=c(100,400))+
+  xlab("CMDA Lag 1") +
+  scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -937,8 +937,8 @@ s_Res_sla_lag0$Drought <- factor(s_Res_sla_lag0$Drought, levels=c("W", "D"))
 S1<-ggplot(s_Res_sla_lag0, aes(lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("SPEI (lag0)") +
-  scale_y_continuous(name="Specific Leaf Area", limits=c(100,400))+
+  xlab("SPEI Lag 0") +
+  scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -964,8 +964,8 @@ s_Res_sla_lag012$Drought <- factor(s_Res_sla_lag012$Drought, levels=c("W", "D"))
 S2<-ggplot(s_Res_sla_lag012, aes(lag012, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("SPEI (3-yr average)") +
-  scale_y_continuous(name="Specific Leaf Area", limits=c(100,400))+
+  xlab("Cumulative 3-Year SPEI") +
+  scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -992,8 +992,8 @@ s_mata_Res_sla_lag0$Drought <- factor(s_mata_Res_sla_lag0$Drought, levels=c("W",
 S3<-ggplot(s_mata_Res_sla_lag0, aes(MATA_lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MATA (lag0)") +
-  scale_y_continuous(name="Specific Leaf Area", limits=c(100,400))+
+  xlab("MATA Lag 0") +
+  scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -1020,7 +1020,7 @@ s_mata_Res_ft_lag2$Drought <- factor(s_mata_Res_ft_lag2$Drought, levels=c("W", "
 S4<-ggplot(s_mata_Res_ft_lag2, aes(MATA_lag2, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MATA (lag2)") +
+  xlab("MATA Lag 2") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -1050,8 +1050,8 @@ s_mapa_Res_sla_lag012$Drought <- factor(s_mapa_Res_sla_lag012$Drought, levels=c(
 S5<-ggplot(s_mapa_Res_sla_lag012, aes(MAPA_lag012, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MAPA (3-yr average)") +
-  scale_y_continuous(name="Specific Leaf Area", limits=c(100,400))+
+  xlab("Average 3-Year log(MAPA)") +
+  scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -1078,7 +1078,7 @@ s_mapa_Res_ft_lag2$Drought <- factor(s_mapa_Res_ft_lag2$Drought, levels=c("W", "
 S6<-ggplot(s_mapa_Res_ft_lag2, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MAPA (lag2)") +
+  xlab("log(MAPA) Lag 2") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -1107,7 +1107,7 @@ s_mapa_Res_ft_lag012$Drought <- factor(s_mapa_Res_ft_lag012$Drought, levels=c("W
 S7<-ggplot(s_mapa_Res_ft_lag012, aes(MAPA_lag012, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("MAPA (3-year average)") +
+  xlab("Average 3-Year log(MAPA)") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
