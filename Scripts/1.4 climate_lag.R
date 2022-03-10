@@ -251,7 +251,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/1A.SPEI_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/1A.SPEI_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # SPEI Date of Flowering Lag1
@@ -285,7 +285,7 @@ ft_plot <-ft_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 ft_plot
-ggsave("Figures/1B.SPEI_lag1_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/1B.SPEI_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
 
 
@@ -322,7 +322,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/2A.MATA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/2A.MATA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MATA SLA lag01
@@ -357,7 +357,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/2B.ATA_lag01_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/2B.ATA_lag01_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MATA SLA lag012
@@ -392,7 +392,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/2C.MATA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/2C.MATA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MATA Date of Flowering Lag2
@@ -426,7 +426,7 @@ ft_plot <-ft_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 ft_plot
-ggsave("Figures/2D.MATA_lag2_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/2D.MATA_lag2_ft.pdf", width = 8, height = 6, units = "in")
 
 
 
@@ -463,7 +463,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/3A.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3A.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA Date of Flowering Lag012
@@ -497,7 +497,7 @@ ft_plot <-ft_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 ft_plot
-ggsave("Figures/3B.MAPA_lag012_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3B.MAPA_lag012_ft.pdf", width = 8, height = 6, units = "in")
 
 
 
@@ -534,7 +534,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/4A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/4A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # CMDA Date of Flowering Lag1
@@ -568,7 +568,7 @@ ft_plot <-ft_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 ft_plot
-ggsave("Figures/4B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/4B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
 
 
@@ -605,7 +605,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/5A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/5A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # CMDA Date of Flowering Lag1
@@ -639,9 +639,9 @@ ft_plot <-ft_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 ft_plot
-ggsave("Figures/5B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/5B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
-
+plot_grid(SLA_plot,ft_plot,ncol = 1) #SPEI
 
 
 
