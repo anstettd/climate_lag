@@ -165,57 +165,98 @@ write.table(delta_AIC, file = "Data/delta_AIC.csv", sep = ",", row.names = T)
 
 ############ SPEI ############
 #SLA lag 0
-sla_lag0a <- lmer(SLA ~ Region*Drought+lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(sla_lag0,sla_lag0a) #3-way interaction very strong evidence
+sla_lag0a <- lmer(SLA ~ Region*Drought + Region*lag0 + Drought*lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(sla_lag0,sla_lag0a) #3-way interaction very strong evidence, P = 0.0005959
 
 #fl lag 1
-fl_lag1a <- lmer(Experiment_Date ~ Region*Drought+lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(fl_lag1,fl_lag1a) #3-way interaction moderate evidence
+fl_lag1a <- lmer(Experiment_Date ~ Region*Drought + Region*lag1 + Drought*lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(fl_lag1,fl_lag1a) #3-way interaction moderate evidence, P = 0.01551
 
 
 ############ MATA ############
 #SLA lag 0
-MATA_sla_lag0a <- lmer(SLA ~ Region*Drought+MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(MATA_sla_lag0,MATA_sla_lag0a) #3-way interaction very strong evidence
+MATA_sla_lag0a <- lmer(SLA ~ Region*Drought + Region*MATA_lag0 + Drought*MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MATA_sla_lag0,MATA_sla_lag0a) #3-way interaction very strong evidence, P = 0.0001335
 
 #SLA lag0,1
-MATA_sla_lag01a <- lmer(SLA ~ Region*Drought+MATA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(MATA_sla_lag01,MATA_sla_lag01a) #3-way interaction very strong evidence
+MATA_sla_lag01a <- lmer(SLA ~ Region*Drought + Region*MATA_lag01 + Drought*MATA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MATA_sla_lag01,MATA_sla_lag01a) #3-way interaction very strong evidence, P = 5.553e-05
 
 #SLA lag0,1,2
-MATA_sla_lag012a <- lmer(SLA ~ Region*Drought+MATA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(MATA_sla_lag012,MATA_sla_lag012a) #3-way interaction very strong evidence
+MATA_sla_lag012a <- lmer(SLA ~ Region*Drought + Region*MATA_lag012 + Drought*MATA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MATA_sla_lag012,MATA_sla_lag012a) #3-way interaction very strong evidence, P = 7.027e-05
 
 #fl lag 2
-MATA_fl_lag2a <- lmer(Experiment_Date ~ Region*Drought+MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(MATA_fl_lag2,MATA_fl_lag2a) #3-way interaction moderate evidence
+MATA_fl_lag2a <- lmer(Experiment_Date ~ Region*Drought + Region*MATA_lag2 + Drought*MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MATA_fl_lag2,MATA_fl_lag2a) #3-way interaction moderate evidence, P = 0.01619
 
 
 ############ MAPA ############
 #SLA lag0,1,2
-MAPA_sla_lag012a <- lmer(SLA ~ Region*Drought+MAPA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(MAPA_sla_lag012,MAPA_sla_lag012a) #3-way interaction very strong evidence
+MAPA_sla_lag012a <- lmer(SLA ~ Region*Drought + Region*MAPA_lag012 + Drought*MAPA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MAPA_sla_lag012,MAPA_sla_lag012a) #3-way interaction very strong evidence, P = 3.19e-07
 
 #fl lag0,1,2
-MAPA_fl_lag012a <- lmer(Experiment_Date ~ Region*Drought+MAPA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(MAPA_fl_lag012,MAPA_fl_lag012a) #3-way interaction very strong evidence
+MAPA_fl_lag012a <- lmer(Experiment_Date ~ Region*Drought + Region*MAPA_lag012 + Drought*MAPA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MAPA_fl_lag012,MAPA_fl_lag012a) #3-way interaction very strong evidence, P = 2.896e-05
 
 
 ############ CMDA ############
 #SLA lag2
-CMDA_sla_lag2a <- lmer(SLA ~ Region*Drought+CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(CMDA_sla_lag2,CMDA_sla_lag2a) #no evidence of difference, select simpler model
-CMDA_sla_lag2b <- lmer(SLA ~ Region+Drought+CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(CMDA_sla_lag2a,CMDA_sla_lag2b) #strong evidence in favor of Region*Drougth+CMDA_lag2
+CMDA_sla_lag2a <- lmer(SLA ~ Region*Drought + Region*CMDA_lag2 + Drought*CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_sla_lag2,CMDA_sla_lag2a) #weak evidence for simpler model
+
+CMDA_sla_lag2b <- lmer(SLA ~ Region*CMDA_lag2 + Drought*CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_sla_lag2a,CMDA_sla_lag2b) #strong evidence to keep model with 3 two-ways
+
+CMDA_sla_lag2c <- lmer(SLA ~ Region*Drought + Drought*CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_sla_lag2a,CMDA_sla_lag2c) #no evidence for diff, keep simpler
+
+CMDA_sla_lag2d <- lmer(SLA ~ Region*Drought + Region*CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_sla_lag2a,CMDA_sla_lag2d) #no evidence for diff, keep simpler
+lrtest(CMDA_sla_lag2c,CMDA_sla_lag2d) #weak evidence for d. Region*Drought + Region*CMDA_lag
+
+CMDA_sla_lag2e <- lmer(SLA ~ Region*Drought + CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_sla_lag2d,CMDA_sla_lag2e) #no evidence for diff, keep simpler
+
+CMDA_sla_lag2f <- lmer(SLA ~ Drought + Region*CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_sla_lag2e,CMDA_sla_lag2f) #very strong evidence for e.
+
+CMDA_sla_lag2g <- lmer(SLA ~ Region + Drought + CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_sla_lag2e,CMDA_sla_lag2g) #strong evidence for e. Region*Drought + CMDA_lag2, P = 0.00165
 
 #fl lag1
-CMDA_fl_lag1a <- lmer(Experiment_Date ~ Region*Drought+CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), 
-                      control=lmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=100000)),data=y9)
-lrtest(CMDA_fl_lag1,CMDA_fl_lag1a) #strong evidence in favor of simpler model
-CMDA_fl_lag1b <- lmer(Experiment_Date ~ Region+Drought+CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(CMDA_fl_lag1a,CMDA_fl_lag1b) #strong evidence in favor of Region*Drougth+CMDA_lag1
+CMDA_fl_lag1a <- lmer(Experiment_Date ~ Region*Drought + Region*CMDA_lag1 + Drought*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), 
+data=y9)
+lrtest(CMDA_fl_lag1,CMDA_fl_lag1a) #moderate evidence in favor of simpler model
+
+CMDA_fl_lag1b <- lmer(Experiment_Date ~ Region*CMDA_lag1 + Drought*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_fl_lag1a,CMDA_fl_lag1b) #strong evidence in favor of a.
+
+CMDA_fl_lag1c <- lmer(Experiment_Date ~ Region*Drought + Drought*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_fl_lag1a,CMDA_fl_lag1c) #strong evidence in favor of c.
+
+CMDA_fl_lag1d <- lmer(Experiment_Date ~ Region*Drought + Region*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_fl_lag1a,CMDA_fl_lag1d) #strong evidence in favor of d.
+lrtest(CMDA_fl_lag1c,CMDA_fl_lag1d) #strong evidence in favor of c.
+
+CMDA_fl_lag1e <- lmer(Experiment_Date ~ Region*Drought + CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_fl_lag1c,CMDA_fl_lag1e) #strong evidence in favor of e.
+
+CMDA_fl_lag1f <- lmer(Experiment_Date ~ Region+ Drought*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_fl_lag1c,CMDA_fl_lag1f) #strong evidence in favor of c.
+
+CMDA_fl_lag1g <- lmer(Experiment_Date ~ Region + Drought + CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(CMDA_fl_lag1e,CMDA_fl_lag1g) #strong evidence in favor of e, p = 2.071e-06
 
 
+
+
+
+
+
+
+control=lmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=100000)),
 ########################################################################################################## 
 #################### Graphs ###################################
 
@@ -251,7 +292,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/1A.SPEI_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/1A.SPEI_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # SPEI Date of Flowering Lag1
@@ -285,7 +326,7 @@ ft_plot <-ft_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 ft_plot
-ggsave("Figures/1B.SPEI_lag1_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/1B.SPEI_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
 
 
@@ -322,7 +363,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/2A.MATA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/2A.MATA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MATA SLA lag01
@@ -357,7 +398,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/2B.ATA_lag01_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/2B.ATA_lag01_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MATA SLA lag012
@@ -392,7 +433,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/2C.MATA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/2C.MATA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MATA Date of Flowering Lag2
@@ -426,7 +467,7 @@ ft_plot <-ft_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 ft_plot
-ggsave("Figures/2D.MATA_lag2_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/2D.MATA_lag2_ft.pdf", width = 8, height = 6, units = "in")
 
 
 
@@ -463,7 +504,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/3A.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3A.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA Date of Flowering Lag012
@@ -497,7 +538,7 @@ ft_plot <-ft_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 ft_plot
-ggsave("Figures/3B.MAPA_lag012_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3B.MAPA_lag012_ft.pdf", width = 8, height = 6, units = "in")
 
 
 
@@ -534,7 +575,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/4A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/4A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # CMDA Date of Flowering Lag1
@@ -568,7 +609,7 @@ ft_plot <-ft_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 ft_plot
-ggsave("Figures/4B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/4B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
 
 
@@ -605,7 +646,7 @@ SLA_plot <-SLA_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs))
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 SLA_plot
-ggsave("Figures/5A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/5A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # CMDA Date of Flowering Lag1
@@ -639,9 +680,9 @@ ft_plot <-ft_plot + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 ft_plot
-ggsave("Figures/5B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/5B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
-
+plot_grid(SLA_plot,ft_plot,ncol = 1) #SPEI
 
 
 

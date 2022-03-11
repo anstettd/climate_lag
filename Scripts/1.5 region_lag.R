@@ -213,7 +213,7 @@ lrtest(n_MATA_fl_no_lag, n_MATA_fl_lag2_nothing) #Keep drought, very strong evid
 
 ############ MAPA north ############
 
-### Missing MAPA SLA Lag 0 
+### MAPA SLA Lag 0 
 n_MAPA_sla_lag0a <- lmer(SLA ~  Drought+MAPA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
 lrtest(n_MAPA_sla_lag0, n_MAPA_sla_lag0a) #2-way interaction strong evidence
 
