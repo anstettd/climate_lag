@@ -167,7 +167,7 @@ n_Res_sla_lag0$Drought <- factor(n_Res_sla_lag0$Drought, levels=c("W", "D"))
 N5.5<-ggplot(n_Res_sla_lag0, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("log(MAPA Lag 2)") +
+  xlab("log(MAPA Lag 0)") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
