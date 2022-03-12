@@ -247,16 +247,11 @@ CMDA_fl_lag1f <- lmer(Experiment_Date ~ Region+ Drought*CMDA_lag1 + (1|Family) +
 lrtest(CMDA_fl_lag1c,CMDA_fl_lag1f) #strong evidence in favor of c.
 
 CMDA_fl_lag1g <- lmer(Experiment_Date ~ Region + Drought + CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(CMDA_fl_lag1e,CMDA_fl_lag1g) #strong evidence in favor of e, p = 2.071e-06
+lrtest(CMDA_fl_lag1e,CMDA_fl_lag1g) #strong evidence in favor of e: Region*Drought + CMDA_lag1, p = 2.071e-06
 
 
 
 
-
-
-
-
-control=lmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=100000)),
 ########################################################################################################## 
 #################### Graphs ###################################
 
