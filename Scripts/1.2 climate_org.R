@@ -147,9 +147,14 @@ names(y9)[names(y9) == 'Site.x'] <- 'Site'
 
 
 #Make a site/year table for SPEI, CMDA, MAPA, MATA
-env_lag0_all <- 
+env_lag0_all <- left_join(spei_lag,wna_all,by="ID_Year")
+env_lag0 <- env_lag0_all %>% select(Site.x:Long,Year.x,lag0,CMDA_lag0,MAPA_lag0,MATA_lag0)
+names(env_lag0)[names(env_lag0) == 'Site.x'] <- 'Site'
+names(env_lag0)[names(env_lag0) == 'ID.x'] <- 'ID'
+names(env_lag0)[names(env_lag0) == 'Year.x'] <- 'Year'
+names(env_lag0)[names(env_lag0) == 'lag0'] <- 'SPEI_lag0'
 
-
+#write.csv(env_lag0,"Data/env_lag0.csv")
 
 
 
