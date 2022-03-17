@@ -143,7 +143,11 @@ names(y9)[names(y9) == 'Elevation.x'] <- 'Elevation'
 names(y9)[names(y9) == 'ID.x'] <- 'ID'
 names(y9)[names(y9) == 'Site.x'] <- 'Site'
 
-write.csv(y9,"Data/y9.csv")
+#write.csv(y9,"Data/y9.csv")
+
+
+#Make a site/year table for SPEI, CMDA, MAPA, MATA
+env_lag0_all <- 
 
 
 
