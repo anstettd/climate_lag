@@ -52,11 +52,28 @@ end_order <- c(2014,2016,2016,
                2016,2016,2016,
                2016,2016,2016)
 for(i in 1:12){
-  start_W <- y9 %>% filter(Site==10 & Year==start_order[10] & Drought=="W") #subset data for S02 SPEI
-  end_W <- y9 %>% filter(Site==10 & Year==end_order[10] & Drought=="W") #subset data for S02 SPEI
+  start_W <- y9 %>% filter(Site==i & Year==start_order[i] & Drought=="W") #subset data for S02 SPEI
+  end_W <- y9 %>% filter(Site==i & Year==end_order[i] & Drought=="W") #subset data for S02 SPEI
+  start_D <- y9 %>% filter(Site==i & Year==start_order[i] & Drought=="D") #subset data for S02 SPEI
+  end_D <- y9 %>% filter(Site==i & Year==end_order[i] & Drought=="D") #subset data for S02 SPEI
+  
+  #SLA
   start_SLA_W <-mean(start_W$SLA,na.rm = TRUE)
   end_SLA_W <-mean(end_W$SLA,na.rm = TRUE)
-  z1[10,14] <- end_SLA_W - start_SLA_W 
+  start_SLA_D <-mean(start_D$SLA,na.rm = TRUE)
+  end_SLA_D <-mean(end_D$SLA,na.rm = TRUE)
+  
+  #Date of Flowering
+  start_DF_W <-mean(start_W$Experiment_Date,na.rm = TRUE)
+  end_DF_W <-mean(end_W$Experiment_Date,na.rm = TRUE)
+  start_Df_D <-mean(start_D$Experiment_Date,na.rm = TRUE)
+  end_Df_D <-mean(end_D$Experiment_Date,na.rm = TRUE)
+  
+  #Change in trait
+  z1[i,14] <- end_SLA_W - start_SLA_W
+  z1[i,15] <- end_SLA_D - start_SLA_D
+  z1[i,16] <- end_DF_W - start_DF_W
+ # z1[i,17] <- end_DF_D - start_DF_D
 }
 
 #change_SLA_W
@@ -66,6 +83,9 @@ for(i in 1:12){
 #start_SLA_W_ave <- mean(start1_W$SLA,na.rm = TRUE)
 #start_FT_W_ave <- mean(start1_W$Experiment_Date,na.rm = TRUE)
 
+
+#Export data
+write.csv(z1,"Data/z1.csv")
 
 
 
