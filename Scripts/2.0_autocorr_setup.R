@@ -66,15 +66,20 @@ for(i in 1:12){
   #Date of Flowering
   start_DF_W <-mean(start_W$Experiment_Date,na.rm = TRUE)
   end_DF_W <-mean(end_W$Experiment_Date,na.rm = TRUE)
-  start_Df_D <-mean(start_D$Experiment_Date,na.rm = TRUE)
-  end_Df_D <-mean(end_D$Experiment_Date,na.rm = TRUE)
+  start_DF_D <-mean(start_D$Experiment_Date,na.rm = TRUE)
+  end_DF_D <-mean(end_D$Experiment_Date,na.rm = TRUE)
   
   #Change in trait
   z1[i,14] <- end_SLA_W - start_SLA_W
   z1[i,15] <- end_SLA_D - start_SLA_D
   z1[i,16] <- end_DF_W - start_DF_W
- # z1[i,17] <- end_DF_D - start_DF_D
+  z1[i,17] <- end_DF_D - start_DF_D
 }
+
+z1 <- z1 %>% mutate(abs_change_SLA_W = abs(change_SLA_W),
+                    abs_change_SLA_D = abs(change_SLA_D),
+                    abs_change_DF_W = abs(change_DF_W),
+                    abs_change_DF_D = abs(change_DF_D))
 
 #change_SLA_W
 
@@ -85,7 +90,7 @@ for(i in 1:12){
 
 
 #Export data
-write.csv(z1,"Data/z1.csv")
+write_csv(z1,"Data/z1.csv")
 
 
 
