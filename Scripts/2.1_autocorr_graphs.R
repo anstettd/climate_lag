@@ -168,7 +168,7 @@ DF6<-ggplot(z1, aes(x=MATA_auto, y=abs_change_DF_D)) +
   theme(legend.title=element_blank())+
   theme(legend.text = element_text(size=15))
 
-plot_grid(DF1,DF2,DF3,DF4,DF5,DF6,ncol = 2) #Random
+plot_grid(DF1,DF2,DF3,DF4,DF5,DF6,ncol = 2) #export at 7.5 X 9 
 
 
 
