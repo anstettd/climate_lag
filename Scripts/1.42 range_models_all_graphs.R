@@ -999,6 +999,7 @@ ft_plot5
 plot_grid(ft_plot, ft_plot2, ft_plot3, ft_plot4, ft_plot5, ncol=2)
 ggsave("Figure_pannels/all_MAPA_df.pdf", width = 12, height = 10, units = "in")
 
+plot_grid(ft_plot, ft_plot3, ft_plot5, ncol=1)
 
 ############ MATA ############
 # MATA SLA lag0
