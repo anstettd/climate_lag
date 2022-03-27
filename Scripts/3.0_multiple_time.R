@@ -19,7 +19,7 @@ library(stats)
 z1 <- read.csv("Data/site_lat_lag.csv", header=T)  #Basic Lat/Long plus headers
 env_lag0 <- read.csv("Data/env_lag0.csv", header=T) #site/year climate data
 y9 <- read.csv("Data/y9.csv", header=T) #trait data
-y9 %>% 
+
 
 ##########################################################################################################
 #Filter datasets
