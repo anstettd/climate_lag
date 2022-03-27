@@ -147,8 +147,19 @@ lag_AIC[5,8] <- AIC(CMDA_fl_lag012)
 colnames(lag_AIC) <- c("SLA","Date of Flowering","SLA","Date of Flowering",
                        "SLA","Date of Flowering","SLA","Date of Flowering")
 rownames(lag_AIC) <- c("lag 0", "lag 1", "lag 2", "lag 0,1","lag 0,1,2")
-write.table(lag_AIC, file = "Data/climate_AIC.csv", sep = ",", row.names = T)
-#Make delta AIC table
+#write.table(lag_AIC, file = "Data/climate_AIC.csv", sep = ",", row.names = T)
+
+#Make Global Trait specific AIC Table
+lag_AIC_SLA <- as.data.frame(cbind(lag_AIC[,1],lag_AIC[,3],lag_AIC[,5],lag_AIC[,7]))
+lag_AIC_DF <- as.data.frame(cbind(lag_AIC[,2],lag_AIC[,4],lag_AIC[,6],lag_AIC[,8]))
+names(lag_AIC_SLA) <- c("SPEI","CMDA","MAPA","MATA")
+names(lag_AIC_DF) <- c("SPEI","CMDA","MAPA","MATA")
+delta_AIC_SLA <- lag_AIC_SLA-min(lag_AIC_SLA)
+delta_AIC_DF <- lag_AIC_DF-min(lag_AIC_DF)
+#write.table(delta_AIC_SLA, file = "Data/Global_delta_AIC_SLA.csv", sep = ",", row.names = T)
+#write.table(delta_AIC_DF, file = "Data/Global_delta_AIC_DF.csv", sep = ",", row.names = T)
+
+#Make local delta AIC table
 delta_AIC <- lag_AIC
 delta_AIC[,1] <- lag_AIC[,1]-min(lag_AIC[,1])
 delta_AIC[,2] <- lag_AIC[,2]-min(lag_AIC[,2])
@@ -158,7 +169,7 @@ delta_AIC[,5] <- lag_AIC[,5]-min(lag_AIC[,5])
 delta_AIC[,6] <- lag_AIC[,6]-min(lag_AIC[,6])
 delta_AIC[,7] <- lag_AIC[,7]-min(lag_AIC[,7])
 delta_AIC[,8] <- lag_AIC[,8]-min(lag_AIC[,8])
-write.table(delta_AIC, file = "Data/delta_AIC.csv", sep = ",", row.names = T)
+#write.table(delta_AIC, file = "Data/delta_AIC.csv", sep = ",", row.names = T)
 
 ########################################################################################################## 
 #Test models that where delta AIC < 2

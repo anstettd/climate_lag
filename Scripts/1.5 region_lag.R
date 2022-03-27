@@ -158,6 +158,18 @@ colnames(n_lag_AIC) <- c("SLA","Date of Flowering","SLA","Date of Flowering",
  ### First SLA and DF pairs are SPEI, 2nd= MATA, 3rd = MAPA, 4th= CMDA
 rownames(n_lag_AIC) <- c("lag 0", "lag 1", "lag 2", "lag 0,1","lag 0,1,2")
 ##write.table(n_lag_AIC, file = "Data/north_AIC.csv", sep = ",", row.names = T)
+
+#Make Global Trait specific AIC Table
+lag_AIC_SLA <- as.data.frame(cbind(n_lag_AIC[,1],n_lag_AIC[,3],n_lag_AIC[,5],n_lag_AIC[,7]))
+lag_AIC_DF <- as.data.frame(cbind(n_lag_AIC[,2],n_lag_AIC[,4],n_lag_AIC[,6],n_lag_AIC[,8]))
+names(lag_AIC_SLA) <- c("SPEI","CMDA","MAPA","MATA")
+names(lag_AIC_DF) <- c("SPEI","CMDA","MAPA","MATA")
+delta_AIC_SLA <- lag_AIC_SLA-min(lag_AIC_SLA)
+delta_AIC_DF <- lag_AIC_DF-min(lag_AIC_DF)
+write.table(delta_AIC_SLA, file = "Data/Global_delta_AIC_SLA_North.csv", sep = ",", row.names = T)
+write.table(delta_AIC_DF, file = "Data/Global_delta_AIC_DF_North.csv", sep = ",", row.names = T)
+
+
 #Make delta AIC table
 n_delta_AIC <- n_lag_AIC
 n_delta_AIC[,1] <- n_lag_AIC[,1]-min(n_lag_AIC[,1])
@@ -378,6 +390,17 @@ colnames(c_lag_AIC) <- c("SLA","Date of Flowering","SLA","Date of Flowering",
 ### First SLA and DF pairs are SPEI, 2nd= MATA, 3rd = MAPA, 4th= CMDA
 rownames(c_lag_AIC) <- c("lag 0", "lag 1", "lag 2", "lag 0,1","lag 0,1,2")
 #write.table(c_lag_AIC, file = "Data/centre_AIC.csv", sep = ",", row.names = T)
+
+#Make Global Trait specific AIC Table
+lag_AIC_SLA <- as.data.frame(cbind(c_lag_AIC[,1],c_lag_AIC[,3],c_lag_AIC[,5],c_lag_AIC[,7]))
+lag_AIC_DF <- as.data.frame(cbind(c_lag_AIC[,2],c_lag_AIC[,4],c_lag_AIC[,6],c_lag_AIC[,8]))
+names(lag_AIC_SLA) <- c("SPEI","CMDA","MAPA","MATA")
+names(lag_AIC_DF) <- c("SPEI","CMDA","MAPA","MATA")
+delta_AIC_SLA <- lag_AIC_SLA-min(lag_AIC_SLA)
+delta_AIC_DF <- lag_AIC_DF-min(lag_AIC_DF)
+write.table(delta_AIC_SLA, file = "Data/Global_delta_AIC_SLA_Centre.csv", sep = ",", row.names = T)
+write.table(delta_AIC_DF, file = "Data/Global_delta_AIC_DF_Centre.csv", sep = ",", row.names = T)
+
 #Make delta AIC table
 c_delta_AIC <- c_lag_AIC
 c_delta_AIC[,1] <- c_lag_AIC[,1]-min(c_lag_AIC[,1])
@@ -723,6 +746,18 @@ colnames(s_lag_AIC) <- c("SLA","Date of Flowering","SLA","Date of Flowering",
 ### First SLA and DF pairs are SPEI, 2nd= MATA, 3rd = MAPA, 4th= CMDA
 rownames(s_lag_AIC) <- c("lag 0", "lag 1", "lag 2", "lag 0,1","lag 0,1,2")
 #write.table(s_lag_AIC, file = "Data/south_AIC.csv", sep = ",", row.names = T)
+
+#Global AIC South
+lag_AIC_SLA <- as.data.frame(cbind(s_lag_AIC[,1],s_lag_AIC[,3],s_lag_AIC[,5],s_lag_AIC[,7]))
+lag_AIC_DF <- as.data.frame(cbind(s_lag_AIC[,2],s_lag_AIC[,4],s_lag_AIC[,6],s_lag_AIC[,8]))
+names(lag_AIC_SLA) <- c("SPEI","CMDA","MAPA","MATA")
+names(lag_AIC_DF) <- c("SPEI","CMDA","MAPA","MATA")
+delta_AIC_SLA <- lag_AIC_SLA-min(lag_AIC_SLA)
+delta_AIC_DF <- lag_AIC_DF-min(lag_AIC_DF)
+write.table(delta_AIC_SLA, file = "Data/Global_delta_AIC_SLA_South.csv", sep = ",", row.names = T)
+write.table(delta_AIC_DF, file = "Data/Global_delta_AIC_DF_South.csv", sep = ",", row.names = T)
+
+
 #Make delta AIC table
 s_delta_AIC <- s_lag_AIC
 s_delta_AIC[,1] <- s_lag_AIC[,1]-min(s_lag_AIC[,1])
