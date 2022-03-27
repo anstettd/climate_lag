@@ -31,7 +31,9 @@ for(i in 1:12){
   for(j in 1:4){
     env_lag0_1 <- env_lag0 %>% filter(Site==i)
     auto_corr_1 <- acf(env_lag0_1[8+j], lag=1,pl=FALSE) #calculate lag1 autocorr
+    mean_1 <- mean(env_lag0_1[,8+j])
     z1[i,9+j] <- auto_corr_1$acf[2]
+    z1[i,13+j] <- mean_1
   }
   }
 
@@ -70,10 +72,10 @@ for(i in 1:12){
   end_DF_D <-mean(end_D$Experiment_Date,na.rm = TRUE)
   
   #Change in trait
-  z1[i,14] <- end_SLA_W - start_SLA_W
-  z1[i,15] <- end_SLA_D - start_SLA_D
-  z1[i,16] <- end_DF_W - start_DF_W
-  z1[i,17] <- end_DF_D - start_DF_D
+  z1[i,18] <- end_SLA_W - start_SLA_W
+  z1[i,19] <- end_SLA_D - start_SLA_D
+  z1[i,20] <- end_DF_W - start_DF_W
+  z1[i,21] <- end_DF_D - start_DF_D
 }
 
 z1 <- z1 %>% mutate(abs_change_SLA_W = abs(change_SLA_W),
