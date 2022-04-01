@@ -20,7 +20,7 @@ z1 <- read.csv("Data/site_lat_lag.csv", header=T)  #Basic Lat/Long plus headers
 env_lag0 <- read.csv("Data/env_lag0.csv", header=T) #site/year climate data
 y9 <- read.csv("Data/y9.csv", header=T) #trait data
   
-  ##########################################################################################################
+##########################################################################################################
 #Filter datasets
 env_1012 <- env_lag0 %>% filter(Year %in% (2010:2012))
 env_1113 <- env_lag0 %>% filter(Year %in% (2011:2013))
@@ -45,13 +45,13 @@ unique(y9.1$Site_Year)
 
 
 #Remove sites not in the phenotype available range
-env_1012 <- env_1012 %>% filter(Site!=4 & Site!=6 & Site!=8 & Site!=10 & Site!=12)
+env_1012 <- env_1012 %>% filter(Site!=2 & Site!=4 & Site!=6 & Site!=8 & Site!=10 & Site!=12)
 env_1113 <- env_1113 %>% filter(Site!=2 & Site!=5 & Site!=6 & Site!=7 & Site!=8 & Site!=9 & Site!=10, Site!=11)
 env_1214 <- env_1214 %>% filter(Site!=2 & Site!=6 & Site!=8 & Site!=12)
 env_1315 <- env_1315 %>% filter(Site!=1 & Site!=2 & Site!=4 & Site!=5 & Site!=7 & Site!=8 & Site!=10 & Site!=11)
 env_1416 <- env_1416 %>% filter(Site!=1 & Site!=4 & Site!=12)
 
-z_1012 <- z_1012 %>% filter(Site!=4 & Site!=6 & Site!=8 & Site!=10 & Site!=12)
+z_1012 <- z_1012 %>% filter(Site!=2 & Site!=4 & Site!=6 & Site!=8 & Site!=10 & Site!=12)
 z_1113 <- z_1113 %>% filter(Site!=2 & Site!=5 & Site!=6 & Site!=7 & Site!=8 & Site!=9 & Site!=10, Site!=11)
 z_1214 <- z_1214 %>% filter(Site!=2 & Site!=6 & Site!=8 & Site!=12)
 z_1315 <- z_1315 %>% filter(Site!=1 & Site!=2 & Site!=4 & Site!=5 & Site!=7 & Site!=8 & Site!=10 & Site!=11)
@@ -69,9 +69,9 @@ sites_1416 <- unique(env_1416$Site)
 ##########################################################################################################
 #Calculate autocorrelation and mean
 
-#2010-2013 & 2011-2014
+# 2010-2012
 
-for(i in 1:5){
+for(i in 1:6){
   for(j in 1:4){
     env_1 <- env_1012 %>% filter(Site==sites_1012[i])
     auto_corr_1 <- acf(env_1[8+j], lag=1,pl=FALSE) #calculate lag1 autocorr
@@ -81,45 +81,47 @@ for(i in 1:5){
   }
 }
 
-
-##2012-2015 & 2013-2016
-for(i in 1:8){
+##2011-2013 & 2013-2015
+for(i in 1:4){
   for(j in 1:4){
-    env_3 <- env_1113 %>% filter(Site==sites_1113[i])
-    env_4 <- env_1315 %>% filter(Site==sites_1315[i])
+    env_2 <- env_1113 %>% filter(Site==sites_1113[i])
+    env_3 <- env_1315 %>% filter(Site==sites_1315[i])
+    auto_corr_2 <- acf(env_2[8+j], lag=1,pl=FALSE) #calculate lag1 autocorr
     auto_corr_3 <- acf(env_3[8+j], lag=1,pl=FALSE) #calculate lag1 autocorr
-    auto_corr_4 <- acf(env_4[8+j], lag=1,pl=FALSE) #calculate lag1 autocorr
+    mean_2 <- mean(env_2[,8+j])
     mean_3 <- mean(env_3[,8+j])
-    mean_4 <- mean(env_4[,8+j])
-    z_1113[i,9+j] <- auto_corr_3$acf[2]
-    z_1315[i,9+j] <- auto_corr_4$acf[2]
-    z_1113[i,13+j] <- mean_3
-    z_1315[i,13+j] <- mean_4
+    z_1113[i,9+j] <- auto_corr_2$acf[2]
+    z_1315[i,9+j] <- auto_corr_3$acf[2]
+    z_1113[i,13+j] <- mean_2
+    z_1315[i,13+j] <- mean_3
   }
 }
 
-##2012-2015 & 2013-2016
-for(i in 1:3){
+
+## 2012-2014
+for(i in 1:8){
+  for(j in 1:4){
+    env_4 <- env_1214 %>% filter(Site==sites_1214[i])
+    auto_corr_4 <- acf(env_4[8+j], lag=1,pl=FALSE) #calculate lag1 autocorr
+    mean_4 <- mean(env_4[,8+j])
+    z_1214[i,9+j] <- auto_corr_4$acf[2]
+    z_1214[i,13+j] <- mean_4
+  }
+}
+
+
+## 2014-2016
+for(i in 1:9){
   for(j in 1:4){
     env_5 <- env_1416 %>% filter(Site==sites_1416[i])
-    auto_corr_3 <- acf(env_5[8+j], lag=1,pl=FALSE) #calculate lag1 autocorr
+    auto_corr_5 <- acf(env_5[8+j], lag=1,pl=FALSE) #calculate lag1 autocorr
     mean_5 <- mean(env_5[,8+j])
-    z_1416[i,9+j] <- auto_corr_3$acf[2]
+    z_1416[i,9+j] <- auto_corr_5$acf[2]
     z_1416[i,13+j] <- mean_5
   }
 }
 
 
-##2012-2015 & 2013-2016
-for(i in 1:4){
-  for(j in 1:4){
-    env_6 <- env_1214 %>% filter(Site==sites_1214[i])
-    auto_corr_3 <- acf(env_6[8+j], lag=1,pl=FALSE) #calculate lag1 autocorr
-    mean_6 <- mean(env_6[,8+j])
-    z_1214[i,9+j] <- auto_corr_3$acf[2]
-    z_1214[i,13+j] <- mean_6
-  }
-}
 
 
 
@@ -129,8 +131,8 @@ for(i in 1:4){
 ##########################################################################################################
 #Get endpoints for traits
 
-#2010-2013 & 2011-2014
-for(i in 1:5){
+#2010-2012
+for(i in 1:6){
   start_W_1 <- y9_1012 %>% filter(Site==sites_1012[i] & Year==2010 & Drought=="W") 
   end_W_1 <- y9_1012 %>% filter(Site==sites_1012[i] & Year==2012 & Drought=="W") 
   start_D_1 <- y9_1012 %>% filter(Site==sites_1012[i] & Year==2010 & Drought=="D") 
@@ -161,8 +163,8 @@ z_1012 <- z_1012 %>% mutate(abs_change_SLA_W = abs(change_SLA_W),
                             abs_change_DF_W = abs(change_DF_W),
                             abs_change_DF_D = abs(change_DF_D))
 
-##2012-2015 & 2013-2016
-for(i in 1:8){
+## 2011-2013 & 2013-2015
+for(i in 1:4){
   start_W_3 <- y9_1113 %>% filter(Site==sites_1113[i] & Year==2011 & Drought=="W") 
   end_W_3 <- y9_1113 %>% filter(Site==sites_1113[i] & Year==2013 & Drought=="W") 
   start_D_3 <- y9_1113 %>% filter(Site==sites_1113[i] & Year==2011 & Drought=="D") 
@@ -216,40 +218,8 @@ z_1315 <- z_1315 %>% mutate(abs_change_SLA_W = abs(change_SLA_W),
                             abs_change_DF_W = abs(change_DF_W),
                             abs_change_DF_D = abs(change_DF_D))
 
-for(i in 1:3){
-  start_W_1 <- y9_1416 %>% filter(Site==sites_1416[i] & Year==2014 & Drought=="W") 
-  end_W_1 <- y9_1416 %>% filter(Site==sites_1416[i] & Year==2016 & Drought=="W") 
-  start_D_1 <- y9_1416 %>% filter(Site==sites_1416[i] & Year==2014 & Drought=="D") 
-  end_D_1 <- y9_1416 %>% filter(Site==sites_1416[i] & Year==2016 & Drought=="D") 
-  
-  #SLA
-  start_SLA_W_1 <-mean(start_W_1$SLA,na.rm = TRUE)
-  end_SLA_W_1 <-mean(end_W_1$SLA,na.rm = TRUE)
-  start_SLA_D_1 <-mean(start_D_1$SLA,na.rm = TRUE)
-  end_SLA_D_1 <-mean(end_D_1$SLA,na.rm = TRUE)
-  
-  #Date of Flowering
-  start_DF_W_1 <-mean(start_W_1$Experiment_Date,na.rm = TRUE)
-  end_DF_W_1 <-mean(end_W_1$Experiment_Date,na.rm = TRUE)
-  start_DF_D_1 <-mean(start_D_1$Experiment_Date,na.rm = TRUE)
-  end_DF_D_1 <-mean(end_D_1$Experiment_Date,na.rm = TRUE)
-  
-  #Change in trait
-  z_1416[i,18] <- end_SLA_W_1 - start_SLA_W_1
-  z_1416[i,19] <- end_SLA_D_1 - start_SLA_D_1
-  z_1416[i,20] <- end_DF_W_1 - start_DF_W_1
-  z_1416[i,21] <- end_DF_D_1 - start_DF_D_1
-  
-}
-
-z_1416 <- z_1416 %>% mutate(abs_change_SLA_W = abs(change_SLA_W),
-                            abs_change_SLA_D = abs(change_SLA_D),
-                            abs_change_DF_W = abs(change_DF_W),
-                            abs_change_DF_D = abs(change_DF_D))
-
-
-
-for(i in 1:4){
+# 2012_2014
+for(i in 1:8){
   start_W_1 <- y9_1214 %>% filter(Site==sites_1214[i] & Year==2012 & Drought=="W") 
   end_W_1 <- y9_1214 %>% filter(Site==sites_1214[i] & Year==2014 & Drought=="W") 
   start_D_1 <- y9_1214 %>% filter(Site==sites_1214[i] & Year==2012 & Drought=="D") 
@@ -280,7 +250,37 @@ z_1214 <- z_1214 %>% mutate(abs_change_SLA_W = abs(change_SLA_W),
                             abs_change_DF_W = abs(change_DF_W),
                             abs_change_DF_D = abs(change_DF_D))
 
+# 2014-2016
+for(i in 1:9){
+  start_W_1 <- y9_1416 %>% filter(Site==sites_1416[i] & Year==2014 & Drought=="W") 
+  end_W_1 <- y9_1416 %>% filter(Site==sites_1416[i] & Year==2016 & Drought=="W") 
+  start_D_1 <- y9_1416 %>% filter(Site==sites_1416[i] & Year==2014 & Drought=="D") 
+  end_D_1 <- y9_1416 %>% filter(Site==sites_1416[i] & Year==2016 & Drought=="D") 
+  
+  #SLA
+  start_SLA_W_1 <-mean(start_W_1$SLA,na.rm = TRUE)
+  end_SLA_W_1 <-mean(end_W_1$SLA,na.rm = TRUE)
+  start_SLA_D_1 <-mean(start_D_1$SLA,na.rm = TRUE)
+  end_SLA_D_1 <-mean(end_D_1$SLA,na.rm = TRUE)
+  
+  #Date of Flowering
+  start_DF_W_1 <-mean(start_W_1$Experiment_Date,na.rm = TRUE)
+  end_DF_W_1 <-mean(end_W_1$Experiment_Date,na.rm = TRUE)
+  start_DF_D_1 <-mean(start_D_1$Experiment_Date,na.rm = TRUE)
+  end_DF_D_1 <-mean(end_D_1$Experiment_Date,na.rm = TRUE)
+  
+  #Change in trait
+  z_1416[i,18] <- end_SLA_W_1 - start_SLA_W_1
+  z_1416[i,19] <- end_SLA_D_1 - start_SLA_D_1
+  z_1416[i,20] <- end_DF_W_1 - start_DF_W_1
+  z_1416[i,21] <- end_DF_D_1 - start_DF_D_1
+  
+}
 
+z_1416 <- z_1416 %>% mutate(abs_change_SLA_W = abs(change_SLA_W),
+                            abs_change_SLA_D = abs(change_SLA_D),
+                            abs_change_DF_W = abs(change_DF_W),
+                            abs_change_DF_D = abs(change_DF_D))
 
 
 #Make Identifier
