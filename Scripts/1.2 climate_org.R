@@ -28,14 +28,14 @@ y3<-y3 %>% mutate(Region = ifelse(Latitude >= 40, "North",
 
 #Import Climate Data
 wna <- read_csv("Data/climate.csv") %>%  #Oct to Setp data
-  select(Site=ID, MAT.clim=MAT,MAP.clim=MAP,CMD.clim=CMD) %>% mutate(log.MAP.clim = log10(MAP.clim))
-wna$Site <- as.factor(wna$Site)
+  select(Site=ID, MAT.clim=MAT,MAP.clim=MAP,CMD.clim=CMD) 
+#%>% wna$Site <- as.factor(wna$Site)
 
 #Importh Weather Data
 wna2 <- read_csv("Data/weather.csv") #Import
 wna2 <- wna2 %>% #Selects MAT, MAP, CMD,
   select(ID_Year1:CMD.weath.2) %>% 
-  mutate(log.MAP.weath = log10(MAP.weath), log.MAP.weath.1 = log10(MAP.weath.1),log.MAP.weath.2 = log10(MAP.weath.2)) %>% 
+#  mutate(log.MAP.weath = log10(MAP.weath), log.MAP.weath.1 = log10(MAP.weath.1),log.MAP.weath.2 = log10(MAP.weath.2)) %>% 
   separate(ID_Year1, into = c("Site", "Year"), sep = "_") #makes site/year variable
 wna2$Site <- as.factor(wna2$Site) ; wna2$Year <- as.numeric(wna2$Year) #define variables
 
@@ -109,22 +109,30 @@ names(y9)[names(y9) == 'Year.x'] <- 'Year'
 # join climate and weather, calculate anomaly
 wna_all <- left_join(wna2, wna, by="Site") %>% 
   mutate(CMDA_lag0 = CMD.weath - CMD.clim,
-         MATA_lag0 = MAT.weath - MAT.clim,
-         MAPA_lag0 =  log.MAP.clim - log.MAP.weath, #reverted to log scale, and reversed
-         CMDA_lag1 = CMD.weath.1 - CMD.clim, 
-         MATA_lag1 = MAT.weath.1 - MAT.clim,
-         MAPA_lag1 = log.MAP.clim- log.MAP.weath.1, #reverted to log scale
+         CMDA_lag1 = CMD.weath.1 - CMD.clim,
          CMDA_lag2 = CMD.weath.2 - CMD.clim, 
-         MATA_lag2 = MAT.weath.2 - MAT.clim,
-         MAPA_lag2 = log.MAP.clim- log.MAP.weath.2, #reverted to log scale
-         
          CMDA_lag01 = CMDA_lag0 + CMDA_lag1,
-         MATA_lag01 = (MATA_lag0 + MATA_lag1)/2,
-         MAPA_lag01 = (MAPA_lag0 + MAPA_lag1)/2,
          CMDA_lag012 = CMDA_lag0 + CMDA_lag1 + CMDA_lag2,
-         MATA_lag012 = (MATA_lag0 + MATA_lag1 + MATA_lag2)/3,
-         MAPA_lag012 = (MAPA_lag0 + MAPA_lag1 + MAPA_lag2)/3
+         
+         MATA_lag0 = MAT.weath - MAT.clim,
+         MATA_lag1 = MAT.weath.1 - MAT.clim,
+         MATA_lag2 = MAT.weath.2 - MAT.clim,
+         MATA_lag01 = MATA_lag0 + MATA_lag1,
+         MATA_lag012 = MATA_lag0 + MATA_lag1 + MATA_lag2,
+         
+         MAPA_lag0_no_log = MAP.weath - MAP.clim,       
+         MAPA_lag1_no_log = MAP.weath.1 - MAP.clim,
+         MAPA_lag2_no_log = MAP.weath.2 - MAP.clim,
+         MAPA_lag01_no_log = MAPA_lag0_no_log + MAPA_lag1_no_log,
+         MAPA_lag012_no_log = MAPA_lag0_no_log + MAPA_lag1_no_log + MAPA_lag2_no_log
   )
+
+# log 10 all MAPA variables
+wna_all <- wna_all %>% mutate(MAPA_lag0 = log(MAPA_lag0_no_log),
+                              MAPA_lag1 = log(MAPA_lag0_no_log),
+                              MAPA_lag2 = log(MAPA_lag0_no_log),
+                              MAPA_lag01 = log(MAPA_lag0_no_log),
+                              MAPA_lag012 = MAPA_lag0_no_log)
 
 #Make a Site/Year Variable with for climate
 wna_all$ID2 <- wna_all$ID
