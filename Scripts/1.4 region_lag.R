@@ -157,7 +157,7 @@ colnames(n_lag_AIC) <- c("SLA","Date of Flowering","SLA","Date of Flowering",
                        "SLA","Date of Flowering","SLA","Date of Flowering") 
  ### First SLA and DF pairs are SPEI, 2nd= MATA, 3rd = MAPA, 4th= CMDA
 rownames(n_lag_AIC) <- c("lag 0", "lag 1", "lag 2", "lag 0,1","lag 0,1,2")
-##write.table(n_lag_AIC, file = "Data/north_AIC.csv", sep = ",", row.names = T)
+write.table(n_lag_AIC, file = "Data/north_AIC.csv", sep = ",", row.names = T)
 
 #Make Global Trait specific AIC Table
 lag_AIC_SLA <- as.data.frame(cbind(n_lag_AIC[,1],n_lag_AIC[,3],n_lag_AIC[,5],n_lag_AIC[,7]))
@@ -180,7 +180,7 @@ n_delta_AIC[,5] <- n_lag_AIC[,5]-min(n_lag_AIC[,5])
 n_delta_AIC[,6] <- n_lag_AIC[,6]-min(n_lag_AIC[,6])
 n_delta_AIC[,7] <- n_lag_AIC[,7]-min(n_lag_AIC[,7])
 n_delta_AIC[,8] <- n_lag_AIC[,8]-min(n_lag_AIC[,8])
-##write.table(n_delta_AIC, file = "Data/north_deltaAIC.csv", sep = ",", row.names = T)
+write.table(n_delta_AIC, file = "Data/north_deltaAIC.csv", sep = ",", row.names = T)
 
 ########################################################################################################## 
 #Test models that where delta AIC < 2
@@ -389,7 +389,7 @@ colnames(c_lag_AIC) <- c("SLA","Date of Flowering","SLA","Date of Flowering",
                        "SLA","Date of Flowering","SLA","Date of Flowering") 
 ### First SLA and DF pairs are SPEI, 2nd= MATA, 3rd = MAPA, 4th= CMDA
 rownames(c_lag_AIC) <- c("lag 0", "lag 1", "lag 2", "lag 0,1","lag 0,1,2")
-#write.table(c_lag_AIC, file = "Data/centre_AIC.csv", sep = ",", row.names = T)
+write.table(c_lag_AIC, file = "Data/centre_AIC.csv", sep = ",", row.names = T)
 
 #Make Global Trait specific AIC Table
 lag_AIC_SLA <- as.data.frame(cbind(c_lag_AIC[,1],c_lag_AIC[,3],c_lag_AIC[,5],c_lag_AIC[,7]))
@@ -411,7 +411,7 @@ c_delta_AIC[,5] <- c_lag_AIC[,5]-min(c_lag_AIC[,5])
 c_delta_AIC[,6] <- c_lag_AIC[,6]-min(c_lag_AIC[,6])
 c_delta_AIC[,7] <- c_lag_AIC[,7]-min(c_lag_AIC[,7])
 c_delta_AIC[,8] <- c_lag_AIC[,8]-min(c_lag_AIC[,8])
-#write.table(c_delta_AIC, file = "Data/centre_deltaAIC.csv", sep = ",", row.names = T)
+write.table(c_delta_AIC, file = "Data/centre_deltaAIC.csv", sep = ",", row.names = T)
 
 ########################################################################################################## 
 #Test models that where delta AIC < 2
@@ -745,7 +745,7 @@ colnames(s_lag_AIC) <- c("SLA","Date of Flowering","SLA","Date of Flowering",
                        "SLA","Date of Flowering","SLA","Date of Flowering") 
 ### First SLA and DF pairs are SPEI, 2nd= MATA, 3rd = MAPA, 4th= CMDA
 rownames(s_lag_AIC) <- c("lag 0", "lag 1", "lag 2", "lag 0,1","lag 0,1,2")
-#write.table(s_lag_AIC, file = "Data/south_AIC.csv", sep = ",", row.names = T)
+write.table(s_lag_AIC, file = "Data/south_AIC.csv", sep = ",", row.names = T)
 
 #Global AIC South
 lag_AIC_SLA <- as.data.frame(cbind(s_lag_AIC[,1],s_lag_AIC[,3],s_lag_AIC[,5],s_lag_AIC[,7]))
@@ -768,7 +768,7 @@ s_delta_AIC[,5] <- s_lag_AIC[,5]-min(s_lag_AIC[,5])
 s_delta_AIC[,6] <- s_lag_AIC[,6]-min(s_lag_AIC[,6])
 s_delta_AIC[,7] <- s_lag_AIC[,7]-min(s_lag_AIC[,7])
 s_delta_AIC[,8] <- s_lag_AIC[,8]-min(s_lag_AIC[,8])
-#write.table(s_delta_AIC, file = "Data/south_deltaAIC.csv", sep = ",", row.names = T)
+write.table(s_delta_AIC, file = "Data/south_deltaAIC.csv", sep = ",", row.names = T)
 
 ########################################################################################################## 
 #Test models that where delta AIC < 2
