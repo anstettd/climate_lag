@@ -35,7 +35,7 @@ wna <- read_csv("Data/climate.csv") %>%  #Oct to Setp data
 wna2 <- read_csv("Data/weather.csv") #Import
 wna2 <- wna2 %>% #Selects MAT, MAP, CMD,
   select(ID_Year1:CMD.weath.2) %>% 
-#  mutate(log.MAP.weath = log10(MAP.weath), log.MAP.weath.1 = log10(MAP.weath.1),log.MAP.weath.2 = log10(MAP.weath.2)) %>% 
+  mutate(log.MAP.weath = log10(MAP.weath), log.MAP.weath.1 = log10(MAP.weath.1),log.MAP.weath.2 = log10(MAP.weath.2)) %>% 
   separate(ID_Year1, into = c("Site", "Year"), sep = "_") #makes site/year variable
 wna2$Site <- as.factor(wna2$Site) ; wna2$Year <- as.numeric(wna2$Year) #define variables
 
@@ -120,19 +120,12 @@ wna_all <- left_join(wna2, wna, by="Site") %>%
          MATA_lag01 = MATA_lag0 + MATA_lag1,
          MATA_lag012 = MATA_lag0 + MATA_lag1 + MATA_lag2,
          
-         MAPA_lag0_no_log = MAP.weath - MAP.clim,       
-         MAPA_lag1_no_log = MAP.weath.1 - MAP.clim,
-         MAPA_lag2_no_log = MAP.weath.2 - MAP.clim,
-         MAPA_lag01_no_log = MAPA_lag0_no_log + MAPA_lag1_no_log,
-         MAPA_lag012_no_log = MAPA_lag0_no_log + MAPA_lag1_no_log + MAPA_lag2_no_log
+         MAPA_lag0 = log.MAP.weath - log10(MAP.clim),       
+         MAPA_lag1 = log.MAP.weath.1 - log10(MAP.clim),
+         MAPA_lag2 = log.MAP.weath.2 - log10(MAP.clim),
+         MAPA_lag01 = MAPA_lag0 + MAPA_lag1,
+         MAPA_lag012 = MAPA_lag0 + MAPA_lag1 + MAPA_lag2
   )
-
-# log 10 all MAPA variables
-wna_all <- wna_all %>% mutate(MAPA_lag0 = log(MAPA_lag0_no_log),
-                              MAPA_lag1 = log(MAPA_lag0_no_log),
-                              MAPA_lag2 = log(MAPA_lag0_no_log),
-                              MAPA_lag01 = log(MAPA_lag0_no_log),
-                              MAPA_lag012 = MAPA_lag0_no_log)
 
 #Make a Site/Year Variable with for climate
 wna_all$ID2 <- wna_all$ID
@@ -151,7 +144,7 @@ names(y9)[names(y9) == 'Elevation.x'] <- 'Elevation'
 names(y9)[names(y9) == 'ID.x'] <- 'ID'
 names(y9)[names(y9) == 'Site.x'] <- 'Site'
 
-#write.csv(y9,"Data/y9.csv")
+write.csv(y9,"Data/y9.csv")
 
 
 #Make a site/year table for SPEI, CMDA, MAPA, MATA
@@ -162,7 +155,7 @@ names(env_lag0)[names(env_lag0) == 'ID.x'] <- 'ID'
 names(env_lag0)[names(env_lag0) == 'Year.x'] <- 'Year'
 names(env_lag0)[names(env_lag0) == 'lag0'] <- 'SPEI_lag0'
 
-#write.csv(env_lag0,"Data/env_lag0.csv")
+write.csv(env_lag0,"Data/env_lag0.csv")
 
 
 
