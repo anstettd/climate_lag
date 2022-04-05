@@ -832,7 +832,7 @@ plot_grid(spei1, cmda1, spei2, cmda2)#10x8
 #there are now 4 mapa graphs to show. How should we setup this graph?
 plot_grid(mapa1,mapa7,mapa3, mapa8) #10x8
 
-plot_grid(mata1,mata2)
+plot_grid(mata1,mata2,mapa3, mapa8)
 
 
 # saved 12 x 8
