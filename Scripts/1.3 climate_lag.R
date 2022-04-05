@@ -105,18 +105,18 @@ lag_AIC[3,2] <- AIC(fl_lag2)
 lag_AIC[4,2] <- AIC(fl_lag01)
 lag_AIC[5,2] <- AIC(fl_lag012)
 
-#MATA AIC
-lag_AIC[1,3] <- AIC(MATA_sla_lag0)
-lag_AIC[2,3] <- AIC(MATA_sla_lag1)
-lag_AIC[3,3] <- AIC(MATA_sla_lag2)
-lag_AIC[4,3] <- AIC(MATA_sla_lag01)
-lag_AIC[5,3] <- AIC(MATA_sla_lag012)
+#CMDA AIC
+lag_AIC[1,3] <- AIC(CMDA_sla_lag0)
+lag_AIC[2,3] <- AIC(CMDA_sla_lag1)
+lag_AIC[3,3] <- AIC(CMDA_sla_lag2)
+lag_AIC[4,3] <- AIC(CMDA_sla_lag01)
+lag_AIC[5,3] <- AIC(CMDA_sla_lag012)
 
-lag_AIC[1,4] <- AIC(MATA_fl_lag0)
-lag_AIC[2,4] <- AIC(MATA_fl_lag1)
-lag_AIC[3,4] <- AIC(MATA_fl_lag2)
-lag_AIC[4,4] <- AIC(MATA_fl_lag01)
-lag_AIC[5,4] <- AIC(MATA_fl_lag012)
+lag_AIC[1,4] <- AIC(CMDA_fl_lag0)
+lag_AIC[2,4] <- AIC(CMDA_fl_lag1)
+lag_AIC[3,4] <- AIC(CMDA_fl_lag2)
+lag_AIC[4,4] <- AIC(CMDA_fl_lag01)
+lag_AIC[5,4] <- AIC(CMDA_fl_lag012)
 
 #MAPA AIC
 lag_AIC[1,5] <- AIC(MAPA_sla_lag0)
@@ -131,23 +131,23 @@ lag_AIC[3,6] <- AIC(MAPA_fl_lag2)
 lag_AIC[4,6] <- AIC(MAPA_fl_lag01)
 lag_AIC[5,6] <- AIC(MAPA_fl_lag012)
 
-#CMDA AIC
-lag_AIC[1,7] <- AIC(CMDA_sla_lag0)
-lag_AIC[2,7] <- AIC(CMDA_sla_lag1)
-lag_AIC[3,7] <- AIC(CMDA_sla_lag2)
-lag_AIC[4,7] <- AIC(CMDA_sla_lag01)
-lag_AIC[5,7] <- AIC(CMDA_sla_lag012)
+#MATA AIC
+lag_AIC[1,7] <- AIC(MATA_sla_lag0)
+lag_AIC[2,7] <- AIC(MATA_sla_lag1)
+lag_AIC[3,7] <- AIC(MATA_sla_lag2)
+lag_AIC[4,7] <- AIC(MATA_sla_lag01)
+lag_AIC[5,7] <- AIC(MATA_sla_lag012)
 
-lag_AIC[1,8] <- AIC(CMDA_fl_lag0)
-lag_AIC[2,8] <- AIC(CMDA_fl_lag1)
-lag_AIC[3,8] <- AIC(CMDA_fl_lag2)
-lag_AIC[4,8] <- AIC(CMDA_fl_lag01)
-lag_AIC[5,8] <- AIC(CMDA_fl_lag012)
+lag_AIC[1,8] <- AIC(MATA_fl_lag0)
+lag_AIC[2,8] <- AIC(MATA_fl_lag1)
+lag_AIC[3,8] <- AIC(MATA_fl_lag2)
+lag_AIC[4,8] <- AIC(MATA_fl_lag01)
+lag_AIC[5,8] <- AIC(MATA_fl_lag012)
 
 colnames(lag_AIC) <- c("SLA","Date of Flowering","SLA","Date of Flowering",
                        "SLA","Date of Flowering","SLA","Date of Flowering")
 rownames(lag_AIC) <- c("lag 0", "lag 1", "lag 2", "lag 0,1","lag 0,1,2")
-#write.table(lag_AIC, file = "Data/climate_AIC.csv", sep = ",", row.names = T)
+write.table(lag_AIC, file = "Data/climate_AIC.csv", sep = ",", row.names = T)
 
 #Make Global Trait specific AIC Table
 lag_AIC_SLA <- as.data.frame(cbind(lag_AIC[,1],lag_AIC[,3],lag_AIC[,5],lag_AIC[,7]))

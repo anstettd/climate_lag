@@ -114,18 +114,18 @@ n_lag_AIC[3,2] <- AIC(n_fl_lag2)
 n_lag_AIC[4,2] <- AIC(n_fl_lag01)
 n_lag_AIC[5,2] <- AIC(n_fl_lag012)
 
-#MATA AIC
-n_lag_AIC[1,3] <- AIC(n_MATA_sla_lag0)
-n_lag_AIC[2,3] <- AIC(n_MATA_sla_lag1)
-n_lag_AIC[3,3] <- AIC(n_MATA_sla_lag2)
-n_lag_AIC[4,3] <- AIC(n_MATA_sla_lag01)
-n_lag_AIC[5,3] <- AIC(n_MATA_sla_lag012)
+#CMDA AIC
+n_lag_AIC[1,3] <- AIC(n_CMDA_sla_lag0)
+n_lag_AIC[2,3] <- AIC(n_CMDA_sla_lag1)
+n_lag_AIC[3,3] <- AIC(n_CMDA_sla_lag2)
+n_lag_AIC[4,3] <- AIC(n_CMDA_sla_lag01)
+n_lag_AIC[5,3] <- AIC(n_CMDA_sla_lag012)
 
-n_lag_AIC[1,4] <- AIC(n_MATA_fl_lag0)
-n_lag_AIC[2,4] <- AIC(n_MATA_fl_lag1)
-n_lag_AIC[3,4] <- AIC(n_MATA_fl_lag2)
-n_lag_AIC[4,4] <- AIC(n_MATA_fl_lag01)
-n_lag_AIC[5,4] <- AIC(n_MATA_fl_lag012)
+n_lag_AIC[1,4] <- AIC(n_CMDA_fl_lag0)
+n_lag_AIC[2,4] <- AIC(n_CMDA_fl_lag1)
+n_lag_AIC[3,4] <- AIC(n_CMDA_fl_lag2)
+n_lag_AIC[4,4] <- AIC(n_CMDA_fl_lag01)
+n_lag_AIC[5,4] <- AIC(n_CMDA_fl_lag012)
 
 #MAPA AIC
 n_lag_AIC[1,5] <- AIC(n_MAPA_sla_lag0)
@@ -140,18 +140,18 @@ n_lag_AIC[3,6] <- AIC(n_MAPA_fl_lag2)
 n_lag_AIC[4,6] <- AIC(n_MAPA_fl_lag01)
 n_lag_AIC[5,6] <- AIC(n_MAPA_fl_lag012)
 
-#CMDA AIC
-n_lag_AIC[1,7] <- AIC(n_CMDA_sla_lag0)
-n_lag_AIC[2,7] <- AIC(n_CMDA_sla_lag1)
-n_lag_AIC[3,7] <- AIC(n_CMDA_sla_lag2)
-n_lag_AIC[4,7] <- AIC(n_CMDA_sla_lag01)
-n_lag_AIC[5,7] <- AIC(n_CMDA_sla_lag012)
+#MATA AIC
+n_lag_AIC[1,7] <- AIC(n_MATA_sla_lag0)
+n_lag_AIC[2,7] <- AIC(n_MATA_sla_lag1)
+n_lag_AIC[3,7] <- AIC(n_MATA_sla_lag2)
+n_lag_AIC[4,7] <- AIC(n_MATA_sla_lag01)
+n_lag_AIC[5,7] <- AIC(n_MATA_sla_lag012)
 
-n_lag_AIC[1,8] <- AIC(n_CMDA_fl_lag0)
-n_lag_AIC[2,8] <- AIC(n_CMDA_fl_lag1)
-n_lag_AIC[3,8] <- AIC(n_CMDA_fl_lag2)
-n_lag_AIC[4,8] <- AIC(n_CMDA_fl_lag01)
-n_lag_AIC[5,8] <- AIC(n_CMDA_fl_lag012)
+n_lag_AIC[1,8] <- AIC(n_MATA_fl_lag0)
+n_lag_AIC[2,8] <- AIC(n_MATA_fl_lag1)
+n_lag_AIC[3,8] <- AIC(n_MATA_fl_lag2)
+n_lag_AIC[4,8] <- AIC(n_MATA_fl_lag01)
+n_lag_AIC[5,8] <- AIC(n_MATA_fl_lag012)
 
 colnames(n_lag_AIC) <- c("SLA","Date of Flowering","SLA","Date of Flowering",
                        "SLA","Date of Flowering","SLA","Date of Flowering") 
@@ -296,15 +296,15 @@ c_MATA_sla_lag2 <- lmer(SLA ~  Drought*MATA_lag2 + (1|Family) + (1|Block) + (1|Y
 c_MATA_sla_lag01 <- lmer(SLA ~  Drought*MATA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 c_MATA_sla_lag012 <- lmer(SLA ~  Drought*MATA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 
-c_MATA_fl_lag0 <- lmer(Experiment_Date ~  Drought*MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
+c_MATA_fl_lag0 <- lmer(Experiment_Date ~  Drought*MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat),
+                       control=lmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=100000)),data=centre)
 c_MATA_fl_lag1 <- lmer(Experiment_Date ~  Drought*MATA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 c_MATA_fl_lag2 <- lmer(Experiment_Date ~  Drought*MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 c_MATA_fl_lag01 <- lmer(Experiment_Date ~  Drought*MATA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 c_MATA_fl_lag012 <- lmer(Experiment_Date ~  Drought*MATA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 
 #MAPA models
-c_MAPA_sla_lag0 <- lmer(SLA ~  Drought*MAPA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), 
-                        control=lmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=100000)),data=centre)
+c_MAPA_sla_lag0 <- lmer(SLA ~  Drought*MAPA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat),data=centre)
 c_MAPA_sla_lag1 <- lmer(SLA ~  Drought*MAPA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 c_MAPA_sla_lag2 <- lmer(SLA ~  Drought*MAPA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 c_MAPA_sla_lag01 <- lmer(SLA ~  Drought*MAPA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
@@ -346,18 +346,18 @@ c_lag_AIC[3,2] <- AIC(c_fl_lag2)
 c_lag_AIC[4,2] <- AIC(c_fl_lag01)
 c_lag_AIC[5,2] <- AIC(c_fl_lag012)
 
-#MATA AIC
-c_lag_AIC[1,3] <- AIC(c_MATA_sla_lag0)
-c_lag_AIC[2,3] <- AIC(c_MATA_sla_lag1)
-c_lag_AIC[3,3] <- AIC(c_MATA_sla_lag2)
-c_lag_AIC[4,3] <- AIC(c_MATA_sla_lag01)
-c_lag_AIC[5,3] <- AIC(c_MATA_sla_lag012)
+#CMDA AIC
+c_lag_AIC[1,3] <- AIC(c_CMDA_sla_lag0)
+c_lag_AIC[2,3] <- AIC(c_CMDA_sla_lag1)
+c_lag_AIC[3,3] <- AIC(c_CMDA_sla_lag2)
+c_lag_AIC[4,3] <- AIC(c_CMDA_sla_lag01)
+c_lag_AIC[5,3] <- AIC(c_CMDA_sla_lag012)
 
-c_lag_AIC[1,4] <- AIC(c_MATA_fl_lag0)
-c_lag_AIC[2,4] <- AIC(c_MATA_fl_lag1)
-c_lag_AIC[3,4] <- AIC(c_MATA_fl_lag2)
-c_lag_AIC[4,4] <- AIC(c_MATA_fl_lag01)
-c_lag_AIC[5,4] <- AIC(c_MATA_fl_lag012)
+c_lag_AIC[1,4] <- AIC(c_CMDA_fl_lag0)
+c_lag_AIC[2,4] <- AIC(c_CMDA_fl_lag1)
+c_lag_AIC[3,4] <- AIC(c_CMDA_fl_lag2)
+c_lag_AIC[4,4] <- AIC(c_CMDA_fl_lag01)
+c_lag_AIC[5,4] <- AIC(c_CMDA_fl_lag012)
 
 #MAPA AIC
 c_lag_AIC[1,5] <- AIC(c_MAPA_sla_lag0)
@@ -372,18 +372,18 @@ c_lag_AIC[3,6] <- AIC(c_MAPA_fl_lag2)
 c_lag_AIC[4,6] <- AIC(c_MAPA_fl_lag01)
 c_lag_AIC[5,6] <- AIC(c_MAPA_fl_lag012)
 
-#CMDA AIC
-c_lag_AIC[1,7] <- AIC(c_CMDA_sla_lag0)
-c_lag_AIC[2,7] <- AIC(c_CMDA_sla_lag1)
-c_lag_AIC[3,7] <- AIC(c_CMDA_sla_lag2)
-c_lag_AIC[4,7] <- AIC(c_CMDA_sla_lag01)
-c_lag_AIC[5,7] <- AIC(c_CMDA_sla_lag012)
+#MATA AIC
+c_lag_AIC[1,7] <- AIC(c_MATA_sla_lag0)
+c_lag_AIC[2,7] <- AIC(c_MATA_sla_lag1)
+c_lag_AIC[3,7] <- AIC(c_MATA_sla_lag2)
+c_lag_AIC[4,7] <- AIC(c_MATA_sla_lag01)
+c_lag_AIC[5,7] <- AIC(c_MATA_sla_lag012)
 
-c_lag_AIC[1,8] <- AIC(c_CMDA_fl_lag0)
-c_lag_AIC[2,8] <- AIC(c_CMDA_fl_lag1)
-c_lag_AIC[3,8] <- AIC(c_CMDA_fl_lag2)
-c_lag_AIC[4,8] <- AIC(c_CMDA_fl_lag01)
-c_lag_AIC[5,8] <- AIC(c_CMDA_fl_lag012)
+c_lag_AIC[1,8] <- AIC(c_MATA_fl_lag0)
+c_lag_AIC[2,8] <- AIC(c_MATA_fl_lag1)
+c_lag_AIC[3,8] <- AIC(c_MATA_fl_lag2)
+c_lag_AIC[4,8] <- AIC(c_MATA_fl_lag01)
+c_lag_AIC[5,8] <- AIC(c_MATA_fl_lag012)
 
 colnames(c_lag_AIC) <- c("SLA","Date of Flowering","SLA","Date of Flowering",
                        "SLA","Date of Flowering","SLA","Date of Flowering") 
@@ -702,18 +702,18 @@ s_lag_AIC[3,2] <- AIC(s_fl_lag2)
 s_lag_AIC[4,2] <- AIC(s_fl_lag01)
 s_lag_AIC[5,2] <- AIC(s_fl_lag012)
 
-#MATA AIC
-s_lag_AIC[1,3] <- AIC(s_MATA_sla_lag0)
-s_lag_AIC[2,3] <- AIC(s_MATA_sla_lag1)
-s_lag_AIC[3,3] <- AIC(s_MATA_sla_lag2)
-s_lag_AIC[4,3] <- AIC(s_MATA_sla_lag01)
-s_lag_AIC[5,3] <- AIC(s_MATA_sla_lag012)
+#CMDA AIC
+s_lag_AIC[1,3] <- AIC(s_CMDA_sla_lag0)
+s_lag_AIC[2,3] <- AIC(s_CMDA_sla_lag1)
+s_lag_AIC[3,3] <- AIC(s_CMDA_sla_lag2)
+s_lag_AIC[4,3] <- AIC(s_CMDA_sla_lag01)
+s_lag_AIC[5,3] <- AIC(s_CMDA_sla_lag012)
 
-s_lag_AIC[1,4] <- AIC(s_MATA_fl_lag0)
-s_lag_AIC[2,4] <- AIC(s_MATA_fl_lag1)
-s_lag_AIC[3,4] <- AIC(s_MATA_fl_lag2)
-s_lag_AIC[4,4] <- AIC(s_MATA_fl_lag01)
-s_lag_AIC[5,4] <- AIC(s_MATA_fl_lag012)
+s_lag_AIC[1,4] <- AIC(s_CMDA_fl_lag0)
+s_lag_AIC[2,4] <- AIC(s_CMDA_fl_lag1)
+s_lag_AIC[3,4] <- AIC(s_CMDA_fl_lag2)
+s_lag_AIC[4,4] <- AIC(s_CMDA_fl_lag01)
+s_lag_AIC[5,4] <- AIC(s_CMDA_fl_lag012)
 
 #MAPA AIC
 s_lag_AIC[1,5] <- AIC(s_MAPA_sla_lag0)
@@ -728,18 +728,18 @@ s_lag_AIC[3,6] <- AIC(s_MAPA_fl_lag2)
 s_lag_AIC[4,6] <- AIC(s_MAPA_fl_lag01)
 s_lag_AIC[5,6] <- AIC(s_MAPA_fl_lag012)
 
-#CMDA AIC
-s_lag_AIC[1,7] <- AIC(s_CMDA_sla_lag0)
-s_lag_AIC[2,7] <- AIC(s_CMDA_sla_lag1)
-s_lag_AIC[3,7] <- AIC(s_CMDA_sla_lag2)
-s_lag_AIC[4,7] <- AIC(s_CMDA_sla_lag01)
-s_lag_AIC[5,7] <- AIC(s_CMDA_sla_lag012)
+#MATA AIC
+s_lag_AIC[1,7] <- AIC(s_MATA_sla_lag0)
+s_lag_AIC[2,7] <- AIC(s_MATA_sla_lag1)
+s_lag_AIC[3,7] <- AIC(s_MATA_sla_lag2)
+s_lag_AIC[4,7] <- AIC(s_MATA_sla_lag01)
+s_lag_AIC[5,7] <- AIC(s_MATA_sla_lag012)
 
-s_lag_AIC[1,8] <- AIC(s_CMDA_fl_lag0)
-s_lag_AIC[2,8] <- AIC(s_CMDA_fl_lag1)
-s_lag_AIC[3,8] <- AIC(s_CMDA_fl_lag2)
-s_lag_AIC[4,8] <- AIC(s_CMDA_fl_lag01)
-s_lag_AIC[5,8] <- AIC(s_CMDA_fl_lag012)
+s_lag_AIC[1,8] <- AIC(s_MATA_fl_lag0)
+s_lag_AIC[2,8] <- AIC(s_MATA_fl_lag1)
+s_lag_AIC[3,8] <- AIC(s_MATA_fl_lag2)
+s_lag_AIC[4,8] <- AIC(s_MATA_fl_lag01)
+s_lag_AIC[5,8] <- AIC(s_MATA_fl_lag012)
 
 colnames(s_lag_AIC) <- c("SLA","Date of Flowering","SLA","Date of Flowering",
                        "SLA","Date of Flowering","SLA","Date of Flowering") 
@@ -894,7 +894,8 @@ lrtest(s_CMDA_fl_nolag,s_CMDA_fl_lag01a_nothing) #no lag, 0.005598
 #fl lag012
 s_CMDA_fl_lag012a <- lmer(Experiment_Date ~  Drought+CMDA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
 lrtest(s_CMDA_fl_lag012,s_CMDA_fl_lag012a) #strong evidence simpler
-s_CMDA_fl_lag012_nodrought <- lmer(Experiment_Date ~  CMDA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+s_CMDA_fl_lag012_nodrought <- lmer(Experiment_Date ~  CMDA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), 
+                                   control=lmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=100000)),data=south)
 lrtest(s_CMDA_fl_nolag,s_CMDA_fl_lag01_nodrought) #no lag
 s_CMDA_fl_lag01a_nothing <- lmer(Experiment_Date ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
 lrtest(s_CMDA_fl_nolag,s_CMDA_fl_lag01a_nothing) #no lag, 0.005598
