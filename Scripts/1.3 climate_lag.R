@@ -281,7 +281,7 @@ Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Cen ter","South"
 Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
 Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 spei1<-ggplot(Res_sla_all, aes(lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -301,7 +301,7 @@ spei1 <-spei1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 spei1
-#ggsave("Figure_pannels/1A.SPEI_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/1A.SPEI_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # SPEI Date of Flowering Lag1
@@ -315,7 +315,7 @@ Res_ft_all$Region<-factor(Res_ft_all$Region,levels=c("North","Center","South"))
 Res_ft_all$Drought <- as.factor(Res_ft_all$Drought)
 Res_ft_all$Drought <- factor(Res_ft_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 spei2<-ggplot(Res_ft_all, aes(lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -335,7 +335,7 @@ spei2 <-spei2 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 spei2
-#ggsave("Figure_pannels/1B.SPEI_lag1_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/1B.SPEI_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
 
 ############ CMDA ## Region*Drought*CMDA_lag2
@@ -350,7 +350,7 @@ Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Center","South")
 Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
 Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 cmda1<-ggplot(Res_sla_all, aes(CMDA_lag2, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -371,7 +371,7 @@ cmda1 <-cmda1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 cmda1
-#ggsave("Figure_pannels/4A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/4A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # CMDA Date of Flowering Lag1
@@ -385,7 +385,7 @@ Res_ft_all$Region<-factor(Res_ft_all$Region,levels=c("North","Center","South"))
 Res_ft_all$Drought <- as.factor(Res_ft_all$Drought)
 Res_ft_all$Drought <- factor(Res_ft_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 cmda2<-ggplot(Res_ft_all, aes(CMDA_lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -405,7 +405,7 @@ cmda2 <-cmda2 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 cmda2
-#ggsave("Figure_pannels/4B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/4B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
 
 
@@ -421,7 +421,7 @@ Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Center","South")
 Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
 Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 mapa1<-ggplot(Res_sla_all, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -456,7 +456,7 @@ Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Center","South")
 Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
 Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 mapa2<-ggplot(Res_sla_all, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -491,7 +491,7 @@ Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Center","South")
 Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
 Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 mapa3<-ggplot(Res_sla_all, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -525,7 +525,7 @@ Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Center","South")
 Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
 Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 mapa4<-ggplot(Res_sla_all, aes(MAPA_lag01, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -560,7 +560,7 @@ Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Center","South")
 Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
 Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 mapa5<-ggplot(Res_sla_all, aes(MAPA_lag012, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -595,7 +595,7 @@ Res_fl_all$Region<-factor(Res_fl_all$Region,levels=c("North","Center","South"))
 Res_fl_all$Drought <- as.factor(Res_fl_all$Drought)
 Res_fl_all$Drought <- factor(Res_fl_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 mapa6<-ggplot(Res_fl_all, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -629,7 +629,7 @@ Res_fl_all$Region<-factor(Res_fl_all$Region,levels=c("North","Center","South"))
 Res_fl_all$Drought <- as.factor(Res_fl_all$Drought)
 Res_fl_all$Drought <- factor(Res_fl_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 mapa7<-ggplot(Res_fl_all, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -664,7 +664,7 @@ Res_fl_all$Region<-factor(Res_fl_all$Region,levels=c("North","Center","South"))
 Res_fl_all$Drought <- as.factor(Res_fl_all$Drought)
 Res_fl_all$Drought <- factor(Res_fl_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 mapa8<-ggplot(Res_fl_all, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -699,7 +699,7 @@ Res_fl_all$Region<-factor(Res_fl_all$Region,levels=c("North","Center","South"))
 Res_fl_all$Drought <- as.factor(Res_fl_all$Drought)
 Res_fl_all$Drought <- factor(Res_fl_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 mapa9<-ggplot(Res_fl_all, aes(MAPA_lag01, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -734,7 +734,7 @@ Res_fl_all$Region<-factor(Res_fl_all$Region,levels=c("North","Center","South"))
 Res_fl_all$Drought <- as.factor(Res_fl_all$Drought)
 Res_fl_all$Drought <- factor(Res_fl_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 mapa10<-ggplot(Res_fl_all, aes(MAPA_lag012, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -769,7 +769,7 @@ Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Center","South")
 Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
 Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 mata1<-ggplot(Res_sla_all, aes(MATA_lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -790,7 +790,7 @@ mata1 <-mata1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mata1
-#ggsave("Figure_pannels/2A.MATA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/2A.MATA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MATA Date of Flowering Lag2
@@ -804,7 +804,7 @@ Res_ft_all$Region<-factor(Res_ft_all$Region,levels=c("North","Center","South"))
 Res_ft_all$Drought <- as.factor(Res_ft_all$Drought)
 Res_ft_all$Drought <- factor(Res_ft_all$Drought, levels=c("W", "D"))
 #Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+Site_Labs<-c("North"="North", "Center"="Centre", "South"="South")
 #Use ggplot to generate plot with all required formating
 mata2<-ggplot(Res_ft_all, aes(MATA_lag2, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
@@ -830,7 +830,9 @@ mata2
 plot_grid(spei1, cmda1, spei2, cmda2)#10x8
 
 #there are now 4 mapa graphs to show. How should we setup this graph?
-#plot_grid(mapa1,mata1, mapa2, mata2) #10x8
+plot_grid(mapa1,mapa7,mapa3, mapa8) #10x8
+
+plot_grid(mata1,mata2)
 
 
 # saved 12 x 8
