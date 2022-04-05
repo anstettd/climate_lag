@@ -184,26 +184,6 @@ fl_lag1a <- lmer(Experiment_Date ~ Region*Drought + Region*lag1 + Drought*lag1 +
 lrtest(fl_lag1,fl_lag1a) #3-way interaction moderate evidence, P = 0.01551
 
 
-############ MATA ############
-#SLA lag 0
-MATA_sla_lag0a <- lmer(SLA ~ Region*Drought + Region*MATA_lag0 + Drought*MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(MATA_sla_lag0,MATA_sla_lag0a) #3-way interaction very strong evidence, P = 0.0001335
-
-#fl lag 2
-MATA_fl_lag2a <- lmer(Experiment_Date ~ Region*Drought + Region*MATA_lag2 + Drought*MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(MATA_fl_lag2,MATA_fl_lag2a) #3-way interaction moderate evidence, P = 0.01619
-
-
-############ MAPA ############
-#SLA lag0
-MAPA_sla_lag0a <- lmer(SLA ~ Region*Drought + Region*MAPA_lag0 + Drought*MAPA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(MAPA_sla_lag0,MAPA_sla_lag0a) #3-way interaction very strong evidence, P = 3.19e-07
-
-#fl lag2
-MAPA_fl_lag2a <- lmer(Experiment_Date ~ Region*Drought + Region*MAPA_lag2 + Drought*MAPA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-lrtest(MAPA_fl_lag2,MAPA_fl_lag2a) #3-way interaction very strong evidence, P = 0.003
-
-
 ############ CMDA ############
 #SLA lag2
 CMDA_sla_lag2a <- lmer(SLA ~ Region*Drought + Region*CMDA_lag2 + Drought*CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
@@ -230,7 +210,7 @@ lrtest(CMDA_sla_lag2e,CMDA_sla_lag2g) #strong evidence for e. Region*Drought + C
 
 #fl lag1
 CMDA_fl_lag1a <- lmer(Experiment_Date ~ Region*Drought + Region*CMDA_lag1 + Drought*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), 
-data=y9)
+                      data=y9)
 lrtest(CMDA_fl_lag1,CMDA_fl_lag1a) #moderate evidence in favor of simpler model
 
 CMDA_fl_lag1b <- lmer(Experiment_Date ~ Region*CMDA_lag1 + Drought*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
@@ -251,6 +231,37 @@ lrtest(CMDA_fl_lag1e,CMDA_fl_lag1f) #strong evidence in favor of c.
 
 CMDA_fl_lag1g <- lmer(Experiment_Date ~ Region + Drought + CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
 lrtest(CMDA_fl_lag1e,CMDA_fl_lag1g) #strong evidence in favor of e: Region*Drought + CMDA_lag1, p = 2.071e-06
+
+
+############ MAPA ############
+#SLA lag0
+MAPA_sla_lag0a <- lmer(SLA ~ Region*Drought + Region*MAPA_lag0 + Drought*MAPA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MAPA_sla_lag0,MAPA_sla_lag0a) #3-way interaction very strong evidence, P = 3.19e-07
+
+#SLA lag2
+MAPA_sla_lag2a <- lmer(SLA ~ Region*Drought + Region*MAPA_lag2 + Drought*MAPA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MAPA_sla_lag2,MAPA_sla_lag2a) #3-way interaction very strong evidence, P = 6.127e-06
+
+#fl lag1
+MAPA_fl_lag1a <- lmer(Experiment_Date ~ Region*Drought + Region*MAPA_lag1 + Drought*MAPA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MAPA_fl_lag1,MAPA_fl_lag1a) #3-way interaction very strong evidence, P = 9.089e-05
+
+#fl lag2
+MAPA_fl_lag2a <- lmer(Experiment_Date ~ Region*Drought + Region*MAPA_lag2 + Drought*MAPA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MAPA_fl_lag2,MAPA_fl_lag2a) #3-way interaction very strong evidence, P = 0.003
+
+
+############ MATA ############
+#SLA lag 0
+MATA_sla_lag0a <- lmer(SLA ~ Region*Drought + Region*MATA_lag0 + Drought*MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MATA_sla_lag0,MATA_sla_lag0a) #3-way interaction very strong evidence, P = 0.0001335
+
+#fl lag 2
+MATA_fl_lag2a <- lmer(Experiment_Date ~ Region*Drought + Region*MATA_lag2 + Drought*MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+lrtest(MATA_fl_lag2,MATA_fl_lag2a) #3-way interaction moderate evidence, P = 0.01619
+
+
+
 
 
 
@@ -327,146 +338,6 @@ spei2
 #ggsave("Figure_pannels/1B.SPEI_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
 
-
-############ MATA ############
-# MATA SLA lag0
-vis_sla_D<-visreg(MATA_sla_lag0, xvar="MATA_lag0", by="Region", cond=list(Drought="D")) #set up visreg for Drought
-vis_sla_W<-visreg(MATA_sla_lag0, xvar="MATA_lag0", by="Region", cond=list(Drought="W")) #set up visreg for Wet
-Res_sla_D<-vis_sla_D$res ; Res_sla_W<-vis_sla_W$res # Extract residuals
-Res_sla_all<-rbind(Res_sla_D, Res_sla_W) #Row bind wet and dry residuals into one data frame
-Res_sla_all$Region<-as.factor(Res_sla_all$Region)
-Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Center","South"))
-#Reorder Treatments
-Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
-Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
-#Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
-#Use ggplot to generate plot with all required formating
-mata1<-ggplot(Res_sla_all, aes(MATA_lag0, y=visregRes, fill=Drought, colour=Drought))+
-  geom_jitter(aes(colour=Drought), size=0.2)+
-  geom_smooth(method="lm")+
-  facet_wrap(.~Region)+
-  xlab("MATA (lag 0)") +
-  #scale_x_continuous(limits=c(-0.1,0.4))+
-  scale_y_continuous(name="SLA", limits=c(100,400))+
-  scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
-  scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
-  theme_classic()
-mata1 <-mata1 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
-mata1 <-mata1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
-        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
-mata1
-#ggsave("Figure_pannels/2A.MATA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
-
-
-# MATA Date of Flowering Lag2
-vis_ft_D<-visreg(MATA_fl_lag2, xvar="MATA_lag2", by="Region", cond=list(Drought="D")) #set up visreg for Drought
-vis_ft_W<-visreg(MATA_fl_lag2, xvar="MATA_lag2", by="Region", cond=list(Drought="W")) #set up visreg for Wet
-Res_ft_D<-vis_ft_D$res ; Res_ft_W<-vis_ft_W$res # Extract residuals
-Res_ft_all<-rbind(Res_ft_D, Res_ft_W) #Row bind wet and dry residuals into one data frame
-Res_ft_all$Region<-as.factor(Res_ft_all$Region)
-Res_ft_all$Region<-factor(Res_ft_all$Region,levels=c("North","Center","South"))
-#Reorder Treatments
-Res_ft_all$Drought <- as.factor(Res_ft_all$Drought)
-Res_ft_all$Drought <- factor(Res_ft_all$Drought, levels=c("W", "D"))
-#Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
-#Use ggplot to generate plot with all required formating
-mata2<-ggplot(Res_ft_all, aes(MATA_lag2, y=visregRes, fill=Drought, colour=Drought))+
-  geom_jitter(aes(colour=Drought), size=0.2)+
-  geom_smooth(method="lm")+
-  facet_wrap(.~Region)+
-  xlab("MATA (lag 2)") +
-  scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
-  scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
-  scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
-  theme_classic()
-mata2 <-mata2 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
-mata2 <-mata2 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
-        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
-mata2
-
-
-############ MAPA ############
-# MAPA SLA lag0
-vis_sla_D<-visreg(MAPA_sla_lag0, xvar="MAPA_lag0", by="Region", cond=list(Drought="D")) #set up visreg for Drought
-vis_sla_W<-visreg(MAPA_sla_lag0, xvar="MAPA_lag0", by="Region", cond=list(Drought="W")) #set up visreg for Wet
-Res_sla_D<-vis_sla_D$res ; Res_sla_W<-vis_sla_W$res # Extract residuals
-Res_sla_all<-rbind(Res_sla_D, Res_sla_W) #Row bind wet and dry residuals into one data frame
-Res_sla_all$Region<-as.factor(Res_sla_all$Region)
-Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Center","South"))
-#Reorder Treatments
-Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
-Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
-#Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
-#Use ggplot to generate plot with all required formating
-mapa1<-ggplot(Res_sla_all, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Drought))+
-  geom_jitter(aes(colour=Drought), size=0.2)+
-  geom_smooth(method="lm")+
-  facet_wrap(.~Region)+
-  xlab("log(MAPA lag 0)") +
-  #scale_x_continuous(limits=c(-0.1,0.4))+
-  scale_y_continuous(name="SLA", limits=c(100,400))+
-  scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
-  scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
-  theme_classic()
-mapa1 <-mapa1 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
-mapa1 <-mapa1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
-        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
-mapa1
-#ggsave("Figure_pannels/3A.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
-
-# MAPA df lag2
-vis_fl_D<-visreg(MAPA_fl_lag2, xvar="MAPA_lag2", by="Region", cond=list(Drought="D")) #set up visreg for Drought
-vis_fl_W<-visreg(MAPA_fl_lag2, xvar="MAPA_lag2", by="Region", cond=list(Drought="W")) #set up visreg for Wet
-Res_fl_D<-vis_fl_D$res ; Res_fl_W<-vis_fl_W$res # Extract residuals
-Res_fl_all<-rbind(Res_fl_D, Res_fl_W) #Row bind wet and dry residuals into one data frame
-Res_fl_all$Region<-as.factor(Res_fl_all$Region)
-Res_fl_all$Region<-factor(Res_fl_all$Region,levels=c("North","Center","South"))
-#Reorder Treatments
-Res_fl_all$Drought <- as.factor(Res_fl_all$Drought)
-Res_fl_all$Drought <- factor(Res_fl_all$Drought, levels=c("W", "D"))
-#Set up site lables equating names to codes
-Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
-#Use ggplot to generate plot with all required formating
-mapa2<-ggplot(Res_sla_all, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drought))+
-  geom_jitter(aes(colour=Drought), size=0.2)+
-  geom_smooth(method="lm")+
-  facet_wrap(.~Region)+
-  xlab("log(MAPA lag 2)") +
-  #scale_x_continuous(limits=c(-0.1,0.4))+
-  scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
-  scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
-  scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
-  theme_classic()
-mapa2 <-mapa2 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
-mapa2 <-mapa2 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
-        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
-mapa2
-#ggsave("Figure_pannels/3A.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
-
-
 ############ CMDA ## Region*Drought*CMDA_lag2
 # CMDA SLA lag2
 vis_sla_D<-visreg(CMDA_sla_lag2e, xvar="CMDA_lag2", by="Region", cond=list(Drought="D")) #set up visreg for Drought
@@ -537,8 +408,221 @@ cmda2
 #ggsave("Figure_pannels/4B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
 
+
+############ MAPA ############
+# MAPA SLA lag0
+vis_sla_D<-visreg(MAPA_sla_lag0, xvar="MAPA_lag0", by="Region", cond=list(Drought="D")) #set up visreg for Drought
+vis_sla_W<-visreg(MAPA_sla_lag0, xvar="MAPA_lag0", by="Region", cond=list(Drought="W")) #set up visreg for Wet
+Res_sla_D<-vis_sla_D$res ; Res_sla_W<-vis_sla_W$res # Extract residuals
+Res_sla_all<-rbind(Res_sla_D, Res_sla_W) #Row bind wet and dry residuals into one data frame
+Res_sla_all$Region<-as.factor(Res_sla_all$Region)
+Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Center","South"))
+#Reorder Treatments
+Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
+Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
+#Set up site lables equating names to codes
+Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+#Use ggplot to generate plot with all required formating
+mapa1<-ggplot(Res_sla_all, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Drought))+
+  geom_jitter(aes(colour=Drought), size=0.2)+
+  geom_smooth(method="lm")+
+  facet_wrap(.~Region)+
+  xlab("log(MAPA lag 0)") +
+  #scale_x_continuous(limits=c(-0.1,0.4))+
+  scale_y_continuous(name="SLA", limits=c(100,400))+
+  scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  theme_classic()
+mapa1 <-mapa1 + theme(
+  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=15,face="bold"),
+  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+mapa1 <-mapa1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
+mapa1
+#ggsave("Figure_pannels/3A.MAPA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+
+# MAPA SLA lag2
+vis_sla_D<-visreg(MAPA_sla_lag2, xvar="MAPA_lag2", by="Region", cond=list(Drought="D")) #set up visreg for Drought
+vis_sla_W<-visreg(MAPA_sla_lag2, xvar="MAPA_lag2", by="Region", cond=list(Drought="W")) #set up visreg for Wet
+Res_sla_D<-vis_sla_D$res ; Res_sla_W<-vis_sla_W$res # Extract residuals
+Res_sla_all<-rbind(Res_sla_D, Res_sla_W) #Row bind wet and dry residuals into one data frame
+Res_sla_all$Region<-as.factor(Res_sla_all$Region)
+Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Center","South"))
+#Reorder Treatments
+Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
+Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
+#Set up site lables equating names to codes
+Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+#Use ggplot to generate plot with all required formating
+mapa2<-ggplot(Res_sla_all, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drought))+
+  geom_jitter(aes(colour=Drought), size=0.2)+
+  geom_smooth(method="lm")+
+  facet_wrap(.~Region)+
+  xlab("log(MAPA lag 2)") +
+  #scale_x_continuous(limits=c(-0.1,0.4))+
+  scale_y_continuous(name="SLA", limits=c(100,400))+
+  scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  theme_classic()
+mapa2 <-mapa2 + theme(
+  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=15,face="bold"),
+  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+mapa2 <-mapa2 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
+mapa2
+#ggsave("Figure_pannels/3A.MAPA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
+
+# MAPA df lag1
+vis_fl_D<-visreg(MAPA_fl_lag1, xvar="MAPA_lag1", by="Region", cond=list(Drought="D")) #set up visreg for Drought
+vis_fl_W<-visreg(MAPA_fl_lag1, xvar="MAPA_lag1", by="Region", cond=list(Drought="W")) #set up visreg for Wet
+Res_fl_D<-vis_fl_D$res ; Res_fl_W<-vis_fl_W$res # Extract residuals
+Res_fl_all<-rbind(Res_fl_D, Res_fl_W) #Row bind wet and dry residuals into one data frame
+Res_fl_all$Region<-as.factor(Res_fl_all$Region)
+Res_fl_all$Region<-factor(Res_fl_all$Region,levels=c("North","Center","South"))
+#Reorder Treatments
+Res_fl_all$Drought <- as.factor(Res_fl_all$Drought)
+Res_fl_all$Drought <- factor(Res_fl_all$Drought, levels=c("W", "D"))
+#Set up site lables equating names to codes
+Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+#Use ggplot to generate plot with all required formating
+mapa3<-ggplot(Res_sla_all, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Drought))+
+  geom_jitter(aes(colour=Drought), size=0.2)+
+  geom_smooth(method="lm")+
+  facet_wrap(.~Region)+
+  xlab("log(MAPA lag1)") +
+  #scale_x_continuous(limits=c(-0.1,0.4))+
+  scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
+  scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  theme_classic()
+mapa3 <-mapa3 + theme(
+  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=15,face="bold"),
+  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+mapa3 <-mapa3 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
+mapa3
+#ggsave("Figure_pannels/3A.MAPA_lag1_SLA.pdf", width = 8, height = 6, units = "in")
+
+
+# MAPA df lag2
+vis_fl_D<-visreg(MAPA_fl_lag2, xvar="MAPA_lag2", by="Region", cond=list(Drought="D")) #set up visreg for Drought
+vis_fl_W<-visreg(MAPA_fl_lag2, xvar="MAPA_lag2", by="Region", cond=list(Drought="W")) #set up visreg for Wet
+Res_fl_D<-vis_fl_D$res ; Res_fl_W<-vis_fl_W$res # Extract residuals
+Res_fl_all<-rbind(Res_fl_D, Res_fl_W) #Row bind wet and dry residuals into one data frame
+Res_fl_all$Region<-as.factor(Res_fl_all$Region)
+Res_fl_all$Region<-factor(Res_fl_all$Region,levels=c("North","Center","South"))
+#Reorder Treatments
+Res_fl_all$Drought <- as.factor(Res_fl_all$Drought)
+Res_fl_all$Drought <- factor(Res_fl_all$Drought, levels=c("W", "D"))
+#Set up site lables equating names to codes
+Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+#Use ggplot to generate plot with all required formating
+mapa4<-ggplot(Res_sla_all, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drought))+
+  geom_jitter(aes(colour=Drought), size=0.2)+
+  geom_smooth(method="lm")+
+  facet_wrap(.~Region)+
+  xlab("log(MAPA lag 2)") +
+  #scale_x_continuous(limits=c(-0.1,0.4))+
+  scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
+  scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  theme_classic()
+mapa4 <-mapa4 + theme(
+  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=15,face="bold"),
+  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+mapa4 <-mapa4 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
+mapa4
+#ggsave("Figure_pannels/3A.MAPA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
+
+############ MATA ############
+# MATA SLA lag0
+vis_sla_D<-visreg(MATA_sla_lag0, xvar="MATA_lag0", by="Region", cond=list(Drought="D")) #set up visreg for Drought
+vis_sla_W<-visreg(MATA_sla_lag0, xvar="MATA_lag0", by="Region", cond=list(Drought="W")) #set up visreg for Wet
+Res_sla_D<-vis_sla_D$res ; Res_sla_W<-vis_sla_W$res # Extract residuals
+Res_sla_all<-rbind(Res_sla_D, Res_sla_W) #Row bind wet and dry residuals into one data frame
+Res_sla_all$Region<-as.factor(Res_sla_all$Region)
+Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Center","South"))
+#Reorder Treatments
+Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
+Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
+#Set up site lables equating names to codes
+Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+#Use ggplot to generate plot with all required formating
+mata1<-ggplot(Res_sla_all, aes(MATA_lag0, y=visregRes, fill=Drought, colour=Drought))+
+  geom_jitter(aes(colour=Drought), size=0.2)+
+  geom_smooth(method="lm")+
+  facet_wrap(.~Region)+
+  xlab("MATA (lag 0)") +
+  #scale_x_continuous(limits=c(-0.1,0.4))+
+  scale_y_continuous(name="SLA", limits=c(100,400))+
+  scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  theme_classic()
+mata1 <-mata1 + theme(
+  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=15,face="bold"),
+  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+mata1 <-mata1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
+mata1
+#ggsave("Figure_pannels/2A.MATA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+
+
+# MATA Date of Flowering Lag2
+vis_ft_D<-visreg(MATA_fl_lag2, xvar="MATA_lag2", by="Region", cond=list(Drought="D")) #set up visreg for Drought
+vis_ft_W<-visreg(MATA_fl_lag2, xvar="MATA_lag2", by="Region", cond=list(Drought="W")) #set up visreg for Wet
+Res_ft_D<-vis_ft_D$res ; Res_ft_W<-vis_ft_W$res # Extract residuals
+Res_ft_all<-rbind(Res_ft_D, Res_ft_W) #Row bind wet and dry residuals into one data frame
+Res_ft_all$Region<-as.factor(Res_ft_all$Region)
+Res_ft_all$Region<-factor(Res_ft_all$Region,levels=c("North","Center","South"))
+#Reorder Treatments
+Res_ft_all$Drought <- as.factor(Res_ft_all$Drought)
+Res_ft_all$Drought <- factor(Res_ft_all$Drought, levels=c("W", "D"))
+#Set up site lables equating names to codes
+Site_Labs<-c("North"="A (North)", "Center"="B (Centre)", "South"="C (South)")
+#Use ggplot to generate plot with all required formating
+mata2<-ggplot(Res_ft_all, aes(MATA_lag2, y=visregRes, fill=Drought, colour=Drought))+
+  geom_jitter(aes(colour=Drought), size=0.2)+
+  geom_smooth(method="lm")+
+  facet_wrap(.~Region)+
+  xlab("MATA (lag 2)") +
+  scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
+  scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  theme_classic()
+mata2 <-mata2 + theme(
+  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=15,face="bold"),
+  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+mata2 <-mata2 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
+mata2
+
+
+################### Cow Plots ########################
 plot_grid(spei1, cmda1, spei2, cmda2)#10x8
-plot_grid(mapa1,mata1, mapa2, mata2) #10x8
+
+#there are now 4 mapa graphs to show. How should we setup this graph?
+#plot_grid(mapa1,mata1, mapa2, mata2) #10x8
+
+
 # saved 12 x 8
 mapa1
 
