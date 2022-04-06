@@ -196,14 +196,6 @@ lrtest(n_fl_lag1,n_fl_lag1a) #2-way interaction strong evidence
 
 
 ############ CMDA ############
-#SLA lag1
-n_CMDA_sla_lag1a <- lmer(SLA ~  Drought+CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_CMDA_sla_lag1,n_CMDA_sla_lag1a) #simpler model better
-n_CMDA_sla_no_lag <- lmer(SLA ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_CMDA_sla_lag1a,n_CMDA_sla_no_lag) #0.059 for simpler
-n_CMDA_sla_no_drought <- lmer(SLA ~  CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_CMDA_sla_no_lag,n_CMDA_sla_no_drought) #very strong evidence for only drought 
-
 #SLA lag2
 n_CMDA_sla_lag2a <- lmer(SLA ~  Drought+CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
 lrtest(n_CMDA_sla_lag2,n_CMDA_sla_lag2a) #weak evidence for simpler model being better
@@ -224,14 +216,6 @@ lrtest(n_CMDA_fl_lag1_no_lag,n_CMDA_fl_lag1_no_drought) #strong evidence in favo
 n_CMDA_fl_lag1_nothing <- lmer(Experiment_Date ~ (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
 lrtest(n_CMDA_fl_lag1_no_lag,n_CMDA_fl_lag1_nothing) ##very strong evidence for only drought 
 
-#fl lag2
-n_CMDA_fl_lag2a <- lmer(Experiment_Date ~  Drought+CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat),data=north)
-lrtest(n_CMDA_fl_lag2,n_CMDA_fl_lag2a) #simpler model favoured 0.027
-n_CMDA_fl_lag2_no_lag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_CMDA_fl_lag2a,n_CMDA_fl_lag2_no_lag) # Select drought only
-# drought only 
-
-
 ############ MAPA north ############
 
 ### MAPA SLA Lag 0 
@@ -242,25 +226,20 @@ lrtest(n_MAPA_sla_lag0, n_MAPA_sla_lag0a) #2-way interaction strong evidence 0.0
 n_MAPA_sla_lag2a <- lmer(SLA ~  Drought+MAPA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
 lrtest(n_MAPA_sla_lag2, n_MAPA_sla_lag2a) #2-way interaction strong evidence 0.0014
 
-
 #fl lag1
 n_MAPA_fl_lag1a <- lmer(Experiment_Date ~  Drought+MAPA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_MAPA_fl_lag1, n_MAPA_fl_lag1a) #simpler model
-n_MAPA_fl_lag1_no_lag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_MAPA_fl_lag1a,n_MAPA_fl_lag1_no_lag) # Drought+MAPA_lag1 0.02
+lrtest(n_MAPA_fl_lag1, n_MAPA_fl_lag1a) #Very strong evidence for simpler model 0.0002357
 
 
 ############ MATA north ############
 
+#SLA lag 1
+n_MATA_sla_lag1a <- lmer(SLA ~  Drought+MATA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
+lrtest(n_MATA_sla_lag1, n_MATA_sla_lag1a) #2-way interaction strong evidence 0.006711
+
 #SLA lag 2
 n_MATA_sla_lag2a <- lmer(SLA ~  Drought+MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_MATA_sla_lag2, n_MATA_sla_lag2a) #simpler
-n_MATA_fl_lag2_no_lag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_MATA_fl_lag2a,n_MATA_fl_lag2_no_lag) # simpler
-n_MATA_fl_lag2_no_drought <- lmer(Experiment_Date ~  MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_MATA_fl_lag2_no_drought, n_MATA_fl_lag2_no_lag) # no lag better
-n_nothing <- lmer(Experiment_Date ~ (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_MATA_fl_lag2_no_lag,n_nothing) # drought only 
+lrtest(n_MATA_sla_lag2, n_MATA_sla_lag2a) #2-way interaction strong evidence 0.008224
 
 #fl lag 1
 n_MATA_fl_lag1a <- lmer(Experiment_Date ~  Drought+MATA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
@@ -432,7 +411,7 @@ lrtest(c_fl_lag0a,c_fl_lag0_nolag) #no evidence, keep simpler
 c_fl_lag0_nodrought <- lmer(Experiment_Date ~  lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 lrtest(c_fl_lag0_nolag,c_fl_lag0_nodrought) # strong evidence for no lag
 c_fl_lag0_nothing <- lmer(Experiment_Date ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
-lrtest(c_fl_lag0_nolag,c_fl_lag0_nodrought) # strong evidence for no lag, 2.2e-16
+lrtest(c_fl_lag0_nolag,c_fl_lag0_nothing) # strong evidence for no lag, 2.2e-16
 
 #fl lag 1
 c_fl_lag1a <- lmer(Experiment_Date ~  Drought+lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
@@ -464,7 +443,7 @@ lrtest(c_CMDA_sla_lag0a,c_CMDA_sla_no_lag) # no evidence, select simpler model
 c_CMDA_sla_no_drought <- lmer(SLA ~  CMDA_lag0+ (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 lrtest(c_CMDA_sla_no_lag,c_CMDA_sla_no_drought) # no lag supported 
 c_CMDA_sla_nothing <- lmer(SLA ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
-lrtest(c_CMDA_sla_no_lag,c_CMDA_sla_nothing) #strong evidence for drought only
+lrtest(c_CMDA_sla_no_lag,c_CMDA_sla_nothing) #strong evidence for drought only, 0.004818
 
 #SLA lag1
 c_CMDA_sla_lag1a <- lmer(SLA ~  Drought+CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
@@ -474,7 +453,7 @@ lrtest(c_CMDA_sla_lag1a,c_CMDA_sla_no_lag ) #weak evidence for simpler model
 c_CMDA_sla_no_drought <- lmer(SLA ~  CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 lrtest(c_CMDA_sla_no_lag,c_CMDA_sla_no_drought) # no lag supported 
 c_CMDA_sla_nothing <- lmer(SLA ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
-lrtest(c_CMDA_sla_no_lag,c_CMDA_sla_nothing) #strong evidence for drought only
+lrtest(c_CMDA_sla_no_lag,c_CMDA_sla_nothing) #strong evidence for drought only 0.004818
 
 #SLA lag2
 c_CMDA_sla_lag2a <- lmer(SLA ~  Drought+CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
@@ -484,7 +463,17 @@ lrtest(c_CMDA_sla_lag2a,c_CMDA_sla_no_lag) #moderate evidence for no lag model
 c_CMDA_sla_no_drought <- lmer(SLA ~  CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 lrtest(c_CMDA_sla_no_lag,c_CMDA_sla_no_drought) # very strong evidence for no lag
 c_CMDA_sla_nothing <- lmer(SLA ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
-lrtest(c_CMDA_sla_no_lag,c_CMDA_sla_nothing) # strong evidence for drought only model
+lrtest(c_CMDA_sla_no_lag,c_CMDA_sla_nothing) # strong evidence for drought only model 0.004818
+
+#SLA lag012
+c_CMDA_sla_lag012a <- lmer(SLA ~  Drought+CMDA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
+lrtest(c_CMDA_sla_lag012,c_CMDA_sla_lag012a) #no evidence of difference, select simpler model
+c_CMDA_sla_no_lag <- lmer(SLA ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
+lrtest(c_CMDA_sla_lag012a,c_CMDA_sla_no_lag) #moderate evidence for no lag model
+c_CMDA_sla_no_drought <- lmer(SLA ~  CMDA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
+lrtest(c_CMDA_sla_no_lag,c_CMDA_sla_no_drought) # very strong evidence for no lag
+c_CMDA_sla_nothing <- lmer(SLA ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
+lrtest(c_CMDA_sla_no_lag,c_CMDA_sla_nothing) # strong evidence for drought only model 0.004818
 
 
 #fl lag0
@@ -518,6 +507,11 @@ c_CMDA_fl_lag2a_nothing <- lmer(Experiment_Date ~  (1|Family) + (1|Block) + (1|Y
 lrtest(c_CMDA_fl_nolag,c_CMDA_fl_lag2a_nothing)  # strong evidence for drought only model
 
 ############ MAPA centre ############
+
+#SLA lag0
+c_MAPA_sla_lag0a <- lmer(SLA ~  Drought+MAPA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
+lrtest(c_MAPA_sla_lag0,c_MAPA_sla_lag0a) #2-way interaction very strong evidence, 0.001881
+
 #SLA lag1
 c_MAPA_sla_lag1a <- lmer(SLA ~  Drought+MAPA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 lrtest(c_MAPA_sla_lag1,c_MAPA_sla_lag1a) #2-way interaction very strong evidence, 0.0005356
@@ -546,10 +540,6 @@ lrtest(c_MATA_sla_lag1,c_MATA_sla_lag1a) #2-way interaction strong evidence, 0.0
 #SLA lag2
 c_MATA_sla_lag2a <- lmer(SLA ~  Drought+MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
 lrtest(c_MATA_sla_lag2,c_MATA_sla_lag2a) #2-way interaction strong evidence, 0.008889
-
-#SLA lag012
-c_MATA_sla_lag012a <- lmer(SLA ~  Drought+MATA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=centre)
-lrtest(c_MATA_sla_lag012,c_MATA_sla_lag012a) #2-way interaction strong evidence, 0.0027
 
 
 #fl lag 0
@@ -781,15 +771,57 @@ lrtest(s_CMDA_sla_nolag,s_CMDA_sla_lag0_nodrought) #no lag
 s_CMDA_sla_lag0_nothing <- lmer(SLA ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
 lrtest(s_CMDA_sla_nolag,s_CMDA_sla_lag0_nothing) #no lag, 6.877e-07
 
-#fl lag2
-s_CMDA_fl_lag2a <- lmer(Experiment_Date ~  Drought+CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_CMDA_fl_lag2,s_CMDA_fl_lag2a) #strong evidence simpler
+#SLA lag1
+s_CMDA_sla_lag1a <- lmer(SLA ~  Drought+CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_sla_lag1,s_CMDA_sla_lag1a) #no evidence, simpler
+s_CMDA_sla_nolag <- lmer(SLA ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_sla_lag1a,s_CMDA_sla_nolag) #no evidence, simpler
+s_CMDA_sla_lag1_nodrought <- lmer(SLA ~  CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_sla_nolag,s_CMDA_sla_lag1_nodrought) #no lag
+s_CMDA_sla_lag1_nothing <- lmer(SLA ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_sla_nolag,s_CMDA_sla_lag1_nothing) #no lag, 6.877e-07
+
+
+#fl lag0
+s_CMDA_fl_lag0a <- lmer(Experiment_Date ~  Drought+CMDA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_fl_lag0,s_CMDA_fl_lag0a) #strong evidence simpler
 s_CMDA_fl_nolag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_CMDA_fl_lag2a,s_CMDA_fl_nolag) # nolag 
-s_CMDA_fl_lag2a_nodrought <- lmer(Experiment_Date ~  CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_CMDA_fl_nolag,s_CMDA_fl_lag2a_nodrought) #no lag
+lrtest(s_CMDA_fl_lag0a,s_CMDA_fl_nolag) # nolag 
+s_CMDA_fl_lag0a_nodrought <- lmer(Experiment_Date ~  CMDA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_fl_nolag,s_CMDA_fl_lag0a_nodrought) #no lag
+s_CMDA_fl_lag0a_nothing <- lmer(Experiment_Date ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_fl_nolag,s_CMDA_fl_lag0a_nothing) #no lag, 0.005598
+
+#fl lag1
+s_CMDA_fl_lag1a <- lmer(Experiment_Date ~  Drought+CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_fl_lag1,s_CMDA_fl_lag1a) #strong evidence simpler
+s_CMDA_fl_nolag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_fl_lag1a,s_CMDA_fl_nolag) # nolag 
+s_CMDA_fl_lag1a_nodrought <- lmer(Experiment_Date ~  CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_fl_nolag,s_CMDA_fl_lag1a_nodrought) #no lag
 s_CMDA_fl_lag1a_nothing <- lmer(Experiment_Date ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
 lrtest(s_CMDA_fl_nolag,s_CMDA_fl_lag1a_nothing) #no lag, 0.005598
+
+#fl lag01
+s_CMDA_fl_lag01a <- lmer(Experiment_Date ~  Drought+CMDA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_fl_lag01,s_CMDA_fl_lag01a) #strong evidence simpler
+s_CMDA_fl_nolag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_fl_lag01a,s_CMDA_fl_nolag) # nolag 
+s_CMDA_fl_lag01a_nodrought <- lmer(Experiment_Date ~  CMDA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_fl_nolag,s_CMDA_fl_lag01a_nodrought) #no lag
+s_CMDA_fl_lag01a_nothing <- lmer(Experiment_Date ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_fl_nolag,s_CMDA_fl_lag01a_nothing) #no lag, 0.005598
+
+#fl lag012
+s_CMDA_fl_lag012a <- lmer(Experiment_Date ~  Drought+CMDA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), 
+                          control=lmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=100000)),data=south)
+lrtest(s_CMDA_fl_lag012,s_CMDA_fl_lag012a) #strong evidence simpler
+s_CMDA_fl_nolag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_fl_lag012a,s_CMDA_fl_nolag) # nolag 
+s_CMDA_fl_lag012a_nodrought <- lmer(Experiment_Date ~  CMDA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_fl_nolag,s_CMDA_fl_lag012a_nodrought) #no lag
+s_CMDA_fl_lag012a_nothing <- lmer(Experiment_Date ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_CMDA_fl_nolag,s_CMDA_fl_lag012a_nothing) #no lag, 0.005598
 
 ############ MAPA south ############
 
@@ -828,43 +860,8 @@ lrtest(s_MAPA_fl_lag2,s_MAPA_fl_lag2a) #2-way interaction moderate significant e
 s_MATA_sla_lag0a <- lmer(SLA ~  Drought+MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
 lrtest(s_MATA_sla_lag0,s_MATA_sla_lag0a) #2-way interaction very stong evidence, 5.729e-05
 
-#SLA lag 1
-s_MATA_sla_lag1a <- lmer(SLA ~  Drought+MATA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_sla_lag1,s_MATA_sla_lag1a) #2-way interaction very stong evidence, 0.004
-
-#fl lag 0
-s_MATA_fl_lag0a <- lmer(Experiment_Date ~  Drought+MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_fl_lag0,s_MATA_fl_lag0a) #simpler
-s_MATA_fl_lag_nolag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_fl_lag0a,s_MATA_fl_lag_nolag) #simpler
-s_MATA_fl_lag_nodrought <- lmer(Experiment_Date ~  MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_fl_lag_nolag,s_MATA_fl_lag_nodrought) # no lag
-s_MATA_fl_lag_nothing <- lmer(Experiment_Date ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_fl_lag_nolag,s_MATA_fl_lag_nothing) # no lag 0.0056
-
-
-#fl lag 1
-s_MATA_fl_lag1a <- lmer(Experiment_Date ~  Drought+MATA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_fl_lag1,s_MATA_fl_lag1a) #simpler
-s_MATA_fl_lag_nolag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_fl_lag1a,s_MATA_fl_lag_nolag) #simpler
-s_MATA_fl_lag_nodrought <- lmer(Experiment_Date ~  MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_fl_lag_nolag,s_MATA_fl_lag_nodrought) # no lag
-
-#fl lag 0,1
-s_MATA_fl_lag01a <- lmer(Experiment_Date ~  Drought+MATA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_fl_lag01,s_MATA_fl_lag01a) #2-way moderate evidence, 0.02988
-s_MATA_fl_lag_nolag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_fl_lag01a,s_MATA_fl_lag_nolag) #simpler
-s_MATA_fl_lag_nodrought <- lmer(Experiment_Date ~  MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_fl_lag_nolag,s_MATA_fl_lag_nodrought) # no lag
-
-#fl lag 0,1,2
-s_MATA_fl_lag012a <- lmer(Experiment_Date ~  Drought+MATA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_fl_lag012,s_MATA_fl_lag012a) #2-way moderate evidence, 0.02988
-s_MATA_fl_lag_nolag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_fl_lag012a,s_MATA_fl_lag_nolag) #simpler
-s_MATA_fl_lag_nodrought <- lmer(Experiment_Date ~  MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
-lrtest(s_MATA_fl_lag_nolag,s_MATA_fl_lag_nodrought) # no lag
+#fl lag 2
+s_MATA_fl_lag2a <- lmer(Experiment_Date ~  Drought+MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=south)
+lrtest(s_MATA_fl_lag2,s_MATA_fl_lag2a) #2-way interaction very moderate evidence, 0.02988
 
 
