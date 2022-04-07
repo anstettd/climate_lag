@@ -293,15 +293,15 @@ spei1<-ggplot(Res_sla_all, aes(lag0, y=visregRes, fill=Drought, colour=Drought))
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 spei1 <-spei1 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 spei1 <-spei1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),  legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 spei1
-ggsave("Figure_pannels/1A.SPEI_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/1A.SPEI_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # SPEI Date of Flowering Lag1
@@ -327,15 +327,15 @@ spei2<-ggplot(Res_ft_all, aes(lag1, y=visregRes, fill=Drought, colour=Drought))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 spei2 <-spei2 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 spei2 <-spei2 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),  legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 spei2
-ggsave("Figure_pannels/1B.SPEI_lag1_ft.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/1B.SPEI_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
 
 ############ CMDA ## Region*Drought*CMDA_lag2
@@ -363,15 +363,15 @@ cmda1<-ggplot(Res_sla_all, aes(CMDA_lag2, y=visregRes, fill=Drought, colour=Drou
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 cmda1 <-cmda1 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 cmda1 <-cmda1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),  legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 cmda1
-ggsave("Figure_pannels/4A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/4A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # CMDA Date of Flowering Lag1
@@ -397,15 +397,15 @@ cmda2<-ggplot(Res_ft_all, aes(CMDA_lag1, y=visregRes, fill=Drought, colour=Droug
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 cmda2 <-cmda2 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 cmda2 <-cmda2 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),  legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 cmda2
-ggsave("Figure_pannels/4B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/4B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
 
 
@@ -434,15 +434,15 @@ mapa1<-ggplot(Res_sla_all, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Drou
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 mapa1 <-mapa1 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 mapa1 <-mapa1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa1
-ggsave("Figure_pannels/3A.MAPA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/3A.MAPA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA SLA lag1
@@ -469,15 +469,15 @@ mapa2<-ggplot(Res_sla_all, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Drou
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 mapa2 <-mapa2 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 mapa2 <-mapa2 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa2
-ggsave("Figure_pannels/3B.MAPA_lag1_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/3B.MAPA_lag1_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA SLA lag2
@@ -504,15 +504,15 @@ mapa3<-ggplot(Res_sla_all, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drou
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 mapa3 <-mapa3 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 mapa3 <-mapa3 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa3
-ggsave("Figure_pannels/3C.MAPA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/3C.MAPA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
 
 # MAPA SLA lag01
 vis_sla_D<-visreg(MAPA_sla_lag01, xvar="MAPA_lag01", by="Region", cond=list(Drought="D")) #set up visreg for Drought
@@ -538,15 +538,15 @@ mapa4<-ggplot(Res_sla_all, aes(MAPA_lag01, y=visregRes, fill=Drought, colour=Dro
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 mapa4 <-mapa4 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 mapa4 <-mapa4 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa4
-ggsave("Figure_pannels/3D.MAPA_lag01_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/3D.MAPA_lag01_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA SLA lag012
@@ -573,15 +573,15 @@ mapa5<-ggplot(Res_sla_all, aes(MAPA_lag012, y=visregRes, fill=Drought, colour=Dr
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 mapa5 <-mapa5 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 mapa5 <-mapa5 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa5
-ggsave("Figure_pannels/3E.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/3E.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA df lag0
@@ -608,15 +608,15 @@ mapa6<-ggplot(Res_fl_all, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Droug
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 mapa6 <-mapa6 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 mapa6 <-mapa6 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa6
-ggsave("Figure_pannels/3F.MAPA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/3F.MAPA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 # MAPA df lag1
 vis_fl_D<-visreg(MAPA_fl_lag1, xvar="MAPA_lag1", by="Region", cond=list(Drought="D")) #set up visreg for Drought
@@ -642,15 +642,15 @@ mapa7<-ggplot(Res_fl_all, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Droug
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 mapa7 <-mapa7 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 mapa7 <-mapa7 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa7
-ggsave("Figure_pannels/3G.MAPA_lag1_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/3G.MAPA_lag1_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA df lag2
@@ -677,15 +677,15 @@ mapa8<-ggplot(Res_fl_all, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Droug
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 mapa8 <-mapa8 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 mapa8 <-mapa8 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa8
-ggsave("Figure_pannels/3H.MAPA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/3H.MAPA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA df lag01
@@ -712,15 +712,15 @@ mapa9<-ggplot(Res_fl_all, aes(MAPA_lag01, y=visregRes, fill=Drought, colour=Drou
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 mapa9 <-mapa9 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 mapa9 <-mapa9 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa9
-ggsave("Figure_pannels/3I.MAPA_lag01_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/3I.MAPA_lag01_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA df lag012
@@ -747,15 +747,15 @@ mapa10<-ggplot(Res_fl_all, aes(MAPA_lag012, y=visregRes, fill=Drought, colour=Dr
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 mapa10 <-mapa10 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 mapa10 <-mapa10 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa10
-ggsave("Figure_pannels/3J.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/3J.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
 
 ############ MATA ############
 # MATA SLA lag0
@@ -782,15 +782,15 @@ mata1<-ggplot(Res_sla_all, aes(MATA_lag0, y=visregRes, fill=Drought, colour=Drou
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 mata1 <-mata1 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 mata1 <-mata1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mata1
-ggsave("Figure_pannels/2A.MATA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+#ggsave("Figure_pannels/2A.MATA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MATA Date of Flowering Lag2
@@ -816,18 +816,30 @@ mata2<-ggplot(Res_ft_all, aes(MATA_lag2, y=visregRes, fill=Drought, colour=Droug
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
 mata2 <-mata2 + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+  axis.text.x = element_text(size=9, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=12,face="bold"),
+  axis.title.x = element_text(color="black", size=18, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=18,vjust = 2, face="bold",hjust=0.5))
 mata2 <-mata2 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),  legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mata2
 
 
 ################### Cow Plots ########################
-plot_grid(spei1, cmda1, spei2, cmda2)#10x8
+
+#Make Fig 2 #Export at 10x11
+plot_grid(mapa1,mapa6,mapa2,mapa7,mapa3,mapa8,
+          labels = "AUTO", ncol = 2)
+
+
+#Make Fig 3 #Export at 10x11
+plot_grid(spei1,spei2,cmda1,cmda2,mata1,mata2, 
+          labels = "AUTO", ncol = 2) 
+
+
+
+plot_grid(spei1, cmda1, spei2, cmda2)
 
 #there are now 4 mapa graphs to show. How should we setup this graph?
 plot_grid(mapa1,mapa7,mapa3, mapa8) #10x8

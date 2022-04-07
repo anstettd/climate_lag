@@ -384,6 +384,19 @@ sm_main11
 sm_main12  #Significant effect of MATA_autocorrelation
 
 
+DF12<-ggplot(z_multiple_time, aes(x=MATA_auto, y=abs_change_DF_D)) +
+  geom_point(aes(fill=Region),size=3, shape=21,color="black")+
+  scale_fill_manual(values= c("North"="#3399FF", "Centre"="#FFCC00", "South"="#FF3333")) +
+  geom_smooth(method='lm', formula= y~x, color = "black")+
+  # scale_y_continuous(name="change_DF_D", limits=c(0,12))+
+  theme_classic() + theme(axis.text.x = element_text(size=14, face="bold", angle=0,hjust=0.5),
+                          axis.text.y = element_text(size=14,face="bold"),
+                          axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
+                          axis.title.y = element_text(color="black", size=15,vjust = 2, face="bold",hjust=0.5))+
+  theme(legend.title=element_blank())+
+  theme(legend.text = element_text(size=15))
+DF12
+
 
 
 
