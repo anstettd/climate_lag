@@ -89,7 +89,7 @@ SLA6<-ggplot(z1, aes(x=MATA_auto, y=abs_change_SLA_D)) +
   theme(legend.title=element_blank())+
   theme(legend.text = element_text(size=15))
 
-plot_grid(SLA1,SLA2,SLA3,SLA4,SLA5,SLA6,ncol = 2) #Random
+plot_grid(SLA1,SLA2,SLA3,SLA4,SLA5,SLA6,ncol = 2) #export at 7.5 X 9 
 
 
 #DF
