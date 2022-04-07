@@ -245,6 +245,18 @@ lrtest(n_MATA_sla_lag2, n_MATA_sla_lag2a) #2-way interaction strong evidence 0.0
 n_MATA_fl_lag1a <- lmer(Experiment_Date ~  Drought+MATA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
 lrtest(n_MATA_fl_lag1, n_MATA_fl_lag1a) #2-way interaction moderate evidence 0.04
 
+
+#fl lag 2
+n_MATA_fl_lag2a <- lmer(Experiment_Date ~  Drought+MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
+lrtest(n_MATA_fl_lag2, n_MATA_fl_lag2a) #2-way interaction moderate evidence 0.04
+n_MATA_fl_lag2_nolag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
+lrtest(n_MATA_fl_lag2a, n_MATA_fl_lag2_nolag) #2-way interaction moderate evidence 0.04
+n_MATA_fl_lag2_nodrought <- lmer(Experiment_Date ~  MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
+lrtest(n_MATA_fl_lag2a, n_MATA_fl_lag2_nodrought) #2-way interaction moderate evidence 0.04
+n_MATA_fl_lag2_nothing <- lmer(Experiment_Date ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
+lrtest(n_MATA_fl_lag2_nolag, n_MATA_fl_lag2_nothing) #2-way interaction moderate evidence 0.04
+
+
 ##########################################################################################################
 #### Centre ######
 ##########################################################################################################

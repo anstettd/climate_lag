@@ -20,7 +20,7 @@ z1 <- read.csv("Data/z_multiple_time.csv", header=T)  #Basic Lat/Long plus heade
 z1 <- z_multiple_time 
 ##########################################################################################################
 #Interative models
-lm1 <- lm(abs_change_SLA_W~SPEI_auto*SPEI_mean,data=z1)
+#lm1 <- lm(abs_change_SLA_W~SPEI_auto*SPEI_mean,data=z1)
 lm2 <- lm(abs_change_SLA_D~CMDA_auto*CMDA_mean,data=z1)
 lm3 <- lm(abs_change_DF_W~MAPA_auto*MAPA_mean,data=z1)
 lm4 <- lm(abs_change_DF_D~MATA_auto*MATA_mean,data=z1)
