@@ -293,7 +293,7 @@ z_1416$time_range <- "2014_2016"
 z_multiple_time <- rbind(z_1012,z_1113,z_1214,z_1315,z_1416)
 
 #Export data
-write_csv(z_multiple_time,"Data/z_multiple_time_5.csv")
+#write_csv(z_multiple_time,"Data/z_multiple_time_5.csv")
 
 
 # Mean * Autocorr

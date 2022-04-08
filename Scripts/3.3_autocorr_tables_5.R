@@ -15,7 +15,7 @@ library(tidyverse)
 #library(MASS)
 
 #Import files
-z1 <- read.csv("Data/z1.csv", header=T)  #Basic Lat/Long plus headers
+z_multiple_time <- read.csv("Data/z_multiple_time_5.csv", header=T)  #Basic Lat/Long plus headers
 
 ##########################################################################################################
 #Import files
@@ -23,10 +23,10 @@ z1 <- read.csv("Data/z1.csv", header=T)  #Basic Lat/Long plus headers
 auto_table <- data.frame()
 
   for(i in 1:3){
-    lm1 <- lm(abs_change_SLA_W~z1[,10+i]+z1[,14+i],data=z1)
-    lm2 <- lm(abs_change_SLA_D~z1[,10+i]+z1[,14+i],data=z1)
-    lm3 <- lm(abs_change_DF_W~z1[,10+i]+z1[,14+i],data=z1)
-    lm4 <- lm(abs_change_DF_D~z1[,10+i]+z1[,14+i],data=z1)
+    lm1 <- lm(abs_change_SLA_W~z_multiple_time[,10+i]+z_multiple_time[,14+i],data=z_multiple_time)
+    lm2 <- lm(abs_change_SLA_D~z_multiple_time[,10+i]+z_multiple_time[,14+i],data=z_multiple_time)
+    lm3 <- lm(abs_change_DF_W~z_multiple_time[,10+i]+z_multiple_time[,14+i],data=z_multiple_time)
+    lm4 <- lm(abs_change_DF_D~z_multiple_time[,10+i]+z_multiple_time[,14+i],data=z_multiple_time)
     
     sm1 <- summary(lm1)
     sm2 <- summary(lm2)
@@ -73,4 +73,4 @@ colnames(auto_table) <- c("slope","p-value","R2","slope","p-value","R2",
                           "slope","p-value","R2","slope","p-value","R2")
 #3-row titles: SLA Wet, SLA Dry, DF Wet, DF Dry
 
-write_csv(auto_table,"Tables/autocorr_stats.csv")
+write_csv(auto_table,"Tables/autocorr_stats_5.csv")
