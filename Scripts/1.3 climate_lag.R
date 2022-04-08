@@ -462,7 +462,7 @@ mapa2<-ggplot(Res_sla_all, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Drou
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("log(MAPA lag 0)") +
+  xlab("log(MAPA lag 1)") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+

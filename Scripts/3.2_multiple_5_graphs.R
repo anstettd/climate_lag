@@ -17,7 +17,7 @@ library(cowplot)
 ##########################################################################################################
 #Import files
 
-z1 <- read.csv("Data/z1.csv", header=T)  #Basic Lat/Long plus headers
+z1 <- read.csv("Data/z_multiple_time.csv", header=T)  #Basic Lat/Long plus headers
 
 #SLA
 #CMDA
