@@ -252,9 +252,9 @@ lrtest(n_MATA_fl_lag2, n_MATA_fl_lag2a) #no difference
 n_MATA_fl_lag2_nolag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
 lrtest(n_MATA_fl_lag2a, n_MATA_fl_lag2_nolag) #no difference
 n_MATA_fl_lag2_nodrought <- lmer(Experiment_Date ~  MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_MATA_fl_lag2a, n_MATA_fl_lag2_nodrought) #2-way interaction moderate evidence 0.04
+lrtest(n_MATA_fl_lag2a, n_MATA_fl_lag2_nodrought) #Drought + MATA_lag2 
 n_MATA_fl_lag2_nothing <- lmer(Experiment_Date ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_MATA_fl_lag2_nolag, n_MATA_fl_lag2_nothing) #2-way interaction moderate evidence 0.04
+lrtest(n_MATA_fl_lag2_nolag, n_MATA_fl_lag2_nothing) #Drought only model. p<0.0001
 
 
 ##########################################################################################################
