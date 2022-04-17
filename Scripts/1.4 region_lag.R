@@ -237,9 +237,9 @@ lrtest(n_MAPA_fl_lag1, n_MAPA_fl_lag1a) #Very strong evidence for simpler model 
 n_MATA_sla_lag1a <- lmer(SLA ~  Drought+MATA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
 lrtest(n_MATA_sla_lag1, n_MATA_sla_lag1a) #2-way interaction strong evidence 0.006711
 
-#SLA lag 2
-n_MATA_sla_lag2a <- lmer(SLA ~  Drought+MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_MATA_sla_lag2, n_MATA_sla_lag2a) #2-way interaction strong evidence 0.008224
+  #SLA lag 2
+  n_MATA_sla_lag2a <- lmer(SLA ~  Drought+MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
+  lrtest(n_MATA_sla_lag2, n_MATA_sla_lag2a) #2-way interaction strong evidence 0.008224
 
 #fl lag 1
 n_MATA_fl_lag1a <- lmer(Experiment_Date ~  Drought+MATA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
@@ -248,13 +248,13 @@ lrtest(n_MATA_fl_lag1, n_MATA_fl_lag1a) #2-way interaction moderate evidence 0.0
 
 #fl lag 2
 n_MATA_fl_lag2a <- lmer(Experiment_Date ~  Drought+MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_MATA_fl_lag2, n_MATA_fl_lag2a) #2-way interaction moderate evidence 0.04
+lrtest(n_MATA_fl_lag2, n_MATA_fl_lag2a) #no difference
 n_MATA_fl_lag2_nolag <- lmer(Experiment_Date ~  Drought + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_MATA_fl_lag2a, n_MATA_fl_lag2_nolag) #2-way interaction moderate evidence 0.04
+lrtest(n_MATA_fl_lag2a, n_MATA_fl_lag2_nolag) #no difference
 n_MATA_fl_lag2_nodrought <- lmer(Experiment_Date ~  MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_MATA_fl_lag2a, n_MATA_fl_lag2_nodrought) #2-way interaction moderate evidence 0.04
+lrtest(n_MATA_fl_lag2a, n_MATA_fl_lag2_nodrought) #Drought + MATA_lag2 
 n_MATA_fl_lag2_nothing <- lmer(Experiment_Date ~  (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=north)
-lrtest(n_MATA_fl_lag2_nolag, n_MATA_fl_lag2_nothing) #2-way interaction moderate evidence 0.04
+lrtest(n_MATA_fl_lag2_nolag, n_MATA_fl_lag2_nothing) #Drought only model. p<0.0001
 
 
 ##########################################################################################################

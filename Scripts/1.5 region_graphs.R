@@ -77,7 +77,7 @@ N3<-ggplot(n_Res_sla_lag0, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Drou
   geom_smooth(method="lm")+
   xlab("log(MAPA Lag 0)") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
-  scale_y_continuous(name="SLA", limits=c(100,400))+
+  scale_y_continuous(name="North SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -108,7 +108,7 @@ N4<-ggplot(n_Res_sla_lag2, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drou
   geom_smooth(method="lm")+
   xlab("log(MAPA Lag 2)") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
-  scale_y_continuous(name="SLA", limits=c(100,400))+
+  scale_y_continuous(name="North SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -284,20 +284,20 @@ ggsave("Figures/C.SPEI_lag2_SLA.pdf", width = 6, height = 6, units = "in")
 ############ MAPA ############
 
 # MAPA SLA lag0
-c_MAPA_vis_sla_lag1<-visreg(c_MAPA_sla_lag1, xvar="MAPA_lag1", by="Drought") #set up visreg for Drought
-c_MAPA_Res_sla_lag1<-c_MAPA_vis_sla_lag1$res # Extract residuals
+c_MAPA_vis_sla_lag0<-visreg(c_MAPA_sla_lag0, xvar="MAPA_lag0", by="Drought") #set up visreg for Drought
+c_MAPA_Res_sla_lag0<-c_MAPA_vis_sla_lag0$res # Extract residuals
 
 #Reorder Treatments
-c_MAPA_Res_sla_lag1$Drought <- as.factor(c_MAPA_Res_sla_lag1$Drought)
-c_MAPA_Res_sla_lag1$Drought <- factor(c_MAPA_Res_sla_lag1$Drought, levels=c("W", "D"))
+c_MAPA_Res_sla_lag0$Drought <- as.factor(c_MAPA_Res_sla_lag0$Drought)
+c_MAPA_Res_sla_lag0$Drought <- factor(c_MAPA_Res_sla_lag0$Drought, levels=c("W", "D"))
 
 #Use ggplot to generate plot with all required formating
-C4<-ggplot(c_MAPA_Res_sla_lag1, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Drought))+
+C4<-ggplot(c_MAPA_Res_sla_lag0, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("log(MAPA) Lag 1") +
+  xlab("log(MAPA) Lag 0") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
-  scale_y_continuous(name="SLA", limits=c(100,400))+
+  scale_y_continuous(name="Centre SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -312,22 +312,21 @@ C4 <-C4 +
 C4
 #ggsave("Figures/C.MAPA_lag0_SLA.pdf", width = 6, height = 6, units = "in")
 
-
-# MAPA SLA lag2
-c_MAPA_vis_sla_lag2<-visreg(c_MAPA_sla_lag2, xvar="MAPA_lag2", by="Drought") #set up visreg for Drought
-c_MAPA_Res_sla_lag2<-c_MAPA_vis_sla_lag2$res # Extract residuals
+# MAPA SLA lag1
+c_MAPA_vis_sla_lag1<-visreg(c_MAPA_sla_lag1, xvar="MAPA_lag1", by="Drought") #set up visreg for Drought
+c_MAPA_Res_sla_lag1<-c_MAPA_vis_sla_lag1$res # Extract residuals
 
 #Reorder Treatments
-c_MAPA_Res_sla_lag2$Drought <- as.factor(c_MAPA_Res_sla_lag2$Drought)
-c_MAPA_Res_sla_lag2$Drought <- factor(c_MAPA_Res_sla_lag2$Drought, levels=c("W", "D"))
+c_MAPA_Res_sla_lag1$Drought <- as.factor(c_MAPA_Res_sla_lag1$Drought)
+c_MAPA_Res_sla_lag1$Drought <- factor(c_MAPA_Res_sla_lag1$Drought, levels=c("W", "D"))
 
 #Use ggplot to generate plot with all required formating
-C5<-ggplot(c_MAPA_Res_sla_lag2, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drought))+
+C5<-ggplot(c_MAPA_Res_sla_lag1, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
-  xlab("log(MAPA) Lag 2") +
+  xlab("log(MAPA) Lag 1") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
-  scale_y_continuous(name="SLA", limits=c(100,400))+
+  scale_y_continuous(name="Centre SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -340,6 +339,34 @@ C5 <-C5 +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 C5
+
+# MAPA SLA lag2
+c_MAPA_vis_sla_lag2<-visreg(c_MAPA_sla_lag2, xvar="MAPA_lag2", by="Drought") #set up visreg for Drought
+c_MAPA_Res_sla_lag2<-c_MAPA_vis_sla_lag2$res # Extract residuals
+
+#Reorder Treatments
+c_MAPA_Res_sla_lag2$Drought <- as.factor(c_MAPA_Res_sla_lag2$Drought)
+c_MAPA_Res_sla_lag2$Drought <- factor(c_MAPA_Res_sla_lag2$Drought, levels=c("W", "D"))
+
+#Use ggplot to generate plot with all required formating
+C6<-ggplot(c_MAPA_Res_sla_lag2, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drought))+
+  geom_jitter(aes(colour=Drought), size=0.2)+
+  geom_smooth(method="lm")+
+  xlab("log(MAPA) Lag 2") +
+  #scale_x_continuous(limits=c(-0.1,0.4))+
+  scale_y_continuous(name="Centre SLA", limits=c(100,400))+
+  scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  theme_classic()
+C6 <-C6 + theme(
+  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=15,face="bold"),
+  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+C6 <-C6 +
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
+C6
 ggsave("Figures/C.MAPA_lag2_SLA.pdf", width = 6, height = 6, units = "in")
 
 # MAPA Date of Flowering Lag0
@@ -593,7 +620,7 @@ S3<-ggplot(s_mapa_Res_sla_lag0, aes(MAPA_lag0, y=visregRes, fill=Drought, colour
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   xlab("log(MAPA) lag 0") +
-  scale_y_continuous(name="SLA", limits=c(100,400))+
+  scale_y_continuous(name="South SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -608,6 +635,31 @@ S3 <-S3  +
 S3
 ggsave("Figures/s.MAPA_lag012_sla.pdf", width = 6, height = 6, units = "in")
 
+#Drought*MAPA_lag1
+s_mapa_vis_sla_lag1<-visreg(s_MAPA_sla_lag1, xvar="MAPA_lag1", by="Drought") #set up visreg for Drought
+s_mapa_Res_sla_lag1<-s_mapa_vis_sla_lag1$res  # Extract residuals
+#Reorder Treatments
+s_mapa_Res_sla_lag1$Drought <- as.factor(s_mapa_Res_sla_lag1$Drought)
+s_mapa_Res_sla_lag1$Drought <- factor(s_mapa_Res_sla_lag1$Drought, levels=c("W", "D"))
+
+#Use ggplot to generate plot with all required formating
+S3.1<-ggplot(s_mapa_Res_sla_lag1, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Drought))+
+  geom_jitter(aes(colour=Drought), size=0.2)+
+  geom_smooth(method="lm")+
+  xlab("log(MAPA) lag 1") +
+  scale_y_continuous(name="South SLA", limits=c(100,400))+
+  scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
+  theme_classic()
+S3.1 <-S3.1 + theme(
+  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=15,face="bold"),
+  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+S3.1 <-S3.1  +
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
+S3.1
 
 
 #Drought*MAPA sla lag2
@@ -622,7 +674,7 @@ S4<-ggplot(s_mapa_Res_sla_lag2, aes(MAPA_lag2, y=visregRes, fill=Drought, colour
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   xlab("log(MAPA) Lag 2") +
-  scale_y_continuous(name="SLA", limits=c(100,400))+
+  scale_y_continuous(name="South SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -650,7 +702,7 @@ S5<-ggplot(s_mapa_Res_sla_lag01, aes(MAPA_lag01, y=visregRes, fill=Drought, colo
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   xlab("log(MAPA) 2-Years") +
-  scale_y_continuous(name="SLA", limits=c(100,400))+
+  scale_y_continuous(name="South SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
@@ -664,7 +716,7 @@ S5 <-S5  +
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 S5
 
-#Drought*MAPA_lag012 flower
+#Drought*MAPA_lag012 sla
 s_mapa_vis_sla_lag012<-visreg(s_MAPA_sla_lag012, xvar="MAPA_lag012", by="Drought") #set up visreg for Drought
 s_mapa_Res_sla_lag012<-s_mapa_vis_sla_lag012$res  # Extract residuals
 #Reorder Treatments
@@ -676,7 +728,7 @@ S6<-ggplot(s_mapa_Res_sla_lag012, aes(MAPA_lag012, y=visregRes, fill=Drought, co
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   xlab("log(MAPA) 3-Years") +
-  scale_y_continuous(name="SLA", limits=c(100,400))+
+  scale_y_continuous(name="South SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
   theme_classic()
