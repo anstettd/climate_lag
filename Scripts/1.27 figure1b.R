@@ -1,3 +1,17 @@
+##########################################################################################################
+## Test for MAT, MAP & CMD associations with SLA & Date of FLowering
+## Making conceptual figure 
+## Author Haley Branch
+## 
+##
+## Last Modified April 17, 2022
+##########################################################################################################
+##########################################################################################################
+# Clear environment
+rm(list = ls())
+
+#Import libraries
+library(tidyverse)
 
 
 #Import datasets and add year_actual variable
@@ -35,8 +49,8 @@ weather_2009 <- read.csv("Climate/timeseries_monthly_2009.csv", header=T)
 
 
 
-weather_1979$MAPavg <- rowMeans(weather_1979[ , c(42,53)], na.rm=TRUE)
-weather_1979$stder <- std.error(weather_1979[ , c(42,53)])
+#weather_1979$MAPavg <- rowMeans(weather_1979[ , c(42,53)], na.rm=TRUE)
+#weather_1979$stder <- std.error(weather_1979[ , c(42,53)])
 
 weather_1980$MAPavg <- rowMeans(weather_1980[ , c(42,53)], na.rm=TRUE)
 weather_1981$MAPavg <- rowMeans(weather_1981[ , c(42,53)], na.rm=TRUE)
@@ -101,12 +115,56 @@ w30 <- subset(weather_2007, select=c(ID, ID2, Latitude, MAPavg))
 w31 <- subset(weather_2008, select=c(ID, ID2, Latitude, MAPavg))
 w32 <- subset(weather_2009, select=c(ID, ID2, Latitude, MAPavg))
 
-all<-rbind(w1,w2,w3,w4,w5,w7,w7,w8,w9,w10,w11,w13,w14,w15,w16,w17,w18,w19,w20,w21,
+all<-rbind(w2,w3,w4,w5,w7,w7,w8,w9,w10,w11,w13,w14,w15,w16,w17,w18,w19,w20,w21,
       w23,w24,w25,w26,w27,w28,w29,w30,w31,w32)
 
 all <- filter(all, ID %in%  c("S02", "S10", "S36"))
 
-mean_all <- all %>% group_by(ID) %>% mean(MAPavg)
-Stats <- all %>% group_by(ID) %>% summarize(by="ID",Mean = mean(MAPavg)), SD = sd(MAPavg),
-                                                                          CI_L = Mean - (SD * 1.96)/sqrt(30),
-                                                                          CI_U = Mean + (SD * 1.96)/sqrt(30))
+# Make dataframes for each population
+south <- all %>% filter(ID=="S02")
+centre <- all %>% filter(ID=="S10")
+north <- all %>% filter(ID=="S36")
+
+#Make DF
+mean_ci_30y <- data.frame()
+
+#Mean
+mean_ci_30y[1,1] <- mean(north$MAPavg)
+mean_ci_30y[2,1] <- mean(centre$MAPavg)
+mean_ci_30y[3,1] <- mean(south$MAPavg)
+
+#Error
+north_error <- qt(0.975, df=30-1)*sd(north$MAPavg)/sqrt(30)
+centre_error <- qt(0.975, df=30-1)*sd(centre$MAPavg)/sqrt(30)
+south_error <- qt(0.975, df=30-1)*sd(south$MAPavg)/sqrt(30)
+
+#Upper CI
+mean_ci_30y[1,2] <- mean(north$MAPavg) + north_error
+mean_ci_30y[2,2] <- mean(centre$MAPavg) + centre_error
+mean_ci_30y[3,2] <- mean(south$MAPavg) + south_error
+
+#Lower CI
+mean_ci_30y[1,3] <- mean(north$MAPavg) - north_error
+mean_ci_30y[2,3] <- mean(centre$MAPavg) - centre_error
+mean_ci_30y[3,3] <- mean(south$MAPavg) - south_error
+
+colnames(mean_ci_30y) <- c("Mean","Upper_CI","Lower_CI") 
+rownames(mean_ci_30y) <- c("North","Centre","South") 
+
+write.csv(mean_ci_30y,"Data/mean_ci_30y.csv")
+
+
+
+
+
+
+
+
+
+
+
+
+#mean_all <- all %>% group_by(ID) %>% mean(MAPavg)
+#Stats <- all %>% group_by(ID) %>% summarize(by="ID",Mean = mean(MAPavg)), SD = sd(MAPavg),
+#                                                                          CI_L = Mean - (SD * 1.96)/sqrt(30),
+#                                                                          CI_U = Mean + (SD * 1.96)/sqrt(30))
