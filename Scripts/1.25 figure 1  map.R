@@ -40,14 +40,14 @@ dat<-dat %>% mutate(Region = ifelse(Lat >= 40, "North",
   mutate(Site.Lat=paste(Lat,Site,sep="_")) #Set up Site.Lat
 dat$Region<-as.factor(dat$Region) #Make Region appear in logical order
 dat$Region<-factor(dat$Region,levels=c("North","Centre","South"))
-Site.label<-c("32.89928_1"="1","34.07808_12"="2","34.28425_2"="3","36.20081_3"="4", 
-              "36.69096_4"="5","37.539_5"="6","39.39442_6"="7", "39.74298_7"="8", 
-              "41.66546_8"="9","41.80979_9"="10","42.27411_10"="11", "43.37876_11"="12")
+dat <- filter(dat, ID %in%  c("S02", "S10", "S36"))
+
+Site.label<-c("32.89928_1"="1","36.20081_3"="2","42.27411_10"="3")
 
 dat$Site <- as.character(dat$Site)
 #Use ggplot to generate plot with all required formating
 MAPA_Lat<-ggplot(dat, aes(x=Site.Lat, y=MAPA_lag0, shape=factor(Year), col=factor(Region)))+ 
-  geom_point(aes(fill=Region), size =3)+
+  geom_point(aes(fill=Region), size =9)+
   scale_shape_manual(values =c(48:54))+
   scale_y_continuous(name="MAPA")+
   xlab("Site")+
@@ -158,12 +158,6 @@ ggplot(mean_ci_30y, aes(X, y=Mean)) +
   ylim(0,410)+
   theme_classic()
   
-  
-
-
-
-
-
 
 
 
