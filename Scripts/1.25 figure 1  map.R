@@ -127,12 +127,15 @@ weather_all<-read.csv("Data/weather_3_fig1.csv")
 
 library(ggplot2)
 
+#Trend line
 graph <- ggplot(weather_all, aes(Year, y=MAPavg, fill=ID, colour=ID))+
   geom_line(aes(colour=ID))+
   xlab("Year") +
   scale_y_continuous(name="MAP")+
   scale_color_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
   scale_fill_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
+  ylim(0,410)+
+  xlim(2004,2016)+
   theme_classic()
 graph <-graph + theme(
   axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
@@ -144,9 +147,25 @@ graph <-graph +
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 graph
 
-###################################################################################
-#Place all four figures into one output using Cowplot. Export at  6 X 10 inches
-plot_grid(base_map, MAP_years, MAPA_Lat,ncol = 4,labels = "AUTO", 
-          rel_widths = c(1.07, 1, 1, 1.5), rel_heights = c(1, 0.1, 0.1, 0.1))
+#30-Year Mean
+mean_ci_30y <- read.csv("Data/mean_ci_30y.csv")
 
-###################################################################################
+ggplot(mean_ci_30y, aes(X, y=Mean)) +
+  geom_errorbar(width=.1, aes(ymin=Lower_CI, ymax=Upper_CI)) +
+  geom_point(shape=21, size=3) +
+  scale_color_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
+  scale_fill_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
+  ylim(0,410)+
+  theme_classic()
+  
+  
+
+
+
+
+
+
+
+
+
+
