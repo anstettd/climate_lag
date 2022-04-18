@@ -148,7 +148,14 @@ mean_ci_30y[1,3] <- mean(north$MAPavg) - north_error
 mean_ci_30y[2,3] <- mean(centre$MAPavg) - centre_error
 mean_ci_30y[3,3] <- mean(south$MAPavg) - south_error
 
-colnames(mean_ci_30y) <- c("Mean","Upper_CI","Lower_CI") 
+#Dummy variables
+mean_ci_30y[1,4] <- "a"
+mean_ci_30y[2,4] <- "b"
+mean_ci_30y[3,4] <- "c"
+
+mean_ci_30y[,4] <- as.factor(mean_ci_30y[,4])
+
+colnames(mean_ci_30y) <- c("Mean","Upper_CI","Lower_CI","dummy") 
 rownames(mean_ci_30y) <- c("North","Centre","South") 
 
 write.csv(mean_ci_30y,"Data/mean_ci_30y.csv")

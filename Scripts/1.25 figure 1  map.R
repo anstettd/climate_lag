@@ -151,10 +151,10 @@ graph
 mean_ci_30y <- read.csv("Data/mean_ci_30y.csv")
 
 ggplot(mean_ci_30y, aes(X, y=Mean)) +
-  geom_errorbar(width=.1, aes(ymin=Lower_CI, ymax=Upper_CI)) +
-  geom_point(shape=21, size=3) +
-  scale_color_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
-  scale_fill_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
+  geom_errorbar(width=.1, aes(ymin=Lower_CI, ymax=Upper_CI, colour=X)) +
+  geom_point(aes(fill=X, colour=X), shape=21, size=3) +
+  scale_color_manual(values= c("North"="#FF3333", "Centre"="#FFCC00", "South"="#3399FF"))+
+  scale_fill_manual(values= c("North"="#FF3333", "Centre"="#FFCC00", "South"="#3399FF"))+
   ylim(0,410)+
   theme_classic()
   
