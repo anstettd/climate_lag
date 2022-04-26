@@ -35,58 +35,58 @@ y9 <- read.csv("Data/y9.csv", header=T) #Import trait & lag data
 ##########################################################################################################
 #################### lag models ###################################
 #SPEI models
-sla_lag0 <- lmer(SLA ~ Region*Drought*lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), 
+sla_lag0 <- lmer(SLA ~ Region*Drought*lag0 + (1|Block) + (1|Year) + (1|Site_Lat/Family), 
                  control=lmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=100000)),data=y9)
-sla_lag1 <- lmer(SLA ~ Region*Drought*lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-sla_lag2 <- lmer(SLA ~ Region*Drought*lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-sla_lag01 <- lmer(SLA ~ Region*Drought*lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-sla_lag012 <- lmer(SLA ~ Region*Drought*lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+sla_lag1 <- lmer(SLA ~ Region*Drought*lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+sla_lag2 <- lmer(SLA ~ Region*Drought*lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+sla_lag01 <- lmer(SLA ~ Region*Drought*lag01 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+sla_lag012 <- lmer(SLA ~ Region*Drought*lag012 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 
-fl_lag0 <- lmer(Experiment_Date ~ Region*Drought*lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-fl_lag1 <- lmer(Experiment_Date ~ Region*Drought*lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-fl_lag2 <- lmer(Experiment_Date ~ Region*Drought*lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-fl_lag01 <- lmer(Experiment_Date ~ Region*Drought*lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-fl_lag012 <- lmer(Experiment_Date ~ Region*Drought*lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+fl_lag0 <- lmer(Experiment_Date ~ Region*Drought*lag0 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+fl_lag1 <- lmer(Experiment_Date ~ Region*Drought*lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+fl_lag2 <- lmer(Experiment_Date ~ Region*Drought*lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+fl_lag01 <- lmer(Experiment_Date ~ Region*Drought*lag01 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+fl_lag012 <- lmer(Experiment_Date ~ Region*Drought*lag012 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 
 #MATA models
-MATA_sla_lag0 <- lmer(SLA ~ Region*Drought*MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MATA_sla_lag1 <- lmer(SLA ~ Region*Drought*MATA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MATA_sla_lag2 <- lmer(SLA ~ Region*Drought*MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MATA_sla_lag01 <- lmer(SLA ~ Region*Drought*MATA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MATA_sla_lag012 <- lmer(SLA ~ Region*Drought*MATA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+MATA_sla_lag0 <- lmer(SLA ~ Region*Drought*MATA_lag0 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MATA_sla_lag1 <- lmer(SLA ~ Region*Drought*MATA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MATA_sla_lag2 <- lmer(SLA ~ Region*Drought*MATA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MATA_sla_lag01 <- lmer(SLA ~ Region*Drought*MATA_lag01 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MATA_sla_lag012 <- lmer(SLA ~ Region*Drought*MATA_lag012 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 
-MATA_fl_lag0 <- lmer(Experiment_Date ~ Region*Drought*MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MATA_fl_lag1 <- lmer(Experiment_Date ~ Region*Drought*MATA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MATA_fl_lag2 <- lmer(Experiment_Date ~ Region*Drought*MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MATA_fl_lag01 <- lmer(Experiment_Date ~ Region*Drought*MATA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MATA_fl_lag012 <- lmer(Experiment_Date ~ Region*Drought*MATA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+MATA_fl_lag0 <- lmer(Experiment_Date ~ Region*Drought*MATA_lag0 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MATA_fl_lag1 <- lmer(Experiment_Date ~ Region*Drought*MATA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MATA_fl_lag2 <- lmer(Experiment_Date ~ Region*Drought*MATA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MATA_fl_lag01 <- lmer(Experiment_Date ~ Region*Drought*MATA_lag01 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MATA_fl_lag012 <- lmer(Experiment_Date ~ Region*Drought*MATA_lag012 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 
 #MAPA models
-MAPA_sla_lag0 <- lmer(SLA ~ Region*Drought*MAPA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MAPA_sla_lag1 <- lmer(SLA ~ Region*Drought*MAPA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MAPA_sla_lag2 <- lmer(SLA ~ Region*Drought*MAPA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MAPA_sla_lag01 <- lmer(SLA ~ Region*Drought*MAPA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MAPA_sla_lag012 <- lmer(SLA ~ Region*Drought*MAPA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+MAPA_sla_lag0 <- lmer(SLA ~ Region*Drought*MAPA_lag0 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MAPA_sla_lag1 <- lmer(SLA ~ Region*Drought*MAPA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MAPA_sla_lag2 <- lmer(SLA ~ Region*Drought*MAPA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MAPA_sla_lag01 <- lmer(SLA ~ Region*Drought*MAPA_lag01 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MAPA_sla_lag012 <- lmer(SLA ~ Region*Drought*MAPA_lag012 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 
-MAPA_fl_lag0 <- lmer(Experiment_Date ~ Region*Drought*MAPA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MAPA_fl_lag1 <- lmer(Experiment_Date ~ Region*Drought*MAPA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MAPA_fl_lag2 <- lmer(Experiment_Date ~ Region*Drought*MAPA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-MAPA_fl_lag01 <- lmer(Experiment_Date ~ Region*Drought*MAPA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), 
+MAPA_fl_lag0 <- lmer(Experiment_Date ~ Region*Drought*MAPA_lag0 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MAPA_fl_lag1 <- lmer(Experiment_Date ~ Region*Drought*MAPA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MAPA_fl_lag2 <- lmer(Experiment_Date ~ Region*Drought*MAPA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+MAPA_fl_lag01 <- lmer(Experiment_Date ~ Region*Drought*MAPA_lag01 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), 
                       control=lmerControl(optimizer = "bobyqa", optCtrl=list(maxfun=100000)),data=y9)
-MAPA_fl_lag012 <- lmer(Experiment_Date ~ Region*Drought*MAPA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+MAPA_fl_lag012 <- lmer(Experiment_Date ~ Region*Drought*MAPA_lag012 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 
 #CMDA models
-CMDA_sla_lag0 <- lmer(SLA ~ Region*Drought*CMDA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-CMDA_sla_lag1 <- lmer(SLA ~ Region*Drought*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-CMDA_sla_lag2 <- lmer(SLA ~ Region*Drought*CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-CMDA_sla_lag01 <- lmer(SLA ~ Region*Drought*CMDA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-CMDA_sla_lag012 <- lmer(SLA ~ Region*Drought*CMDA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_sla_lag0 <- lmer(SLA ~ Region*Drought*CMDA_lag0 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+CMDA_sla_lag1 <- lmer(SLA ~ Region*Drought*CMDA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+CMDA_sla_lag2 <- lmer(SLA ~ Region*Drought*CMDA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+CMDA_sla_lag01 <- lmer(SLA ~ Region*Drought*CMDA_lag01 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+CMDA_sla_lag012 <- lmer(SLA ~ Region*Drought*CMDA_lag012 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 
-CMDA_fl_lag0 <- lmer(Experiment_Date ~ Region*Drought*CMDA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-CMDA_fl_lag1 <- lmer(Experiment_Date ~ Region*Drought*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-CMDA_fl_lag2 <- lmer(Experiment_Date ~ Region*Drought*CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-CMDA_fl_lag01 <- lmer(Experiment_Date ~ Region*Drought*CMDA_lag01 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
-CMDA_fl_lag012 <- lmer(Experiment_Date ~ Region*Drought*CMDA_lag012 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_fl_lag0 <- lmer(Experiment_Date ~ Region*Drought*CMDA_lag0 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+CMDA_fl_lag1 <- lmer(Experiment_Date ~ Region*Drought*CMDA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+CMDA_fl_lag2 <- lmer(Experiment_Date ~ Region*Drought*CMDA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+CMDA_fl_lag01 <- lmer(Experiment_Date ~ Region*Drought*CMDA_lag01 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
+CMDA_fl_lag012 <- lmer(Experiment_Date ~ Region*Drought*CMDA_lag012 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 
 
 #################### AIC ###################################
@@ -176,88 +176,88 @@ write.table(delta_AIC, file = "Data/delta_AIC.csv", sep = ",", row.names = T)
 
 ############ SPEI ############
 #SLA lag 0
-sla_lag0a <- lmer(SLA ~ Region*Drought + Region*lag0 + Drought*lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+sla_lag0a <- lmer(SLA ~ Region*Drought + Region*lag0 + Drought*lag0 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(sla_lag0,sla_lag0a) #3-way interaction very strong evidence, P = 0.0005959
 
 #fl lag 1
-fl_lag1a <- lmer(Experiment_Date ~ Region*Drought + Region*lag1 + Drought*lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+fl_lag1a <- lmer(Experiment_Date ~ Region*Drought + Region*lag1 + Drought*lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(fl_lag1,fl_lag1a) #3-way interaction moderate evidence, P = 0.01551
 
 
 ############ CMDA ############
 #SLA lag2
-CMDA_sla_lag2a <- lmer(SLA ~ Region*Drought + Region*CMDA_lag2 + Drought*CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_sla_lag2a <- lmer(SLA ~ Region*Drought + Region*CMDA_lag2 + Drought*CMDA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(CMDA_sla_lag2,CMDA_sla_lag2a) #weak evidence for simpler model
 
-CMDA_sla_lag2b <- lmer(SLA ~ Region*CMDA_lag2 + Drought*CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_sla_lag2b <- lmer(SLA ~ Region*CMDA_lag2 + Drought*CMDA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(CMDA_sla_lag2a,CMDA_sla_lag2b) #strong evidence to keep model with 3 two-ways
 
-CMDA_sla_lag2c <- lmer(SLA ~ Region*Drought + Drought*CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_sla_lag2c <- lmer(SLA ~ Region*Drought + Drought*CMDA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(CMDA_sla_lag2a,CMDA_sla_lag2c) #no evidence for diff, keep simpler
 
-CMDA_sla_lag2d <- lmer(SLA ~ Region*Drought + Region*CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_sla_lag2d <- lmer(SLA ~ Region*Drought + Region*CMDA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(CMDA_sla_lag2a,CMDA_sla_lag2d) #no evidence for diff, keep simpler
 lrtest(CMDA_sla_lag2c,CMDA_sla_lag2d) #weak evidence for d. Region*Drought + Region*CMDA_lag
 
-CMDA_sla_lag2e <- lmer(SLA ~ Region*Drought + CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_sla_lag2e <- lmer(SLA ~ Region*Drought + CMDA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(CMDA_sla_lag2d,CMDA_sla_lag2e) #no evidence for diff, keep simpler
 
-CMDA_sla_lag2f <- lmer(SLA ~ Drought + Region*CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_sla_lag2f <- lmer(SLA ~ Drought + Region*CMDA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(CMDA_sla_lag2e,CMDA_sla_lag2f) #very strong evidence for e.
 
-CMDA_sla_lag2g <- lmer(SLA ~ Region + Drought + CMDA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_sla_lag2g <- lmer(SLA ~ Region + Drought + CMDA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(CMDA_sla_lag2e,CMDA_sla_lag2g) #strong evidence for e. Region*Drought + CMDA_lag2, P = 0.00165
 
 #fl lag1
-CMDA_fl_lag1a <- lmer(Experiment_Date ~ Region*Drought + Region*CMDA_lag1 + Drought*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), 
+CMDA_fl_lag1a <- lmer(Experiment_Date ~ Region*Drought + Region*CMDA_lag1 + Drought*CMDA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), 
                       data=y9)
 lrtest(CMDA_fl_lag1,CMDA_fl_lag1a) #moderate evidence in favor of simpler model
 
-CMDA_fl_lag1b <- lmer(Experiment_Date ~ Region*CMDA_lag1 + Drought*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_fl_lag1b <- lmer(Experiment_Date ~ Region*CMDA_lag1 + Drought*CMDA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(CMDA_fl_lag1a,CMDA_fl_lag1b) #strong evidence in favor of a.
 
-CMDA_fl_lag1c <- lmer(Experiment_Date ~ Region*Drought + Drought*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_fl_lag1c <- lmer(Experiment_Date ~ Region*Drought + Drought*CMDA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(CMDA_fl_lag1a,CMDA_fl_lag1c) #strong evidence in favor of c.
 
-CMDA_fl_lag1d <- lmer(Experiment_Date ~ Region*Drought + Region*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_fl_lag1d <- lmer(Experiment_Date ~ Region*Drought + Region*CMDA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(CMDA_fl_lag1a,CMDA_fl_lag1d) #strong evidence in favor of d.
 lrtest(CMDA_fl_lag1c,CMDA_fl_lag1d) #strong evidence in favor of c.
 
-CMDA_fl_lag1e <- lmer(Experiment_Date ~ Region*Drought + CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_fl_lag1e <- lmer(Experiment_Date ~ Region*Drought + CMDA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(CMDA_fl_lag1c,CMDA_fl_lag1e) #strong evidence in favor of e.
 
-CMDA_fl_lag1f <- lmer(Experiment_Date ~ Region+ Drought*CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_fl_lag1f <- lmer(Experiment_Date ~ Region+ Drought*CMDA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(CMDA_fl_lag1e,CMDA_fl_lag1f) #strong evidence in favor of c.
 
-CMDA_fl_lag1g <- lmer(Experiment_Date ~ Region + Drought + CMDA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+CMDA_fl_lag1g <- lmer(Experiment_Date ~ Region + Drought + CMDA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(CMDA_fl_lag1e,CMDA_fl_lag1g) #strong evidence in favor of e: Region*Drought + CMDA_lag1, p = 2.071e-06
 
 
 ############ MAPA ############
 #SLA lag0
-MAPA_sla_lag0a <- lmer(SLA ~ Region*Drought + Region*MAPA_lag0 + Drought*MAPA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+MAPA_sla_lag0a <- lmer(SLA ~ Region*Drought + Region*MAPA_lag0 + Drought*MAPA_lag0 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(MAPA_sla_lag0,MAPA_sla_lag0a) #3-way interaction very strong evidence, P = 3.19e-07
 
 #SLA lag2
-MAPA_sla_lag2a <- lmer(SLA ~ Region*Drought + Region*MAPA_lag2 + Drought*MAPA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+MAPA_sla_lag2a <- lmer(SLA ~ Region*Drought + Region*MAPA_lag2 + Drought*MAPA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(MAPA_sla_lag2,MAPA_sla_lag2a) #3-way interaction very strong evidence, P = 6.127e-06
 
 #fl lag1
-MAPA_fl_lag1a <- lmer(Experiment_Date ~ Region*Drought + Region*MAPA_lag1 + Drought*MAPA_lag1 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+MAPA_fl_lag1a <- lmer(Experiment_Date ~ Region*Drought + Region*MAPA_lag1 + Drought*MAPA_lag1 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(MAPA_fl_lag1,MAPA_fl_lag1a) #3-way interaction very strong evidence, P = 9.089e-05
 
 #fl lag2
-MAPA_fl_lag2a <- lmer(Experiment_Date ~ Region*Drought + Region*MAPA_lag2 + Drought*MAPA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+MAPA_fl_lag2a <- lmer(Experiment_Date ~ Region*Drought + Region*MAPA_lag2 + Drought*MAPA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(MAPA_fl_lag2,MAPA_fl_lag2a) #3-way interaction very strong evidence, P = 0.003
 
 
 ############ MATA ############
 #SLA lag 0
-MATA_sla_lag0a <- lmer(SLA ~ Region*Drought + Region*MATA_lag0 + Drought*MATA_lag0 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+MATA_sla_lag0a <- lmer(SLA ~ Region*Drought + Region*MATA_lag0 + Drought*MATA_lag0 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(MATA_sla_lag0,MATA_sla_lag0a) #3-way interaction very strong evidence, P = 0.0001335
 
 #fl lag 2
-MATA_fl_lag2a <- lmer(Experiment_Date ~ Region*Drought + Region*MATA_lag2 + Drought*MATA_lag2 + (1|Family) + (1|Block) + (1|Year) + (1|Site_Lat), data=y9)
+MATA_fl_lag2a <- lmer(Experiment_Date ~ Region*Drought + Region*MATA_lag2 + Drought*MATA_lag2 +  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y9)
 lrtest(MATA_fl_lag2,MATA_fl_lag2a) #3-way interaction moderate evidence, P = 0.01619
 
 
