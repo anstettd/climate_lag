@@ -276,7 +276,7 @@ vis_sla_W<-visreg(sla_lag0, xvar="lag0", by="Region", cond=list(Drought="W")) #s
 Res_sla_D<-vis_sla_D$res ; Res_sla_W<-vis_sla_W$res # Extract residuals
 Res_sla_all<-rbind(Res_sla_D, Res_sla_W) #Row bind wet and dry residuals into one data frame
 Res_sla_all$Region<-as.factor(Res_sla_all$Region)
-Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Cen ter","South"))
+Res_sla_all$Region<-factor(Res_sla_all$Region,levels=c("North","Center","South"))
 #Reorder Treatments
 Res_sla_all$Drought <- as.factor(Res_sla_all$Drought)
 Res_sla_all$Drought <- factor(Res_sla_all$Drought, levels=c("W", "D"))
