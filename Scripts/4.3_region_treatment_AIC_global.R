@@ -1,6 +1,5 @@
 ##########################################################################################################
-## Get AIC for all region treatment combinations using a function
-## 
+## Get the deltaAIC table for the global comparison within each region treatment combinations
 ## Author HB & DA
 ## 
 ##
@@ -153,22 +152,10 @@ get_AIC <- function(y_data){
   names(lag_AIC_DF) <- c("SPEI","CMDA","MAPA","MATA")
   delta_AIC_SLA <- lag_AIC_SLA-min(lag_AIC_SLA)
   delta_AIC_DF <- lag_AIC_DF-min(lag_AIC_DF)
+  
+  global_delta_aic <- cbind(delta_AIC_SLA,delta_AIC_DF)
 
-  
-  #Make delta AIC table
-  n_delta_AIC <- data.frame()
-  n_delta_AIC[1:5,1] <- n_lag_AIC[,1]-min(n_lag_AIC[,1])
-  n_delta_AIC[1:5,2] <- n_lag_AIC[,3]-min(n_lag_AIC[,3])
-  n_delta_AIC[1:5,3] <- n_lag_AIC[,5]-min(n_lag_AIC[,5])
-  n_delta_AIC[1:5,4] <- n_lag_AIC[,7]-min(n_lag_AIC[,7])
-  n_delta_AIC[1:5,5] <- n_lag_AIC[,2]-min(n_lag_AIC[,2])
-  n_delta_AIC[1:5,6] <- n_lag_AIC[,4]-min(n_lag_AIC[,4])
-  n_delta_AIC[1:5,7] <- n_lag_AIC[,6]-min(n_lag_AIC[,6])
-  n_delta_AIC[1:5,8] <- n_lag_AIC[,8]-min(n_lag_AIC[,8])
-  
-  colnames(n_delta_AIC) <- c("SPEI","CMDA","MAPA","MATA","SPEI","CMDA","MAPA","MATA")
-  
-  return(n_delta_AIC)
+  return(global_delta_aic)
 }
 
 ##########################################################################################################
@@ -297,21 +284,9 @@ get_AIC_centre_d <- function(y_data){
   delta_AIC_SLA <- lag_AIC_SLA-min(lag_AIC_SLA)
   delta_AIC_DF <- lag_AIC_DF-min(lag_AIC_DF)
   
+  global_delta_aic <- cbind(delta_AIC_SLA,delta_AIC_DF)
   
-  #Make delta AIC table
-  n_delta_AIC <- data.frame()
-  n_delta_AIC[1:5,1] <- n_lag_AIC[,1]-min(n_lag_AIC[,1])
-  n_delta_AIC[1:5,2] <- n_lag_AIC[,3]-min(n_lag_AIC[,3])
-  n_delta_AIC[1:5,3] <- n_lag_AIC[,5]-min(n_lag_AIC[,5])
-  n_delta_AIC[1:5,4] <- n_lag_AIC[,7]-min(n_lag_AIC[,7])
-  n_delta_AIC[1:5,5] <- n_lag_AIC[,2]-min(n_lag_AIC[,2])
-  n_delta_AIC[1:5,6] <- n_lag_AIC[,4]-min(n_lag_AIC[,4])
-  n_delta_AIC[1:5,7] <- n_lag_AIC[,6]-min(n_lag_AIC[,6])
-  n_delta_AIC[1:5,8] <- n_lag_AIC[,8]-min(n_lag_AIC[,8])
-  
-  colnames(n_delta_AIC) <- c("SPEI","CMDA","MAPA","MATA","SPEI","CMDA","MAPA","MATA")
-  
-  return(n_delta_AIC)
+  return(global_delta_aic)
 }
 
 
@@ -441,21 +416,9 @@ get_AIC_south_w <- function(y_data){
   delta_AIC_SLA <- lag_AIC_SLA-min(lag_AIC_SLA)
   delta_AIC_DF <- lag_AIC_DF-min(lag_AIC_DF)
   
+  global_delta_aic <- cbind(delta_AIC_SLA,delta_AIC_DF)
   
-  #Make delta AIC table
-  n_delta_AIC <- data.frame()
-  n_delta_AIC[1:5,1] <- n_lag_AIC[,1]-min(n_lag_AIC[,1])
-  n_delta_AIC[1:5,2] <- n_lag_AIC[,3]-min(n_lag_AIC[,3])
-  n_delta_AIC[1:5,3] <- n_lag_AIC[,5]-min(n_lag_AIC[,5])
-  n_delta_AIC[1:5,4] <- n_lag_AIC[,7]-min(n_lag_AIC[,7])
-  n_delta_AIC[1:5,5] <- n_lag_AIC[,2]-min(n_lag_AIC[,2])
-  n_delta_AIC[1:5,6] <- n_lag_AIC[,4]-min(n_lag_AIC[,4])
-  n_delta_AIC[1:5,7] <- n_lag_AIC[,6]-min(n_lag_AIC[,6])
-  n_delta_AIC[1:5,8] <- n_lag_AIC[,8]-min(n_lag_AIC[,8])
-  
-  colnames(n_delta_AIC) <- c("SPEI","CMDA","MAPA","MATA","SPEI","CMDA","MAPA","MATA")
-  
-  return(n_delta_AIC)
+  return(global_delta_aic)
 }
 
 ##########################################################################################################
@@ -584,21 +547,9 @@ get_AIC_south_d <- function(y_data){
   delta_AIC_SLA <- lag_AIC_SLA-min(lag_AIC_SLA)
   delta_AIC_DF <- lag_AIC_DF-min(lag_AIC_DF)
   
+  global_delta_aic <- cbind(delta_AIC_SLA,delta_AIC_DF)
   
-  #Make delta AIC table
-  n_delta_AIC <- data.frame()
-  n_delta_AIC[1:5,1] <- n_lag_AIC[,1]-min(n_lag_AIC[,1])
-  n_delta_AIC[1:5,2] <- n_lag_AIC[,3]-min(n_lag_AIC[,3])
-  n_delta_AIC[1:5,3] <- n_lag_AIC[,5]-min(n_lag_AIC[,5])
-  n_delta_AIC[1:5,4] <- n_lag_AIC[,7]-min(n_lag_AIC[,7])
-  n_delta_AIC[1:5,5] <- n_lag_AIC[,2]-min(n_lag_AIC[,2])
-  n_delta_AIC[1:5,6] <- n_lag_AIC[,4]-min(n_lag_AIC[,4])
-  n_delta_AIC[1:5,7] <- n_lag_AIC[,6]-min(n_lag_AIC[,6])
-  n_delta_AIC[1:5,8] <- n_lag_AIC[,8]-min(n_lag_AIC[,8])
-  
-  colnames(n_delta_AIC) <- c("SPEI","CMDA","MAPA","MATA","SPEI","CMDA","MAPA","MATA")
-  
-  return(n_delta_AIC)
+  return(global_delta_aic)
 }
 
 
@@ -632,16 +583,14 @@ AIC_centre_dry <- get_AIC_centre_d(centre_dry)
 AIC_south_wet <- get_AIC_south_w(south_wet)
 AIC_south_dry <- get_AIC_south_d(south_dry)
 
+AIC_table_N <- cbind(AIC_north_wet,AIC_north_dry)
+AIC_table_N <- cbind(AIC_centre_wet,AIC_centre_dry)
+AIC_table_S <- cbind(AIC_south_wet,AIC_south_dry)
+
+AIC_table <- rbind(AIC_table_N ,AIC_table_N, AIC_table_S)
 
 #Export
-write.table(AIC_north_wet, file = "Data/north_wet_deltaAIC.csv", sep = ",", row.names = T)
-write.table(AIC_north_dry, file = "Data/north_dry_deltaAIC.csv", sep = ",", row.names = T)
-
-write.table(AIC_centre_wet, file = "Data/centre_wet_deltaAIC.csv", sep = ",", row.names = T)
-write.table(AIC_centre_dry, file = "Data/centre_dry_deltaAIC.csv", sep = ",", row.names = T)
-
-write.table(AIC_south_wet, file = "Data/south_wet_deltaAIC.csv", sep = ",", row.names = T)
-write.table(AIC_south_dry, file = "Data/south_dry_deltaAIC.csv", sep = ",", row.names = T)
+write.table(AIC_table, file = "Data/AIC_table.csv", sep = ",", row.names = T)
 
   
   

@@ -159,23 +159,25 @@ names(lag_AIC_SLA) <- c("SPEI","CMDA","MAPA","MATA")
 names(lag_AIC_DF) <- c("SPEI","CMDA","MAPA","MATA")
 delta_AIC_SLA <- lag_AIC_SLA-min(lag_AIC_SLA)
 delta_AIC_DF <- lag_AIC_DF-min(lag_AIC_DF)
+
+global_delta_aic <- cbind(delta_AIC_SLA,delta_AIC_DF)
+
 #write.table(delta_AIC_SLA, file = "Data/Global_delta_AIC_SLA_North_wet.csv", sep = ",", row.names = T)
 #write.table(delta_AIC_DF, file = "Data/Global_delta_AIC_DF_North_dry.csv", sep = ",", row.names = T)
 
 
 #Make delta AIC table
-n_delta_AIC <- n_lag_AIC
-n_delta_AIC[,1] <- n_lag_AIC[,1]-min(n_lag_AIC[,1])
-n_delta_AIC[,2] <- n_lag_AIC[,3]-min(n_lag_AIC[,3])
-n_delta_AIC[,3] <- n_lag_AIC[,5]-min(n_lag_AIC[,5])
-n_delta_AIC[,4] <- n_lag_AIC[,7]-min(n_lag_AIC[,7])
-n_delta_AIC[,5] <- n_lag_AIC[,2]-min(n_lag_AIC[,2])
-n_delta_AIC[,6] <- n_lag_AIC[,4]-min(n_lag_AIC[,4])
-n_delta_AIC[,7] <- n_lag_AIC[,6]-min(n_lag_AIC[,6])
-n_delta_AIC[,8] <- n_lag_AIC[,8]-min(n_lag_AIC[,8])
+n_delta_AIC <- data.frame()
+n_delta_AIC[1:5,1] <- n_lag_AIC[,1]-min(n_lag_AIC[,1])
+n_delta_AIC[1:5,2] <- n_lag_AIC[,3]-min(n_lag_AIC[,3])
+n_delta_AIC[1:5,3] <- n_lag_AIC[,5]-min(n_lag_AIC[,5])
+n_delta_AIC[1:5,4] <- n_lag_AIC[,7]-min(n_lag_AIC[,7])
+n_delta_AIC[1:5,5] <- n_lag_AIC[,2]-min(n_lag_AIC[,2])
+n_delta_AIC[1:5,6] <- n_lag_AIC[,4]-min(n_lag_AIC[,4])
+n_delta_AIC[1:5,7] <- n_lag_AIC[,6]-min(n_lag_AIC[,6])
+n_delta_AIC[1:5,8] <- n_lag_AIC[,8]-min(n_lag_AIC[,8])
 
-
-
+colnames(n_delta_AIC) <- c("SPEI","CMDA","MAPA","MATA","SPEI","CMDA","MAPA","MATA")
 
 
 
