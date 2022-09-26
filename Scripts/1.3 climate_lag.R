@@ -287,7 +287,7 @@ spei1<-ggplot(Res_sla_all, aes(lag0, y=visregRes, fill=Drought, colour=Drought))
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("SPEI (lag 0)") +
+  xlab("SPEI lag 0") +
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -301,7 +301,7 @@ spei1 <-spei1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),  legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 spei1
-#ggsave("Figure_pannels/1A.SPEI_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/1A.SPEI_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # SPEI Date of Flowering Lag1
@@ -321,7 +321,7 @@ spei2<-ggplot(Res_ft_all, aes(lag1, y=visregRes, fill=Drought, colour=Drought))+
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("SPEI (lag 1)") +
+  xlab("SPEI lag 1") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -335,7 +335,7 @@ spei2 <-spei2 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),  legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 spei2
-#ggsave("Figure_pannels/1B.SPEI_lag1_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/1B.SPEI_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
 
 ############ CMDA ## Region*Drought*CMDA_lag2
@@ -356,7 +356,7 @@ cmda1<-ggplot(Res_sla_all, aes(CMDA_lag2, y=visregRes, fill=Drought, colour=Drou
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("CMDA (lag 2)") +
+  xlab("CMDA lag 2") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -371,7 +371,7 @@ cmda1 <-cmda1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),  legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 cmda1
-#ggsave("Figure_pannels/4A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/4A.CMDA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # CMDA Date of Flowering Lag1
@@ -391,7 +391,7 @@ cmda2<-ggplot(Res_ft_all, aes(CMDA_lag1, y=visregRes, fill=Drought, colour=Droug
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("CMDA (lag 1)") +
+  xlab("CMDA lag 1") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -405,7 +405,7 @@ cmda2 <-cmda2 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),  legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 cmda2
-#ggsave("Figure_pannels/4B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/4B.CMDA_lag1_ft.pdf", width = 8, height = 6, units = "in")
 
 
 
@@ -427,7 +427,7 @@ mapa1<-ggplot(Res_sla_all, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Drou
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("log(MAPA lag 0)") +
+  xlab("MAPA lag 0") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -442,7 +442,7 @@ mapa1 <-mapa1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa1
-#ggsave("Figure_pannels/3A.MAPA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3A.MAPA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA SLA lag1
@@ -462,7 +462,7 @@ mapa2<-ggplot(Res_sla_all, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Drou
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("log(MAPA lag 1)") +
+  xlab("MAPA lag 1") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -477,7 +477,7 @@ mapa2 <-mapa2 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa2
-#ggsave("Figure_pannels/3B.MAPA_lag1_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3B.MAPA_lag1_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA SLA lag2
@@ -497,7 +497,7 @@ mapa3<-ggplot(Res_sla_all, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Drou
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("log(MAPA lag 2)") +
+  xlab("MAPA lag 2") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -512,7 +512,7 @@ mapa3 <-mapa3 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa3
-#ggsave("Figure_pannels/3C.MAPA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3C.MAPA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
 
 # MAPA SLA lag01
 vis_sla_D<-visreg(MAPA_sla_lag01, xvar="MAPA_lag01", by="Region", cond=list(Drought="D")) #set up visreg for Drought
@@ -531,7 +531,7 @@ mapa4<-ggplot(Res_sla_all, aes(MAPA_lag01, y=visregRes, fill=Drought, colour=Dro
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("log(MAPA 2-Year)") +
+  xlab("MAPA 2-Year") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -546,7 +546,7 @@ mapa4 <-mapa4 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa4
-#ggsave("Figure_pannels/3D.MAPA_lag01_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3D.MAPA_lag01_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA SLA lag012
@@ -566,7 +566,7 @@ mapa5<-ggplot(Res_sla_all, aes(MAPA_lag012, y=visregRes, fill=Drought, colour=Dr
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("log(MAPA 3-Year)") +
+  xlab("MAPA 3-Year") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -581,7 +581,7 @@ mapa5 <-mapa5 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa5
-#ggsave("Figure_pannels/3E.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3E.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA df lag0
@@ -601,7 +601,7 @@ mapa6<-ggplot(Res_fl_all, aes(MAPA_lag0, y=visregRes, fill=Drought, colour=Droug
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("log(MAPA lag0)") +
+  xlab("MAPA lag0") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -616,7 +616,7 @@ mapa6 <-mapa6 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa6
-#ggsave("Figure_pannels/3F.MAPA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3F.MAPA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 # MAPA df lag1
 vis_fl_D<-visreg(MAPA_fl_lag1, xvar="MAPA_lag1", by="Region", cond=list(Drought="D")) #set up visreg for Drought
@@ -635,7 +635,7 @@ mapa7<-ggplot(Res_fl_all, aes(MAPA_lag1, y=visregRes, fill=Drought, colour=Droug
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("log(MAPA lag1)") +
+  xlab("MAPA lag1") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -650,7 +650,7 @@ mapa7 <-mapa7 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa7
-#ggsave("Figure_pannels/3G.MAPA_lag1_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3G.MAPA_lag1_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA df lag2
@@ -670,7 +670,7 @@ mapa8<-ggplot(Res_fl_all, aes(MAPA_lag2, y=visregRes, fill=Drought, colour=Droug
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("log(MAPA lag 2)") +
+  xlab("MAPA lag 2") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -685,7 +685,7 @@ mapa8 <-mapa8 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa8
-#ggsave("Figure_pannels/3H.MAPA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3H.MAPA_lag2_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA df lag01
@@ -705,7 +705,7 @@ mapa9<-ggplot(Res_fl_all, aes(MAPA_lag01, y=visregRes, fill=Drought, colour=Drou
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("log(MAPA 2-year)") +
+  xlab("MAPA 2-year") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -720,7 +720,7 @@ mapa9 <-mapa9 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa9
-#ggsave("Figure_pannels/3I.MAPA_lag01_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3I.MAPA_lag01_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MAPA df lag012
@@ -740,7 +740,7 @@ mapa10<-ggplot(Res_fl_all, aes(MAPA_lag012, y=visregRes, fill=Drought, colour=Dr
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("log(MAPA 3-Year)") +
+  xlab("MAPA 3-Year") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -755,7 +755,7 @@ mapa10 <-mapa10 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mapa10
-#ggsave("Figure_pannels/3J.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/3J.MAPA_lag012_SLA.pdf", width = 8, height = 6, units = "in")
 
 ############ MATA ############
 # MATA SLA lag0
@@ -775,7 +775,7 @@ mata1<-ggplot(Res_sla_all, aes(MATA_lag0, y=visregRes, fill=Drought, colour=Drou
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("MATA (lag 0)") +
+  xlab("MATA lag 0") +
   #scale_x_continuous(limits=c(-0.1,0.4))+
   scale_y_continuous(name="SLA", limits=c(100,400))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
@@ -790,7 +790,7 @@ mata1 <-mata1 + facet_wrap(.~Region,labeller = labeller(Region=Site_Labs)) +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"), legend.position = "none",
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 mata1
-#ggsave("Figure_pannels/2A.MATA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
+ggsave("Figure_pannels/2A.MATA_lag0_SLA.pdf", width = 8, height = 6, units = "in")
 
 
 # MATA Date of Flowering Lag2
@@ -810,7 +810,7 @@ mata2<-ggplot(Res_ft_all, aes(MATA_lag2, y=visregRes, fill=Drought, colour=Droug
   geom_jitter(aes(colour=Drought), size=0.2)+
   geom_smooth(method="lm")+
   facet_wrap(.~Region)+
-  xlab("MATA (lag 2)") +
+  xlab("MATA lag 2") +
   scale_y_continuous(name="Date of Flowering", limits=c(80,120))+
   scale_color_manual(values= c("D"="#FF7700", "W"="#006600"))+
   scale_fill_manual(values= c("D"="#FF7700", "W"="#006600"))+
