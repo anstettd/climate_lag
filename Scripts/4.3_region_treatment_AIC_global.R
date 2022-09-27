@@ -584,10 +584,10 @@ AIC_south_wet <- get_AIC_south_w(south_wet)
 AIC_south_dry <- get_AIC_south_d(south_dry)
 
 AIC_table_N <- cbind(AIC_north_wet,AIC_north_dry)
-AIC_table_N <- cbind(AIC_centre_wet,AIC_centre_dry)
+AIC_table_C <- cbind(AIC_centre_wet,AIC_centre_dry)
 AIC_table_S <- cbind(AIC_south_wet,AIC_south_dry)
 
-AIC_table <- rbind(AIC_table_N ,AIC_table_N, AIC_table_S)
+AIC_table <- rbind(AIC_table_N ,AIC_table_C, AIC_table_S)
 
 #Export
 write.table(AIC_table, file = "Data/AIC_table.csv", sep = ",", row.names = T)
