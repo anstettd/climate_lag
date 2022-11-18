@@ -91,13 +91,6 @@ lmer_table[18,1:4] <-lmer_info(centre_wet, centre_wet$Experiment_Date, centre_we
 lmer_table[19,1:4] <-lmer_info(centre_wet, centre_wet$Experiment_Date, centre_wet$MAPA_lag012)
 
 #Centre Dry
-lmer_table[20,1:4] <-lmer_info(centre_wet, centre_wet$SLA, centre_wet$MAPA_lag0)
-lmer_table[21,1:4] <-lmer_info(centre_wet, centre_wet$SLA, centre_wet$MAPA_lag1)
-lmer_table[22,1:4] <-lmer_info(centre_wet, centre_wet$SLA, centre_wet$MAPA_lag2)
-lmer_table[23,1:4] <-lmer_info(centre_wet, centre_wet$Experiment_Date, centre_wet$MAPA_lag0)
-lmer_table[24,1:4] <-lmer_info(centre_wet, centre_wet$Experiment_Date, centre_wet$MAPA_lag2)
-
-#Centre Dry
 lmer_table[20,1:4] <-lmer_info(centre_dry, centre_dry$SLA, centre_dry$MAPA_lag0)
 lmer_table[21,1:4] <-lmer_info(centre_dry, centre_dry$SLA, centre_dry$MAPA_lag1)
 lmer_table[22,1:4] <-lmer_info(centre_dry, centre_dry$SLA, centre_dry$MAPA_lag2)
