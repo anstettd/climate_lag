@@ -23,8 +23,8 @@ library(MuMIn)
 
 lmer_info <- function(y_data, y_trait, env){
   df_trait <- data.frame()
-  trait0 <- lmer(y_trait ~  env + (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y_data)
-  trait0a <- lmer(y_trait ~  (1|Block) + (1|Year) + (1|Site_Lat/Family), data=y_data)
+  trait0 <- lmer(y_trait ~  env + Block + (1|Year) + (1|Site_Lat/Family), data=y_data)
+  trait0a <- lmer(y_trait ~  Block + (1|Year) + (1|Site_Lat/Family), data=y_data)
   lr_trait0 <- lrtest(trait0,trait0a)
   df_trait[1,1] <- lr_trait0$LogLik[1] - lr_trait0$LogLik[2]
   df_trait[1,2] <- lr_trait0$`Pr(>Chisq)`[2]
