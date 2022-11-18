@@ -85,6 +85,7 @@ cd_fd_lag2 <- lmer(Experiment_Date ~  MAPA_lag2 + (1|Block) + (1|Year) + (1|Site
 #South Wet
 cw_sla_lag1 <- lmer(SLA ~  MAPA_lag1 + (1|Block) + (1|Year) + (1|Site_Lat/Family), data=south_wet)
 cw_sla_lag2 <- lmer(SLA ~  MAPA_lag2 + (1|Block) + (1|Year) + (1|Site_Lat/Family), data=south_wet)
+
 cw_sla_lag012 <- lmer(SLA ~  MAPA_lag012 + (1|Block) + (1|Year) + (1|Site_Lat/Family), data=south_wet)
 
 #South Dry
@@ -92,7 +93,6 @@ sd_sla_lag0 <- lmer(SLA ~  MAPA_lag0 + (1|Block) + (1|Year) + (1|Site_Lat/Family
 sd_sla_lag1 <- lmer(SLA ~  MAPA_lag1 + (1|Block) + (1|Year) + (1|Site_Lat/Family), data=south_dry)
 sd_sla_lag2 <- lmer(SLA ~  MAPA_lag2 + (1|Block) + (1|Year) + (1|Site_Lat/Family), data=south_dry)
 sd_sla_lag01 <- lmer(SLA ~  MAPA_lag01 + (1|Block) + (1|Year) + (1|Site_Lat/Family), data=south_dry)
-sd_sla_lag012 <- lmer(SLA ~  MAPA_lag012 + (1|Block) + (1|Year) + (1|Site_Lat/Family), data=south_dry)
 
 sd_sla_lag0_MATA <- lmer(SLA ~  MATA_lag0 + (1|Block) + (1|Year) + (1|Site_Lat/Family), data=south_dry)
 

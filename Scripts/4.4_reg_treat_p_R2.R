@@ -100,23 +100,22 @@ lmer_table[24,1:4] <-lmer_info(centre_dry, centre_dry$Experiment_Date, centre_dr
 #South Wet
 lmer_table[25,1:4] <-lmer_info(south_wet, south_wet$SLA, south_wet$MAPA_lag1)
 lmer_table[26,1:4] <-lmer_info(south_wet, south_wet$SLA, south_wet$MAPA_lag2)
-lmer_table[27,1:4] <-lmer_info(south_wet, south_wet$SLA, south_wet$MAPA_lag2)
-lmer_table[28,1:4] <-lmer_info(south_wet, south_wet$SLA, south_wet$MAPA_lag012)
+lmer_table[27,1:4] <-lmer_info(south_wet, south_wet$Experiment_Date, south_wet$MAPA_lag2)
+lmer_table[28,1:4] <-lmer_info(south_wet, south_wet$Experiment_Date, south_wet$MAPA_lag012)
 
 #South Dry
 lmer_table[29,1:4] <-lmer_info(south_dry, south_dry$SLA, south_dry$MAPA_lag0)
 lmer_table[30,1:4] <-lmer_info(south_dry, south_dry$SLA, south_dry$MAPA_lag1)
 lmer_table[31,1:4] <-lmer_info(south_dry, south_dry$SLA, south_dry$MAPA_lag2)
 lmer_table[32,1:4] <-lmer_info(south_dry, south_dry$SLA, south_dry$MAPA_lag01)
-lmer_table[33,1:4] <-lmer_info(south_dry, south_dry$SLA, south_dry$MAPA_lag012)
 
-lmer_table[34,1:4] <-lmer_info(south_dry, south_dry$SLA, south_dry$MATA_lag0)
+lmer_table[33,1:4] <-lmer_info(south_dry, south_dry$SLA, south_dry$MATA_lag0)
 
-lmer_table[35,1:4] <-lmer_info(south_dry, south_dry$Experiment_Date, south_dry$MAPA_lag0)
-lmer_table[36,1:4] <-lmer_info(south_dry, south_dry$Experiment_Date, south_dry$MAPA_lag1)
-lmer_table[37,1:4] <-lmer_info(south_dry, south_dry$Experiment_Date, south_dry$MAPA_lag2)
-lmer_table[38,1:4] <-lmer_info(south_dry, south_dry$Experiment_Date, south_dry$MAPA_lag01)
-lmer_table[39,1:4] <-lmer_info(south_dry, south_dry$Experiment_Date, south_dry$MAPA_lag012)
+lmer_table[34,1:4] <-lmer_info(south_dry, south_dry$Experiment_Date, south_dry$MAPA_lag0)
+lmer_table[35,1:4] <-lmer_info(south_dry, south_dry$Experiment_Date, south_dry$MAPA_lag1)
+lmer_table[36,1:4] <-lmer_info(south_dry, south_dry$Experiment_Date, south_dry$MAPA_lag2)
+lmer_table[37,1:4] <-lmer_info(south_dry, south_dry$Experiment_Date, south_dry$MAPA_lag01)
+lmer_table[38,1:4] <-lmer_info(south_dry, south_dry$Experiment_Date, south_dry$MAPA_lag012)
 
 #Export
 write.table(lmer_table, file = "Data/lmer_table.csv", sep = ",", row.names = T)
