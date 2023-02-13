@@ -25,8 +25,8 @@ theme_paper3 <- function(){
     theme( 
       axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
       axis.text.y = element_text(size=15,face="bold"),
-      axis.title.x = element_text(color="black", size=20, vjust = 0, face="bold"),
-      axis.title.y = element_text(color="black", size=20, vjust = 1.6,face="bold",hjust=0.5 ,angle=90)
+      axis.title.x = element_text(color="black", size=18, vjust = 0, face="bold"),
+      axis.title.y = element_text(color="black", size=15, vjust = 1.6,face="bold",hjust=0.5 ,angle=90)
       )
 }
 
@@ -204,6 +204,34 @@ graph_38<- visreg(sd_fd_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_s
 
 #Group Save
 
+#Try 2
+#North - Wet
+plot_grid(graph_1,graph_2,graph_3,graph_4,labels = "AUTO",ncol = 2,label_x = 0.23) #export at 5 X 6 
+
+#North - Det
+plot_grid(graph_5,graph_6,graph_7,graph_8,graph_9,graph_10,
+          labels = "AUTO",ncol = 2,label_x = 0.23) #export at 8 X 8 
+
+#Centre - Wet
+plot_grid(graph_11,graph_12,graph_13,graph_14,graph_15,graph_16,graph_17,graph_18,graph_19,
+          labels = "AUTO",ncol = 3,label_x = 0.01) #export at 8 X 8 
+
+#North - Dry
+plot_grid(graph_20,graph_21,graph_22,graph_23,graph_24,
+          labels = "AUTO",ncol = 2,label_x = 0.20) #export at 8 X 8 
+
+#South - Wet
+plot_grid(graph_25,graph_26,graph_27,graph_28,
+          labels = "AUTO",ncol = 2,label_x = 0.01) #export at 6 X 6 
+
+#South - Dry
+plot_grid(graph_29,graph_30,graph_31,graph_32,graph_33,graph_34,graph_35,graph_36,graph_37,graph_38,
+          labels = "AUTO",ncol = 4,label_x = 0.01) #export at 8 X 8 
+
+
+
+
+#Try 1
 ##SLA
 #North
 plot_grid(graph_1,graph_5,labels = "AUTO",ncol = 2) #export at 4 X 8 
