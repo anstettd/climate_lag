@@ -31,7 +31,7 @@ wna <- read_csv("Data/climate.csv") %>%  #Oct to Setp data
   select(Site=ID, MAT.clim=MAT,MAP.clim=MAP,CMD.clim=CMD) 
 #%>% wna$Site <- as.factor(wna$Site)
 
-#Importh Weather Data
+#Import Weather Data
 wna2 <- read_csv("Data/weather.csv") #Import
 wna2 <- wna2 %>% #Selects MAT, MAP, CMD,
   select(ID_Year1:CMD.weath.2) %>% 
