@@ -204,13 +204,19 @@ graph_38<- visreg(sd_fd_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_s
 
 #Group Save
 
-#Try 2
-#North - Wet
-plot_grid(graph_1,graph_2,graph_3,graph_4,labels = "AUTO",ncol = 2,label_x = 0.23) #export at 5 X 6 
+#Try 3
+#North 
+plot_grid(graph_1,graph_2,graph_4,labels = "AUTO",ncol = 2,label_x = 0.23) #export at 5 X 6 
 
-#North - Det
-plot_grid(graph_5,graph_6,graph_7,graph_8,graph_9,graph_10,
-          labels = "AUTO",ncol = 2,label_x = 0.23) #export at 8 X 8 
+
+
+
+#Try 2
+#Fig 1 North - Wet
+plot_grid(graph_1,graph_2,graph_4,graph_5,graph_6,graph_8,
+labels = "AUTO",ncol = 2,label_x = 0.23) #export at 6 X 8 
+
+#Fig 2 
 
 #Centre - Wet
 plot_grid(graph_11,graph_12,graph_13,graph_14,graph_15,graph_16,graph_17,graph_18,graph_19,
@@ -228,6 +234,11 @@ plot_grid(graph_25,graph_26,graph_27,graph_28,
 plot_grid(graph_29,graph_30,graph_31,graph_32,graph_33,graph_34,graph_35,graph_36,graph_37,graph_38,
           labels = "AUTO",ncol = 4,label_x = 0.01) #export at 8 X 8 
 
+
+#Supplemental
+#Fig S1
+plot_grid(graph_3,graph_7,graph_9,graph_10,
+          labels = "AUTO",ncol = 2,label_x = 0.23) #export at 5 X 6 
 
 
 
