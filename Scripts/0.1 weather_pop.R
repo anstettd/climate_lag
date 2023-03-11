@@ -1,11 +1,5 @@
 #################
-# Get weather data into Oct 1 to Sept 31 format 
-
-### last edited HB Mar 11 2023
-#Grabs weather data for 2010-2016
-
-
-
+# Get weather data into Oct 1 to Sept 31 format
 #################
 # Also assessment of normality
 library(tidyverse)
@@ -40,7 +34,7 @@ weather_2016 <- read.csv("Climate/timeseries_monthly_2016.csv", header=T)
 
 impact_summary <- data.frame()
 
-for(i in 2010:2016){
+for(i in 2008:2016){
   impact<- eval(parse(text=(paste("weather",i-1,sep="_")))) %>% select(ID,ID2,Latitude,Longitude)
 #  impact<-cbind(impact,c(rep(i,12)))
   #MAT  

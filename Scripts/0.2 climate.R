@@ -1,5 +1,10 @@
 #################
 # Get weather data into Oct 1 to Sept 31 format
+
+### last edited HB Mar 11 2023
+
+# Grabs weather data from year 1980-2009
+
 #################
 # Also assessment of normality
 library(tidyverse)
