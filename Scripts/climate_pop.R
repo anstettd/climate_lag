@@ -64,9 +64,9 @@ anom2015 <- w_temp_2015 - climate[,5:7]
 anom2016 <- w_temp_2016 - climate[,5:7]
 
 anom <- rbind(anom2008,anom2009,anom2010,anom2011,anom2012,anom2013,anom2014,anom2015,anom2016)
-colnames(anom) <- c("MAT.anom","MAP.anom","CMD.anom")
+colnames(anom) <- c("MATA","MAPA","CMDA")
 
-final_df <- cbind(weather_pop,anom)
+final_df <- cbind(weather_pop,anom) %>% select(-MAT.weath,-MAP.weath,-CMD.weath)
 
 write.csv(final_df,'Data/pop_clim_final.csv') #Export file
 
