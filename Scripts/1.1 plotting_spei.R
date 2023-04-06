@@ -17,8 +17,9 @@ library(tidyverse)
 spei_pop <- read.csv("Data/spei_pop.csv", header=T)
 #colnames(spei_pop) <- c("Site","ID","ID2","Site_Lat","Lat","Long","Elevation","Lat_spei","Long_spei",
 #                        "2007","2008","2009","2010","2011","2012","2013","2014","2015","2016")
-spei_gather <- spei_pop %>% gather(Year, SPEI,SPEI_2007:SPEI_2016) %>% filter(Year!=2007)
+spei_gather <- spei_pop %>% gather(Year, SPEI,SPEI_2007:SPEI_2016)
 spei_gather$Year <- gsub("SPEI_","",spei_gather$Year)
+spei_gather <- spei_gather %>% filter(Year!=2007)
 env_lag0 <- read.csv("Data/env_lag0.csv", header=T)
 
 lat_key <- env_lag0 %>% filter(Year==2010) %>% select(ID,Site,Site_Lat)

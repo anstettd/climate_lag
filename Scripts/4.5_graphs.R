@@ -132,6 +132,18 @@ graph_9 <- visreg(nd_fd_lag01,"MAPA_lag01",gg=T)+ geom_point(size=0.8)+ geom_smo
 graph_10 <- visreg(nd_fd_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA 3-Year Cumul.")+  theme_paper3() 
 
+
+#Try 3
+#North
+#Fig 2
+plot_grid(graph_1,graph_5,graph_2,graph_4,graph_6,graph_8, labels = "AUTO",ncol = 2,label_x = 0.23) #export at 6 X 8 
+
+#Fig S5
+plot_grid(graph_3,graph_7,graph_9,graph_10, labels = "AUTO",ncol = 2,label_x = 0.23) #export at 6 X 6 
+
+
+
+
 #Centre Wet
 graph_11 <- visreg(cw_sla_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
   scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3()
@@ -165,6 +177,18 @@ graph_23 <- visreg(cd_fd_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smoo
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3()
 graph_24 <- visreg(cd_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
+
+
+#Try 3
+#Centre
+#Fig 3
+plot_grid(graph_11,graph_13,graph_20,graph_22,graph_15,graph_16,graph_23,graph_24,
+          labels = "AUTO",ncol = 2,label_x = 0.23) #export at 6 X 10 
+
+#Fig S6
+plot_grid(graph_12,graph_14,graph_21,graph_17,graph_18,graph_19, labels = "AUTO",ncol = 2,label_x = 0.23) #export at 6 X 8 
+
+
 
 #South Wet
 graph_25 <- visreg(sw_sla_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
@@ -202,15 +226,24 @@ graph_37 <- visreg(sd_fd_lag01,"MAPA_lag01",gg=T)+ geom_point(size=0.8)+ geom_sm
 graph_38<- visreg(sd_fd_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA 3-Year Cumul.")+  theme_paper3() 
 
-#Group Save
-
 #Try 3
-#North 
-plot_grid(graph_1,graph_2,graph_4,labels = "AUTO",ncol = 2,label_x = 0.23) #export at 5 X 6 
+#South
+
+#Fig 4 -- SLA
+plot_grid(graph_26,graph_33,graph_29,graph_31,graph_27,graph_34,graph_35,graph_36,
+          labels = "AUTO",ncol = 2,label_x = 0.23) #export at 6 X 10 
+
+#Fig S7
+plot_grid(graph_25,graph_30,graph_32,graph_28,graph_37,graph_38, labels = "AUTO",ncol = 2,label_x = 0.23) #export at 6 X 8 
 
 
 
 
+
+
+
+
+##########################################################################################################
 #Try 2
 #Fig 1 North - Wet
 plot_grid(graph_1,graph_2,graph_4,graph_5,graph_6,graph_8,
