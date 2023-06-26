@@ -107,29 +107,31 @@ sd_fd_lag012 <- lmer(Experiment_Date ~  MAPA_lag012 + Block + (1|Year) + (1|Site
 #Set up graphs
 
 #North Wet
-graph_1 <- visreg(nw_sla_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3() 
+graph_1 <- visreg(nw_sla_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3() 
 
-graph_2 <- visreg(nw_fd_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_2 <- visreg(nw_fd_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3() 
-graph_3 <- visreg(nw_fd_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_3 <- visreg(nw_fd_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 1")+  theme_paper3() 
-graph_4 <- visreg(nw_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_4 <- visreg(nw_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
 
+
+#"#FF7700"
 #North Dry
-graph_5 <- visreg(nd_sla_lag0,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
+graph_5 <- visreg(nd_sla_lag0,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
 
-graph_6 <- visreg(nd_fd_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_6 <- visreg(nd_fd_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3()
-graph_7 <- visreg(nd_fd_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_7 <- visreg(nd_fd_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 1")+  theme_paper3() 
-graph_8 <- visreg(nd_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_8 <- visreg(nd_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
-graph_9 <- visreg(nd_fd_lag01,"MAPA_lag01",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_9 <- visreg(nd_fd_lag01,"MAPA_lag01",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA 2-Year Cumul.")+  theme_paper3() 
-graph_10 <- visreg(nd_fd_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_10 <- visreg(nd_fd_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA 3-Year Cumul.")+  theme_paper3() 
 
 
@@ -145,37 +147,37 @@ plot_grid(graph_3,graph_7,graph_9,graph_10, labels = "AUTO",ncol = 2,label_x = 0
 
 
 #Centre Wet
-graph_11 <- visreg(cw_sla_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3()
-graph_12 <- visreg(cw_sla_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 1")+  theme_paper3() 
-graph_13 <- visreg(cw_sla_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
-graph_14 <- visreg(cw_sla_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA 3-Year Cumul.")+  theme_paper3() 
+graph_11 <- visreg(cw_sla_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3()
+graph_12 <- visreg(cw_sla_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA lag 1")+  theme_paper3() 
+graph_13 <- visreg(cw_sla_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
+graph_14 <- visreg(cw_sla_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA 3-Year Cumul.")+  theme_paper3() 
 
-graph_15 <- visreg(cw_fd_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_15 <- visreg(cw_fd_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3()
-graph_16 <- visreg(cw_fd_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_16 <- visreg(cw_fd_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 1")+  theme_paper3() 
-graph_17 <- visreg(cw_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_17 <- visreg(cw_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
-graph_18 <- visreg(cw_fd_lag01,"MAPA_lag01",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_18 <- visreg(cw_fd_lag01,"MAPA_lag01",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA 2-Year Cumul.")+  theme_paper3() 
-graph_19 <- visreg(cw_fd_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_19 <- visreg(cw_fd_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA 3-Year Cumul.")+  theme_paper3() 
 
 #Centre Dry
-graph_20 <- visreg(cd_sla_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3()
-graph_21 <- visreg(cd_sla_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 1")+  theme_paper3() 
-graph_22 <- visreg(cd_sla_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
+graph_20 <- visreg(cd_sla_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3()
+graph_21 <- visreg(cd_sla_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA lag 1")+  theme_paper3() 
+graph_22 <- visreg(cd_sla_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
 
-graph_23 <- visreg(cd_fd_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_23 <- visreg(cd_fd_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3()
-graph_24 <- visreg(cd_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_24 <- visreg(cd_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
 
 
@@ -191,39 +193,39 @@ plot_grid(graph_12,graph_14,graph_21,graph_17,graph_18,graph_19, labels = "AUTO"
 
 
 #South Wet
-graph_25 <- visreg(sw_sla_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 1")+  theme_paper3() 
-graph_26 <- visreg(sw_sla_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
+graph_25 <- visreg(sw_sla_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA lag 1")+  theme_paper3() 
+graph_26 <- visreg(sw_sla_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
 
-graph_27 <- visreg(sw_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_27 <- visreg(sw_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
-graph_28 <- visreg(sw_fd_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_28 <- visreg(sw_fd_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="skyblue3")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA 3-Year Cumul.")+  theme_paper3()
 
 
 #South Dry
-graph_29 <- visreg(sd_sla_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3()
-graph_30 <- visreg(sd_sla_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 1")+  theme_paper3() 
-graph_31 <- visreg(sd_sla_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
-graph_32 <- visreg(sd_sla_lag01,"MAPA_lag01",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MAPA 2-Year Cumul.")+  theme_paper3() 
+graph_29 <- visreg(sd_sla_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3()
+graph_30 <- visreg(sd_sla_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA lag 1")+  theme_paper3() 
+graph_31 <- visreg(sd_sla_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
+graph_32 <- visreg(sd_sla_lag01,"MAPA_lag01",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MAPA 2-Year Cumul.")+  theme_paper3() 
 
-graph_33 <- visreg(sd_sla_lag0_MATA,"MATA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
-  scale_y_continuous(name="SLA")+ scale_x_continuous(name="MATA lag 0")+  theme_paper3()
+graph_33 <- visreg(sd_sla_lag0_MATA,"MATA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
+  scale_y_continuous(name = expression(bold("SLA (" ~ cm^{-2} ~ "/mg)")))+ scale_x_continuous(name="MATA lag 0")+  theme_paper3()
 
-graph_34 <- visreg(sd_fd_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_34 <- visreg(sd_fd_lag0,"MAPA_lag0",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 0")+  theme_paper3()
-graph_35 <- visreg(sd_fd_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_35 <- visreg(sd_fd_lag1,"MAPA_lag1",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 1")+  theme_paper3() 
-graph_36 <- visreg(sd_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_36 <- visreg(sd_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA lag 2")+  theme_paper3() 
-graph_37 <- visreg(sd_fd_lag01,"MAPA_lag01",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_37 <- visreg(sd_fd_lag01,"MAPA_lag01",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA 2-Year Cumul.")+  theme_paper3() 
-graph_38<- visreg(sd_fd_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="black")+
+graph_38<- visreg(sd_fd_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_smooth(method="lm",color="#FF7700")+
   scale_y_continuous(name="Date of Flowering")+ scale_x_continuous(name="MAPA 3-Year Cumul.")+  theme_paper3() 
 
 #Try 3
