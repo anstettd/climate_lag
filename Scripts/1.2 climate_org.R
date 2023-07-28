@@ -131,6 +131,21 @@ wna_all <- left_join(wna2, wna, by="Site") %>%
 wna_all$ID2 <- wna_all$ID
 wna_all$Year2 <- wna_all$Year
 wna_all <- wna_all %>% unite(col="ID_Year", c("ID2","Year2"),sep="_")
+
+
+#Merge SPEI with rest of climate data an export prior to merging with trait data
+spei_edit <- spei_lag %>% select(-Lat,-Long,-Elevation,-Lat_spei,-Long_spei,-lag3,-lag0123)
+
+names(spei_edit) <- c("Paper_ID","ID","ID_Year","Site_Lat","Year","SPEI_lag0","SPEI_lag1",
+                      "SPEI_lag2","SPEI_lag01","SPEI_lag012")
+
+wna_filter <- wna_all %>% select(Site:Longitude,CMDA_lag0:MAPA_lag012)
+
+wna_everything <- left_join(wna_all,spei_edit,by=c("ID_Year"))
+
+#Export
+write.csv(wna_everything,"Data/wna_all.csv")
+
          
 #Join
 y9 <- left_join(y9,wna_all,by="ID_Year")
@@ -144,7 +159,7 @@ names(y9)[names(y9) == 'Elevation.x'] <- 'Elevation'
 names(y9)[names(y9) == 'ID.x'] <- 'ID'
 names(y9)[names(y9) == 'Site.x'] <- 'Site'
 
-write.csv(y9,"Data/y9.csv")
+#write.csv(y9,"Data/y9.csv")
 
 
 #Make a site/year table for SPEI, CMDA, MAPA, MATA
@@ -155,7 +170,7 @@ names(env_lag0)[names(env_lag0) == 'ID.x'] <- 'ID'
 names(env_lag0)[names(env_lag0) == 'Year.x'] <- 'Year'
 names(env_lag0)[names(env_lag0) == 'lag0'] <- 'SPEI_lag0'
 
-write.csv(env_lag0,"Data/env_lag0.csv")
+#write.csv(env_lag0,"Data/env_lag0.csv")
 
 
 
