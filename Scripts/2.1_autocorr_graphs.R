@@ -89,7 +89,10 @@ SLA6<-ggplot(z1, aes(x=MATA_auto, y=abs_change_SLA_D)) +
   theme(legend.title=element_blank())+
   theme(legend.text = element_text(size=15),legend.position = "none")
 
-plot_grid(SLA1,SLA2,SLA3,SLA4,SLA5,SLA6,labels = "AUTO",ncol = 2) #export at 7.5 X 9 
+#plot_grid(SLA1,SLA2,SLA3,SLA4,SLA5,SLA6,labels = "AUTO",ncol = 2) #export at 7.5 X 9 
+
+
+
 
 
 #DF
@@ -168,7 +171,20 @@ DF6<-ggplot(z1, aes(x=MATA_auto, y=abs_change_DF_D)) +
   theme(legend.title=element_blank())+
   theme(legend.text = element_text(size=15),legend.position = "none")
 
-plot_grid(DF1,DF2,DF3,DF4,DF5,DF6,labels = "AUTO",ncol = 2) #export at 7.5 X 9 
+#plot_grid(DF1,DF2,DF3,DF4,DF5,DF6,labels = "AUTO",ncol = 2) #export at 7.5 X 9 
+
+
+#################################################################################################################
+##Make Figure Pannels
+#Fig 5
+plot_grid(SLA3,SLA4,DF3,DF4,labels = "AUTO",ncol = 2) #export at 6 X 6 landscape
+
+#Fig S8
+plot_grid(SLA1,SLA2,SLA5,SLA6,labels = "AUTO",ncol = 2) #export at 6 X 6 landscape
+#Fig S9
+plot_grid(DF1,DF2,DF5,DF6,labels = "AUTO",ncol = 2) #export at 6 X 6 landscape
+
+
 
 
 
