@@ -1,9 +1,9 @@
 ##################################################################################
-## Daniel Anstett
+## Haley Branch & Daniel Anstett
 ## Generate climate focused Fig 1
-## Using Climate Moisture Deficit (CMD) and Cliamte Moisture Deficit Anomaly (CMDA)
+## Using MAPA
 ##
-## Last Modified January 22, 2020
+## Last Modified Dec 6, 2023
 ###################################################################################
 
 
@@ -66,12 +66,69 @@ MAPA_Lat
 
 
 
-######
+###############################################################################################################
+#Make MAP timeseries
 weather <- read.csv("Data/weather.csv")
-weather <- filter(weather, ID %in%  c("S02", "S10", "S36"))
+weather <- filter(weather, ID %in%  c("S02", "S10", "S36")) %>% 
+  select(ID,ID2,Latitude,Year,MAP.weath,MAP.weath.1,MAP.weath.2)
+
+#Get 2008 and 2009 water years
+weather09_10 <- weather %>% filter(Year==2010 | Year==2011) %>% select(-MAP.weath,-MAP.weath.1)
+weather09_10$Year[1:3] <- 2008 ; weather09_10$Year[4:6] <- 2009
+names(weather09_10)[names(weather09_10)=="MAP.weath.2"] <- "MAP.weath"
+
+#Merge into single data frame
+weather <- weather %>% select(-MAP.weath.1,-MAP.weath.2)
+weather_all <- rbind(weather,weather09_10)
+names(weather_all)[names(weather_all)=="MAP.weath"] <- "MAP"
 
 
 
+#Trend line
+graph <- ggplot(weather_all, aes(Year, y=MAP, fill=ID, colour=ID))+
+  geom_line(aes(colour=ID))+
+  xlab("Year") +
+  scale_y_continuous(name="MAP")+
+  scale_color_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
+  scale_fill_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
+  #ylim(0,410)+
+  xlim(2007,2016)+
+  theme_classic()
+graph <-graph + theme(
+  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=15,face="bold"),
+  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+graph <-graph +
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
+graph
+ggsave("Conceptual_fig/Fig1b1.pdf", width = 6, height = 4, units = "in")
+
+
+
+#######################
+#Correct
+#30-Year Mean
+mean_ci_30y <- read.csv("Data/mean_ci_30y.csv")
+names(mean_ci_30y)[names(mean_ci_30y)=="X"] <-"Region"
+
+mean_ci_30y$Region<-as.factor(mean_ci_30y$Region) #Make Region appear in logical order
+mean_ci_30y$Region<-factor(mean_ci_30y$Region,levels=c("North","Centre","South"))
+
+ggplot(mean_ci_30y, aes(Region, y=Mean)) +
+  geom_errorbar(width=.1, aes(ymin=Lower_CI, ymax=Upper_CI, colour=Region)) +
+  geom_point(aes(fill=Region, colour=Region), shape=21, size=3) +
+  scale_color_manual(values= c("South"="#FF3333", "Centre"="#FFCC00", "North"="#3399FF"))+
+  scale_fill_manual(values= c("South"="#FF3333", "Centre"="#FFCC00", "North"="#3399FF"))+
+  #ylim(0,410)+
+  theme_classic()
+ggsave("Conceptual_fig/Fig1b2.pdf", width = 6, height = 4, units = "in")
+
+
+
+###############################################################################################################
+#Wrong calculation
 wna1 <- read_csv("Climate/timeseries_lat_2010-2016.csv")
 impact_all <- wna1 %>% select(ID_Year1,Year,Elevation) #Get relevant meta_data
 
@@ -123,9 +180,8 @@ weather_2016$Year <- 2016
 weather_all <- rbind(weather_2007,weather_2008,weather_2009,weather_2010,weather_2011,weather_2012,weather_2013,weather_2014,weather_2015,weather_2016)
 weather_all <- filter(weather_all, ID %in%  c("S02", "S10", "S36"))
 #write.csv(weather_all, "Data/weather_3_fig1.csv")
-weather_all<-read.csv("Data/weather_3_fig1.csv")
+#weather_all<-read.csv("Data/weather_3_fig1.csv")
 
-library(ggplot2)
 
 #Trend line
 graph <- ggplot(weather_all, aes(Year, y=MAPavg, fill=ID, colour=ID))+
@@ -146,19 +202,6 @@ graph <-graph +
   theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
         strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
 graph
-
-#30-Year Mean
-mean_ci_30y <- read.csv("Data/mean_ci_30y.csv")
-
-ggplot(mean_ci_30y, aes(X, y=Mean)) +
-  geom_errorbar(width=.1, aes(ymin=Lower_CI, ymax=Upper_CI, colour=X)) +
-  geom_point(aes(fill=X, colour=X), shape=21, size=3) +
-  scale_color_manual(values= c("North"="#FF3333", "Centre"="#FFCC00", "South"="#3399FF"))+
-  scale_fill_manual(values= c("North"="#FF3333", "Centre"="#FFCC00", "South"="#3399FF"))+
-  ylim(0,410)+
-  theme_classic()
-  
-
 
 
 

@@ -1,4 +1,9 @@
-###### 
+######
+
+#Import Library
+library(tidyverse)
+
+#Import data
 dat <- read.csv('Data/env_lag0.csv')
 
 #Clean up dataset and set regions and lables
