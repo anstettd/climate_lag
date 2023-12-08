@@ -138,17 +138,23 @@ mean_ci_30y <- cbind(climate,error_input) %>% mutate(Upper_CI=MAP+STDER) %>% mut
 mean_ci_30y$Region<-as.factor(mean_ci_30y$Region) #Make Region appear in logical order
 mean_ci_30y$Region<-factor(mean_ci_30y$Region,levels=c("North","Centre","South"))
 
-ggplot(mean_ci_30y, aes(Region, y=MAP)) +
+graph_mean <- ggplot(mean_ci_30y, aes(Region, y=MAP)) +
   geom_errorbar(width=.1, aes(ymin=Lower_CI, ymax=Upper_CI, colour=Region)) +
   geom_point(aes(fill=Region, colour=Region), shape=21, size=3) +
   scale_color_manual(values= c("South"="#FF3333", "Centre"="#FFCC00", "North"="#3399FF"))+
   scale_fill_manual(values= c("South"="#FF3333", "Centre"="#FFCC00", "North"="#3399FF"))+
   ylim(0,1800)+
   theme_classic()
+graph_mean <-graph_mean + theme(
+  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=15,face="bold"),
+  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+graph_mean <-graph_mean +
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
+graph_mean 
 ggsave("Conceptual_fig/Fig1b2.pdf", width = 6, height = 4, units = "in")
-
-
-
 
 
 
