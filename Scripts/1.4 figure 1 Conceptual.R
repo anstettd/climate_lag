@@ -91,7 +91,7 @@ graph <- ggplot(weather_all, aes(Year, y=MAP, fill=ID, colour=ID))+
   scale_y_continuous(name="MAP")+
   scale_color_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
   scale_fill_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
-  #ylim(0,410)+
+  ylim(0,1800)+
   xlim(2007,2016)+
   theme_classic()
 graph <-graph + theme(
@@ -110,98 +110,62 @@ ggsave("Conceptual_fig/Fig1b1.pdf", width = 6, height = 4, units = "in")
 #######################
 #Correct
 #30-Year Mean
-mean_ci_30y <- read.csv("Data/mean_ci_30y.csv")
-names(mean_ci_30y)[names(mean_ci_30y)=="X"] <-"Region"
+weather <- read.csv("Data/weather.csv")
+climate <- read.csv("Data/climate.csv")
+climate_yearly <- read.csv("Data/m_year.csv")
 
+#Filter for MAP and correct sites
+climate <- filter(climate, ID %in%  c("S02", "S10", "S36")) %>% select(-MAT,-CMD)
+climate_yearly <- filter(climate_yearly, ID %in%  c("S02", "S10", "S36")) %>% select(-MAT,-CMD)
+
+#Select each site
+yearly_south <- climate_yearly %>% filter(ID=="S02")
+yearly_centre <- climate_yearly %>% filter(ID=="S10")
+yearly_north <- climate_yearly %>% filter(ID=="S36")
+
+#Calc Standard Error for each Site
+error_input <- data.frame()
+error_input[1,1] <- qt(0.975, df=30-1)*sd(yearly_south$MAP)/sqrt(30)
+error_input[2,1] <- qt(0.975, df=30-1)*sd(yearly_centre$MAP)/sqrt(30)
+error_input[3,1] <- qt(0.975, df=30-1)*sd(yearly_north$MAP)/sqrt(30)
+error_input[1,2] <- "South"
+error_input[2,2] <- "Centre"
+error_input[3,2] <- "North"
+colnames(error_input) <- c("STDER","Region")
+
+#Merge dataframes, calc upper and lower error
+mean_ci_30y <- cbind(climate,error_input) %>% mutate(Upper_CI=MAP+STDER) %>% mutate(Lower_CI=MAP-STDER)
 mean_ci_30y$Region<-as.factor(mean_ci_30y$Region) #Make Region appear in logical order
 mean_ci_30y$Region<-factor(mean_ci_30y$Region,levels=c("North","Centre","South"))
 
-ggplot(mean_ci_30y, aes(Region, y=Mean)) +
+ggplot(mean_ci_30y, aes(Region, y=MAP)) +
   geom_errorbar(width=.1, aes(ymin=Lower_CI, ymax=Upper_CI, colour=Region)) +
   geom_point(aes(fill=Region, colour=Region), shape=21, size=3) +
   scale_color_manual(values= c("South"="#FF3333", "Centre"="#FFCC00", "North"="#3399FF"))+
   scale_fill_manual(values= c("South"="#FF3333", "Centre"="#FFCC00", "North"="#3399FF"))+
-  #ylim(0,410)+
+  ylim(0,1800)+
   theme_classic()
 ggsave("Conceptual_fig/Fig1b2.pdf", width = 6, height = 4, units = "in")
 
 
 
-###############################################################################################################
-#Wrong calculation
-wna1 <- read_csv("Climate/timeseries_lat_2010-2016.csv")
-impact_all <- wna1 %>% select(ID_Year1,Year,Elevation) #Get relevant meta_data
-
-#Import datasets and add year_actual variable
-weather_2007 <- read.csv("Climate/timeseries_monthly_2007.csv", header=T)
-weather_2008 <- read.csv("Climate/timeseries_monthly_2008.csv", header=T)
-weather_2009 <- read.csv("Climate/timeseries_monthly_2009.csv", header=T)
-weather_2010 <- read.csv("Climate/timeseries_monthly_2010.csv", header=T)
-weather_2011 <- read.csv("Climate/timeseries_monthly_2011.csv", header=T)
-weather_2012 <- read.csv("Climate/timeseries_monthly_2012.csv", header=T)
-weather_2013 <- read.csv("Climate/timeseries_monthly_2013.csv", header=T)
-weather_2014 <- read.csv("Climate/timeseries_monthly_2014.csv", header=T)
-weather_2015 <- read.csv("Climate/timeseries_monthly_2015.csv", header=T)
-weather_2016 <- read.csv("Climate/timeseries_monthly_2016.csv", header=T)
-
-weather_2007$MAPavg <- rowMeans(weather_2007[ , c(42,53)], na.rm=TRUE)
-weather_2008$MAPavg <- rowMeans(weather_2008[ , c(42,53)], na.rm=TRUE)
-weather_2009$MAPavg <- rowMeans(weather_2009[ , c(42,53)], na.rm=TRUE)
-weather_2010$MAPavg <- rowMeans(weather_2010[ , c(42,53)], na.rm=TRUE)
-weather_2011$MAPavg <- rowMeans(weather_2011[ , c(42,53)], na.rm=TRUE)
-weather_2012$MAPavg <- rowMeans(weather_2012[ , c(42,53)], na.rm=TRUE)
-weather_2013$MAPavg <- rowMeans(weather_2013[ , c(42,53)], na.rm=TRUE)
-weather_2014$MAPavg <- rowMeans(weather_2014[ , c(42,53)], na.rm=TRUE)
-weather_2015$MAPavg <- rowMeans(weather_2015[ , c(42,53)], na.rm=TRUE)
-weather_2016$MAPavg <- rowMeans(weather_2016[ , c(42,53)], na.rm=TRUE)
-
-weather_2007 <- subset(weather_2007, select=c(ID, ID2, Latitude, MAPavg))
-weather_2008 <- subset(weather_2008, select=c(ID, ID2, Latitude, MAPavg))
-weather_2009 <- subset(weather_2009, select=c(ID, ID2, Latitude, MAPavg))
-weather_2010 <- subset(weather_2010, select=c(ID, ID2, Latitude, MAPavg))
-weather_2011 <- subset(weather_2011, select=c(ID, ID2, Latitude, MAPavg))
-weather_2012 <- subset(weather_2012, select=c(ID, ID2, Latitude, MAPavg))
-weather_2013 <- subset(weather_2013, select=c(ID, ID2, Latitude, MAPavg))
-weather_2014 <- subset(weather_2014, select=c(ID, ID2, Latitude, MAPavg))
-weather_2015 <- subset(weather_2015, select=c(ID, ID2, Latitude, MAPavg))
-weather_2016 <- subset(weather_2016, select=c(ID, ID2, Latitude, MAPavg))
-
-weather_2007$Year <- 2007
-weather_2008$Year <- 2008
-weather_2009$Year <- 2009
-weather_2010$Year <- 2010
-weather_2011$Year <- 2011
-weather_2012$Year <- 2012
-weather_2013$Year <- 2013
-weather_2014$Year <- 2014
-weather_2015$Year <- 2015
-weather_2016$Year <- 2016
-
-weather_all <- rbind(weather_2007,weather_2008,weather_2009,weather_2010,weather_2011,weather_2012,weather_2013,weather_2014,weather_2015,weather_2016)
-weather_all <- filter(weather_all, ID %in%  c("S02", "S10", "S36"))
-#write.csv(weather_all, "Data/weather_3_fig1.csv")
-#weather_all<-read.csv("Data/weather_3_fig1.csv")
 
 
-#Trend line
-graph <- ggplot(weather_all, aes(Year, y=MAPavg, fill=ID, colour=ID))+
-  geom_line(aes(colour=ID))+
-  xlab("Year") +
-  scale_y_continuous(name="MAP")+
-  scale_color_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
-  scale_fill_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
-  ylim(0,410)+
-  xlim(2004,2016)+
-  theme_classic()
-graph <-graph + theme(
-  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
-  axis.text.y = element_text(size=15,face="bold"),
-  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
-  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
-graph <-graph +
-  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
-        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
-graph
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

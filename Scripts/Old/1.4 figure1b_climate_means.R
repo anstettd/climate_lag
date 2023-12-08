@@ -175,3 +175,90 @@ write.csv(mean_ci_30y,"Data/mean_ci_30y.csv")
 #Stats <- all %>% group_by(ID) %>% summarize(by="ID",Mean = mean(MAPavg)), SD = sd(MAPavg),
 #                                                                          CI_L = Mean - (SD * 1.96)/sqrt(30),
 #                                                                          CI_U = Mean + (SD * 1.96)/sqrt(30))
+
+
+
+
+
+
+
+###############################################################################################################
+#Wrong calculation
+wna1 <- read_csv("Climate/timeseries_lat_2010-2016.csv")
+impact_all <- wna1 %>% select(ID_Year1,Year,Elevation) #Get relevant meta_data
+
+#Import datasets and add year_actual variable
+weather_2007 <- read.csv("Climate/timeseries_monthly_2007.csv", header=T)
+weather_2008 <- read.csv("Climate/timeseries_monthly_2008.csv", header=T)
+weather_2009 <- read.csv("Climate/timeseries_monthly_2009.csv", header=T)
+weather_2010 <- read.csv("Climate/timeseries_monthly_2010.csv", header=T)
+weather_2011 <- read.csv("Climate/timeseries_monthly_2011.csv", header=T)
+weather_2012 <- read.csv("Climate/timeseries_monthly_2012.csv", header=T)
+weather_2013 <- read.csv("Climate/timeseries_monthly_2013.csv", header=T)
+weather_2014 <- read.csv("Climate/timeseries_monthly_2014.csv", header=T)
+weather_2015 <- read.csv("Climate/timeseries_monthly_2015.csv", header=T)
+weather_2016 <- read.csv("Climate/timeseries_monthly_2016.csv", header=T)
+
+weather_2007$MAPavg <- rowMeans(weather_2007[ , c(42,53)], na.rm=TRUE)
+weather_2008$MAPavg <- rowMeans(weather_2008[ , c(42,53)], na.rm=TRUE)
+weather_2009$MAPavg <- rowMeans(weather_2009[ , c(42,53)], na.rm=TRUE)
+weather_2010$MAPavg <- rowMeans(weather_2010[ , c(42,53)], na.rm=TRUE)
+weather_2011$MAPavg <- rowMeans(weather_2011[ , c(42,53)], na.rm=TRUE)
+weather_2012$MAPavg <- rowMeans(weather_2012[ , c(42,53)], na.rm=TRUE)
+weather_2013$MAPavg <- rowMeans(weather_2013[ , c(42,53)], na.rm=TRUE)
+weather_2014$MAPavg <- rowMeans(weather_2014[ , c(42,53)], na.rm=TRUE)
+weather_2015$MAPavg <- rowMeans(weather_2015[ , c(42,53)], na.rm=TRUE)
+weather_2016$MAPavg <- rowMeans(weather_2016[ , c(42,53)], na.rm=TRUE)
+
+weather_2007 <- subset(weather_2007, select=c(ID, ID2, Latitude, MAPavg))
+weather_2008 <- subset(weather_2008, select=c(ID, ID2, Latitude, MAPavg))
+weather_2009 <- subset(weather_2009, select=c(ID, ID2, Latitude, MAPavg))
+weather_2010 <- subset(weather_2010, select=c(ID, ID2, Latitude, MAPavg))
+weather_2011 <- subset(weather_2011, select=c(ID, ID2, Latitude, MAPavg))
+weather_2012 <- subset(weather_2012, select=c(ID, ID2, Latitude, MAPavg))
+weather_2013 <- subset(weather_2013, select=c(ID, ID2, Latitude, MAPavg))
+weather_2014 <- subset(weather_2014, select=c(ID, ID2, Latitude, MAPavg))
+weather_2015 <- subset(weather_2015, select=c(ID, ID2, Latitude, MAPavg))
+weather_2016 <- subset(weather_2016, select=c(ID, ID2, Latitude, MAPavg))
+
+weather_2007$Year <- 2007
+weather_2008$Year <- 2008
+weather_2009$Year <- 2009
+weather_2010$Year <- 2010
+weather_2011$Year <- 2011
+weather_2012$Year <- 2012
+weather_2013$Year <- 2013
+weather_2014$Year <- 2014
+weather_2015$Year <- 2015
+weather_2016$Year <- 2016
+
+weather_all <- rbind(weather_2007,weather_2008,weather_2009,weather_2010,weather_2011,weather_2012,weather_2013,weather_2014,weather_2015,weather_2016)
+weather_all <- filter(weather_all, ID %in%  c("S02", "S10", "S36"))
+#write.csv(weather_all, "Data/weather_3_fig1.csv")
+#weather_all<-read.csv("Data/weather_3_fig1.csv")
+
+
+#Trend line
+graph <- ggplot(weather_all, aes(Year, y=MAPavg, fill=ID, colour=ID))+
+  geom_line(aes(colour=ID))+
+  xlab("Year") +
+  scale_y_continuous(name="MAP")+
+  scale_color_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
+  scale_fill_manual(values= c("S02"="#FF3333", "S10"="#FFCC00", "S36"="#3399FF"))+
+  ylim(0,410)+
+  xlim(2004,2016)+
+  theme_classic()
+graph <-graph + theme(
+  axis.text.x = element_text(size=12, face="bold", angle=0,hjust=0.5),
+  axis.text.y = element_text(size=15,face="bold"),
+  axis.title.x = element_text(color="black", size=20, vjust = 0.5, face="bold"),
+  axis.title.y = element_text(color="black", size=20,vjust = 2, face="bold",hjust=0.5))
+graph <-graph +
+  theme(legend.title = element_blank(),legend.text = element_text(size=12,face="bold"),
+        strip.background = element_blank(), strip.text.x=element_text(size=14,face="bold",hjust=0.05,vjust=-1.2))
+graph
+
+
+
+
+

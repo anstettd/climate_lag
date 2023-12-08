@@ -73,7 +73,7 @@ for(i in 1980:2009){
 colnames(impact_summary)[5]<-"hist_year"
 #write.csv(impact_summary,'Data/m_year.csv') #Export file
 climate_81_10 <- impact_summary %>% group_by(ID,ID2,Latitude,Longitude) %>% summarise_at(c("MAT", "MAP", "CMD"), mean, na.rm=TRUE)
-write.csv(climate_81_10,'Data/climate.csv') #Export file
+#write.csv(climate_81_10,'Data/climate.csv') #Export file
 
 
 
