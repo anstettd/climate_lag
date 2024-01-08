@@ -184,12 +184,17 @@ graph_24 <- visreg(cd_fd_lag2,"MAPA_lag2",gg=T)+ geom_point(size=0.8)+ geom_smoo
 #Try 3
 #Centre
 #Fig 3
-plot_grid(graph_11,graph_13,graph_20,graph_22,graph_15,graph_16,graph_23,graph_24,
-          labels = "AUTO",ncol = 2,label_x = 0.25) #export at 6 X 10 
+plot_grid(graph_11,graph_13,graph_20,graph_22,graph_15,graph_23,graph_24,
+          labels = "AUTO",ncol = 2,label_x = 0.25) #export at 6 X 10 Portrait
+
+#plot_grid(graph_11,graph_13,graph_20,graph_22,graph_15,graph_16,graph_23,graph_24,
+#          labels = "AUTO",ncol = 2,label_x = 0.25) #export at 6 X 10 Portrait
 
 #Fig S6
-plot_grid(graph_12,graph_14,graph_21,graph_17,graph_18,graph_19, labels = "AUTO",ncol = 2,label_x = 0.25) #export at 6 X 8 
+plot_grid(graph_12,graph_14,graph_21,graph_16,graph_17,graph_18,graph_19, 
+          labels = "AUTO",ncol = 2,label_x = 0.25) #export at 6.5 X 10 Portrait
 
+#plot_grid(graph_12,graph_14,graph_21,graph_17,graph_18,graph_19, labels = "AUTO",ncol = 2,label_x = 0.25) #export at 6 X 8 Portrait
 
 
 #South Wet
@@ -232,12 +237,16 @@ graph_38<- visreg(sd_fd_lag012,"MAPA_lag012",gg=T)+ geom_point(size=0.8)+ geom_s
 #South
 
 #Fig 4 -- SLA
-plot_grid(graph_26,graph_33,graph_29,graph_31,graph_27,graph_34,graph_35,graph_36,
-          labels = "AUTO",ncol = 2,label_x = 0.25) #export at 6 X 10 
+plot_grid(graph_26,graph_33,graph_29,graph_31,graph_27,graph_34,graph_36,
+          labels = "AUTO",ncol = 2,label_x = 0.25) #export at 6 X 10 Portrait
+#plot_grid(graph_26,graph_33,graph_29,graph_31,graph_27,graph_34,graph_35,graph_36,
+#          labels = "AUTO",ncol = 2,label_x = 0.25) #export at 6 X 10 Portrait 
 
 #Fig S7
-plot_grid(graph_25,graph_30,graph_32,graph_28,graph_37,graph_38, labels = "AUTO",ncol = 2,label_x = 0.25) #export at 6 X 8 
+plot_grid(graph_25,graph_30,graph_32,graph_28,graph_35,graph_37,graph_38, 
+          labels = "AUTO",ncol = 2,label_x = 0.25) #export at 6.5 X 8 Portrait
 
+#plot_grid(graph_25,graph_30,graph_32,graph_28,graph_37,graph_38, labels = "AUTO",ncol = 2,label_x = 0.25) #export at 6 X 8 Portrait
 
 
 
